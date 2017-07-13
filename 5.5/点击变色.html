@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="btn" value="按钮" />
+		<ul id="list">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+		<script type="text/javascript">
+			var btn=document.getElementById('btn');
+			var list=document.getElementById('list');
+			var lis=list.getElementsByTagName('li');
+			var arr=['red','pink','yellow'];
+			btn.onclick=function(){
+				for(var i=0;i<lis.length;i+=2){
+					lis[i].style.background=arr[i%arr.length];
+				}
+			}
+		</script>
+	</body>
+</html>

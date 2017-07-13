@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+			#box{
+				height: 500px;
+				width: 500px;
+				border: 2px solid #000000;
+				position: relative;
+			}
+			#btn{
+				margin: 10px;
+				height: 50px;
+				width: 100px;
+				line-height: 50px;
+			}
+			#left{
+				position: absolute;
+				top: 80px;
+				left: 0;
+				width: 50px;
+				height: 0px;
+				background: palevioletred;
+				line-height: 80px;
+				font-size: 30px;
+				color: #000000;
+				text-align: center;
+				transition:3s;
+				overflow: hidden;
+			}
+			#right{
+				position: absolute;
+				top: 80px;
+				right: 0;
+				width: 50px;
+				height: 0px;
+				background: palevioletred;
+				line-height: 80px;
+				font-size: 30px;
+				text-align: center;
+				color: #000000;
+				overflow: hidden;
+				transition:3s;
+				
+			}
+			#ah{
+				position: absolute;
+				top: 0;
+				left: 170px;
+				height: 80px;
+				line-height: 80px;
+				width: 0px;
+				color: #000000;
+				font-size: 30px;
+				text-align: center;
+				background: palevioletred;
+				overflow: hidden;
+				transition:3s;
+				word-spacing: normal;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<p id="left">一二三四五</p>
+			<h2 id="ah">开门大吉</h2>
+			<p id="right">上山打老虎</p>
+		</div>
+		<input type="button" id="btn" value="按钮" />
+		<script type="text/javascript">
+			var btn=document.getElementById('btn');
+			var left=document.getElementById('left');
+			var right=document.getElementById('right');
+			var ah=document.getElementById('ah');
+			var onOff=true;
+			btn.onclick=function(){
+				if(onOff){
+					left.style.height='400px';
+					right.style.height='400px';
+					ah.style.width='160px';
+				}else{
+					left.style.height='0px';
+					right.style.height='0px';
+					ah.style.width='0px';
+				}
+				onOff=!onOff;
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var data=[
+				{
+					id:1,
+					name:'小白1',
+					chlid:[
+						{
+							id:5,
+							name:'小红5',
+							chlid:[
+								{
+									id:8,
+									name:'小明8',
+									chlid:[]
+								},
+								{
+									id:9,
+									name:'小明9',
+									chlid:[]
+								},
+								{
+									id:10,
+									name:'小明10',
+									chlid:[]
+								}
+							]
+						},
+						{
+							id:6,
+							name:'小红6',
+							chlid:[]
+						},
+						{
+							id:7,
+							name:'小红7',
+							chlid:[]
+						}
+					]
+				},
+				{
+					id:2,
+					name:'小白2',
+					chlid:[]
+				},
+				{
+					id:3,
+					name:'小白3',
+					chlid:[
+						{
+							id:11,
+							name:'小红11',
+							chlid:[
+								{
+									id:12,
+									name:'小明12',
+									chlid:[]
+								},
+								{
+									id:13,
+									name:'小明13',
+									chlid:[]
+								},
+								{
+									id:14,
+									name:'小明14',
+									chlid:[]
+								}
+							]
+						},
+						{
+							id:15,
+							name:'小红15',
+							chlid:[]
+						},
+						{
+							id:16,
+							name:'小红16',
+							chlid:[]
+						}
+					]
+				},
+				{
+					id:4,
+					name:'小白4',
+					chlid:[]
+				}
+			];
+			var n=0;
+			function find(arr,id){
+				var obj=null;
+				fn(arr);
+				function fn(arr){
+					for(var a of arr){
+						n++;
+						if(a.id==id){
+							obj=a;
+							return;
+						}
+						if(a.chlid.length){
+							fn(a.chlid,id);
+						}
+					}
+				}
+				return obj;
+			}
+			console.log(find(data,12))
+		</script>
+	</body>
+</html>

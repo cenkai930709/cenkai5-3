@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				margin:0;
+				padding:0;
+				list-style: none;
+				width:100px;
+				border: 1px solid #000;
+				position: absolute;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+			<li>菜单1</li>
+			<li>菜单2</li>
+			<li>菜单3</li>
+			<li>菜单4</li>
+			<li>菜单5</li>
+			<li>菜单6</li>
+		</ul>
+		<script type="text/javascript">
+			var list = document.getElementById('list');
+			document.oncontextmenu = function(ev){
+				//阻止默认右键菜单
+				ev.preventDefault();
+				//显示自定义菜单
+				list.style.display = 'block';
+				//限制范围
+				var maxL = innerWidth-list.offsetWidth;
+				var maxT = innerHeight - list.offsetHeight;
+				//右边超过最大值，等于最大值
+				var l = ev.clientX>maxL?maxL:ev.clientX;
+				//下边超过最大值，鼠标位置-菜单高度
+				var t = ev.clientY>maxT?ev.clientY-list.offsetHeight:ev.clientY;
+				console.log(maxL,maxT)
+				
+				list.style.left = l +'px';
+				list.style.top = t +'px';	
+			}
+			document.onclick = function(ev){
+				//如果点的不是菜单上，菜单消失
+				if(ev.target.parentNode!=list){
+					list.style.display = '';
+				}
+			}
+		</script>
+	</body>
+</html>

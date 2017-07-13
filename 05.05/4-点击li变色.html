@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<ul id="list">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+		<script>
+			var btn = document.getElementById('btn');
+			var lis = document.getElementsByTagName('li');
+			var n = 0;
+			var color = ['red','yellow','blue'];
+			btn.onclick = function(){
+				/*
+				 	n   color  
+				 	0    0     red
+				 	1    1     yellow
+				 	2    2     blue
+				 	3    0     red
+				 	4    1     yellow
+				 	5    2     blue
+				 * 
+				 * */
+				lis[n].style.background = color[n%color.length]
+				n++;
+				if(n>lis.length-1){
+					btn.disabled = true;
+				}
+			}
+		</script>
+	</body>
+</html>

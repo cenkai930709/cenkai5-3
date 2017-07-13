@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	switch判断
+			 	1.if可以转成switch,但不是所有switch都可以转成if
+			 	2.switch精准判断，数据类型也必须相等
+			 	3.穿透性(break)
+			 * 
+			 * */
+			var n = 2;
+//			if(n=='10'){
+//				//条件1
+//				alert(1)
+//			}else if(n>0){
+//				//条件2
+//				alert(2)
+//			}else{
+//				//都不成立
+//				alert('都不成立')
+//			}
+			switch(n){
+				case 10:
+					//条件1
+					alert(1)
+				break;
+//				case 20:
+//				    //条件2
+//				break;
+//				default:
+//					//都不成立
+//				break;
+			}
+			/*switch(n<10){
+				case true:
+					          alert('真')
+				                //break;
+				case false:
+					          alert('假')
+				                 break;
+			}*/
+			switch(n){
+				case 1:
+				case 2:
+					    alert('12')
+				break;
+				case 3:
+				case 4:
+					    alert('34')
+				break;
+			}
+//			if(n==1 || n==2){
+//				 alert('12')
+//			}
+		</script>
+	</body>
+</html>

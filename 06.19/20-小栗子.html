@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#pages{
+				margin:0;
+				padding:0;
+				list-style: none;
+			}
+			#pages li{
+				width: 50px;
+				height: 50px;
+				border:1px solid #000;
+				line-height: 50px;
+				text-align: center;
+				float: left;
+				margin-right:5px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="西部"/>
+		<input type="button" value="东部"/>
+		<p id="p"></p>
+		<ol id="list"></ol>
+		<ul id="pages">
+		
+		</ul>
+		<script type="text/javascript">
+			var data = {
+				index:[
+				'west','east'
+				],
+				
+				west:[
+					{
+						name:'库里1'
+					},
+					{
+						name:'哈登1'
+					},
+					{
+						name:'伦纳德1'
+					},
+					{
+						name:'保罗1'
+					},
+					{
+						name:'加索尔1'
+					},
+					{
+						name:'库里2'
+					},
+					{
+						name:'哈登2'
+					},
+					{
+						name:'伦纳德2'
+					},
+					{
+						name:'保罗2'
+					},
+					{
+						name:'加索尔2'
+					},
+					{
+						name:'库里3'
+					},
+					{
+						name:'哈登3'
+					},
+					{
+						name:'伦纳德3'
+					},
+					{
+						name:'保罗3'
+					},
+					{
+						name:'加索尔3'
+					},
+					{
+						name:'库里4'
+					},
+					{
+						name:'哈登4'
+					},
+					{
+						name:'伦纳德4'
+					},
+					{
+						name:'保罗4'
+					}
+				],
+				east:[
+					{
+						name:'詹姆斯1'
+					},
+					{
+						name:'欧文1'
+					},
+					{
+						name:'乔治1'
+					},
+					{
+						name:'韦德1'
+					},
+					{
+						name:'詹姆斯2'
+					},
+					{
+						name:'欧文2'
+					},
+					{
+						name:'乔治2'
+					},
+					{
+						name:'韦德2'
+					},
+					{
+						name:'詹姆斯3'
+					},
+					{
+						name:'欧文3'
+					},
+					{
+						name:'乔治3'
+					},
+					{
+						name:'韦德3'
+					}
+				]
+			};
+			var inps = document.getElementsByTagName('input');
+			var p = document.getElementById('p');
+			var list = document.getElementById('list');
+			var pages = document.getElementById('pages');
+			//放当前页面的数据
+			var Data = [];
+			//一页4条
+			var len = 4;
+			//1.获取search，拿到当前页面的数据，西部或者东部
+			var s = location.search.substr(1).split('=')[1];
+//			console.log(s);
+			if(s){
+				//有search,按获取到的值走
+				if(s=='w'){
+					Data = data.west;
+					p.innerHTML = '西部';
+				}else{
+					Data = data.east;
+					p.innerHTML = '东部';
+				}
+			}else{
+				//第一次没有search，需要给默认值
+				Data = data[data.index[0]];
+				p.innerHTML = '西部';
+			}
+			//console.log(Data)
+			
+			//#p=1
+			fn();
+			//2.获取hash，得到当前要显示第几页
+			function fn(){
+				var h = location.hash.substr(1).split('=')[1];
+				//console.log(h)
+				if(h){
+					//如果有，按获取到的走
+					var page = h;
+				}else{
+					//第一次打开没有hash，默认第一页
+					var page = 1;
+				}
+				//根据页码page算出显示数据的开始位置start，和结束位置end
+				var start = (page-1)*len; 
+				var end = start+len;
+				//开始位置+len可能超出数据个数，所以限制一下
+				if(end>Data.length){
+					end = Data.length;
+				}
+				//3.根据算好的start,end渲染页面
+				var str = '';
+				for(var i=start;i<end;i++){
+					str += '<li>姓名：'+Data[i].name+'</li>';
+				}
+				list.innerHTML = str;
+			}
+			//4.生成页码
+			//当前页面数据个数/一页几条，向上取整
+			var num = Math.ceil(Data.length/len);
+			//console.log(num)
+			//生成页码渲染到页面上
+			for(var i=0;i<num;i++){
+				var li = document.createElement('li');
+				li.innerHTML = i+1;
+				//点击页码设置hash
+				li.onclick = function(){
+					location.hash = 'p='+this.innerHTML;
+				}
+				pages.appendChild(li);
+			}
+			//当hash改变时，执行fn函数，获取hash的页码重新渲染页码，页面显示的内容就改变了
+			window.onhashchange = function(){
+				fn();
+			}
+			//西部和东部点击切换，search刷新页面，重新渲染
+			//西部
+			inps[0].onclick = function(){
+				location.search = 'l=w';
+			}
+			//东部
+			inps[1].onclick = function(){
+				location.search = 'l=e';
+			}
+		</script>
+	</body>
+</html>

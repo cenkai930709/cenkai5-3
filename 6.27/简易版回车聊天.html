@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        li{
+            height: 30px;
+            width: 180px;
+            border-bottom: 1px solid #0066ff;
+            line-height: 30px;
+            text-align: center;
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body>
+<input type="text"/>
+<select name="" id="">
+    <option value="回车">回车</option>
+    <option value="Ctrl回车">Ctrl回车</option>
+</select>
+<ul></ul>
+<script>
+    var tet=document.getElementsByTagName('input')[0];
+    var sel=document.getElementsByTagName('select')[0];
+    var ops=sel.getElementsByTagName('option');
+    var ul=document.getElementsByTagName('ul')[0];
+    var onOff=true;
+    sel.onchange=function(){
+        if(this.value==1){
+            onOff=true;
+        }else{
+            onOff=false;
+        }
+    }
+    tet.onkeyup=function(ev){
+        if(onOff
+        ){
+            if(!ev.ctrlKey&&ev.keyCode==13){
+                var val=this.value;
+                ul.innerHTML+='<li>'+val+'</li>';
+            }
+        }else{
+            if(ev.ctrlKey&&ev.keyCode==13){
+                var val=this.value;
+                ul.innerHTML+='<li>'+val+'</li>';
+            }
+        }
+        onOff=!onOff;
+
+    }
+</script>
+</body>
+</html>

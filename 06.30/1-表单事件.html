@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="" id="form">
+			<input type="text" name="txt"/>
+			<input type="submit" />
+			<input type="button" value="按钮" name="btn"/>
+			<input type="reset"/>
+			<input type="button" value="按钮" name="btn2"/>
+		</form>
+		<script>
+			/*
+			 	oninput
+			 		每次输入触发
+			 *  onsubmit
+			 * 		表单提交时触发，form
+			 * 	form.submit()提交方法
+			 *  submit()不会触发onsubmit事件
+			 * 
+			 *  onreset
+			 * 		表单重置时触发
+			 *  form.reset()重置方法
+			 * 		
+			 * */
+			var form = document.getElementById('form');
+//			form.txt.onchange = function(){
+//				console.log(this.value)
+//			}
+			form.txt.oninput = function(){
+				console.log(this.value)
+			}
+			form.onsubmit = function(ev){
+				if(form.txt.value.length<5){
+					ev.preventDefault();
+					alert('请输入大于5个字符')
+				}
+			}
+			form.btn.onclick = function(){
+				//submit()不会触发onsubmit事件，所以要先做验证，再用submit()方法提交
+				if(form.txt.value.length>5){
+					form.submit();
+				}	
+			}
+			form.onreset = function(){
+				console.log('reset')
+			}
+			form.btn2.onclick = function(){
+				console.dir(form.reset)
+				form.reset();
+			}
+		</script>
+	</body>
+</html>

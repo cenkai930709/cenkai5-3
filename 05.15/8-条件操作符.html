@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<script>
+			/*
+			 	条件操作符，三目
+			 	一元，二元，三元
+			 	a?b:c
+			 	a:判断条件
+			 	如果判断条件为真，执行b，为假执行c
+			 * */
+//			console.log(+'10')
+//			console.log(1+1)
+			var n = 1;
+			//n?alert('真'):alert('假')
+//			if(n){
+//				alert('真')
+//			}else{
+//				alert('假')
+//			}
+			var btn = document.getElementById('btn');
+			var onOff = true;
+			btn.onclick = function(){
+//				if(onOff){
+//					this.style.background='red'
+//				}else{
+//					this.style.background='yellow'
+//				}
+//				onOff = !onOff;
+//				
+				onOff?this.style.background='red':this.style.background='yellow',onOff = !onOff;
+			}
+			
+		</script>
+	</body>
+</html>

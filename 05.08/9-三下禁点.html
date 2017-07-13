@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			a{
+				text-decoration: none;
+				padding:10px 20px;
+				border: 5px solid #000;
+				float: left;
+				margin-right:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="javascript:;">0</a>
+		<a href="javascript:;">0</a>
+		<a href="javascript:;">0</a>
+		<script>
+			var as = document.getElementsByTagName('a');
+			for(var i=0;i<as.length;i++){
+				as[i].n = 0;
+				as[i].onclick = function(){
+			    if(this.n<3){
+			    	this.n++;
+					this.innerHTML = this.n;
+			    }	
+			}
+		}		
+		</script>
+	</body>
+</html>

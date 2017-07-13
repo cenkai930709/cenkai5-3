@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//函数返回值
+//			function fn(){
+//				alert(1)
+//				return function(){
+//					alert(2)
+//				}	
+//			}
+//			fn()()
+//			alert(fn()())
+//			fn()()->function(){}()->undefined
+			
+			//闭包
+//			function fn(a){
+//				alert(a)
+//				var a = 10;	
+//				return function (){
+//					a++;
+//					return a;
+//				}
+//			}
+//			var f = fn();
+//			var f2 = fn();
+//			f()
+//			f()
+//			f2()
+//			f2()
+//			
+//			fn()()//var a = 10 a++ a=11
+//			fn()()//var a = 10 a++ a=11
+//			fn()()
+//			
+//			var f = fn();//var a = 10
+//			f()//a++ a=11
+//			f()//a++ a=12
+//			//console.log(f())
+//			
+//			
+//			a++  a=a+1
+//			div->1
+//			div.innerHTML++//2
+//			div.innerHTML = Number(div.innerHTML) +1(隐式类型转换)//2
+
+
+			//模板字符串占位符，里边写表达式（有返回值）,
+//			`<div>${n+1}</div><ul>`
+//			
+//			'<div>'+(n+1)+'</div>'+
+//			'<ul>'
+
+//			var onOff = true
+//			li.onclick = function(){
+//				if(onOff){
+//					
+//				}else{
+//					
+//				}
+//				onOff = !onOff
+//			}
+//			div.onclick = function(){
+//				if(onOff){
+//					
+//				}
+//			}
+
+			var a = 10;
+			setTimeout(function(){
+				console.log(a)
+			},0)
+			a++;
+			a++;
+			a++;
+			a++;
+			a++;
+			a++;
+			a++;
+			a++;
+			a++;
+			a++;
+			a++;
+			a++;
+		</script>
+	</body>
+</html>

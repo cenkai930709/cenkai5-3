@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var data=[
+				{
+					id:1,
+					name:'head',
+					pId:0
+					
+				},
+				{
+					id:2,
+					name:'meta',
+					pId:1
+					
+				},
+				{
+					id:3,
+					name:'title',
+					pId:1
+					
+				},
+				{
+					id:4,
+					name:'aa',
+					pId:2
+					
+				},
+				{
+					id:5,
+					name:'dd',
+					pId:2
+					
+				},
+				{
+					id:6,
+					name:'div',
+					pId:3
+					
+				},
+				{
+					id:7,
+					name:'span',
+					pId:3
+					
+				}
+			];
+			function fn(id,arr){
+				var arre=[];
+				arre=arr.filter(function(a){
+					return a.pId==id;
+				})
+				return arre;
+			}
+			console.log(fn(3,data))
+		</script>
+	</body>
+</html>

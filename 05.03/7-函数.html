@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+<script>
+	/*
+	 	函数
+	 		复用多行代码
+	 		
+	 		有名函数
+	 			声明(最常用)
+	 				function 函数名(){
+	 					代码写这里
+	 				}
+	 			调用
+	 				直接调用
+	 					函数名()
+	 				事件调用
+	 					不写()，不然还没点击，就执行了
+	 		匿名函数
+	 			声明
+	 				1.不能直接声明，会报错
+	 				2.声明在事件后(最常用)
+	 				3.变量后声明
+	 				4.函数自执行
+	 			调用	
+	 * */
+	//有名函数声明
+	function fn(){
+		alert(1)
+	}
+	//有名函数直接调用
+//	fn()
+//	fn()
+//	fn()
+//	fn()
+	var div = document.getElementById('div1');
+	//有名函数事件调用
+	div.onclick = fn
+	
+	//function(){}//报错，匿名函数不能直接声明
+	//事件后声明匿名函数
+	div.onclick = function(){
+		alert(2)
+	}
+	//变量后声明匿名函数
+	var fn2 = function(){
+		alert(3)
+	};
+	//fn2()
+	//匿名函数声明后自执行
+	(function (){
+		alert(4);
+	})()
+</script>
+	</body>
+</html>

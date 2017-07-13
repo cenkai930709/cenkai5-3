@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var n=0;
+			function fn(){
+				if(n>5){
+					return 1;
+				}
+				n++;
+				console.log(n);
+				return fn();
+			}
+			console.log(fn());
+			/*
+			 递：没有结果
+			 归：有终止条件停止递归，返回结果。
+			 
+			 
+			 
+			 * */
+		</script>
+	</body>
+</html>

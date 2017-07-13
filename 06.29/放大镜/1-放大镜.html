@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	img{
+		vertical-align: middle;
+		border:none;
+	}
+	#left{
+		width:300px;
+		height: 300px;
+		position: absolute;
+		left:0;
+		top:10px;
+	}
+	#left span{
+		width:100px;
+		height: 100px;
+		background: #000;
+		opacity: 0.3;
+		position: absolute;
+		left:0;
+		top:0;
+		display: none;
+	}
+	#right{
+		width:300px;
+		height: 300px;
+		position: absolute;
+		left:320px;
+		top:10px;
+		overflow: hidden;
+		display: none;
+	}
+	#right img{
+		position: absolute;
+		left:0;
+		top:0;
+	}
+	</style>
+</head>
+<body>
+	<div id="left">
+		<img src="small.jpg"/>
+		<span id="span"></span>
+	</div>
+	<div id="right">
+		<img src="big.jpg">
+	</div>
+	<script>
+		var left = document.getElementById('left');
+		var right = document.getElementById('right');
+		var span = document.getElementById('span');
+		var small = left.getElementsByTagName('img')[0];
+		var big = right.getElementsByTagName('img')[0];
+		//移入方块和大图显示
+		left.onmouseover = function(){
+			span.style.display = 'block';
+			right.style.display = 'block';
+		}
+		//移出方块和大图消失
+		left.onmouseout = function(){
+			span.style.display = '';
+			right.style.display = '';
+		}
+		left.onmousemove = function(ev){
+			//计算当前方块的原点定位坐标
+			var l = ev.clientX-span.offsetWidth/2-this.offsetLeft;
+			var t = ev.clientY-span.offsetHeight/2-this.offsetTop;
+			//方块最大值
+			var maxL = this.clientWidth-span.offsetWidth;
+			var maxT = this.clientHeight-span.offsetHeight;
+			//限制范围
+			if(l<0){
+				l=0;
+			}
+			if(l>maxL){
+				l = maxL;
+			}
+			if(t<0){
+				t=0;
+			}
+			if(t>maxT){
+				t = maxT;
+			}
+			span.style.left = l+'px';
+			span.style.top = t+'px';
+			//计算比例
+			var s = l/maxL;
+			var s2 = t/maxT;
+			//大图根据比例，移动到等比位置，大小图看到的就一致了
+			var k = big.offsetWidth-right.clientWidth;
+			var k2 = big.offsetHeight-right.clientHeight;
+			big.style.left = -s*k+'px';
+			big.style.top = -s2*k2+'px';
+			console.log(s)
+			/*
+			 	左边当前/左边最大 = 右边当前/右边最大
+			 	l/maxL = 求/k
+			 	l/maxL*k=求
+			 	-s*k,向左移动，所以是-
+			 * 
+			 * */
+		}
+		
+	</script>
+</body>
+</html>

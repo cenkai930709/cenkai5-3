@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1" class="abc" style="width:100px;height:100px;background: red;">
+			<span class="sp">wenzi</span>
+		</div>
+		<a href="http://www.baidu" id="a"></a>
+		<script>
+			/*	
+			 	id
+			 	className
+			 	style
+			 	href
+			 	标准
+			 	innerHTML-识别子标签
+			 	
+			 	
+			 	下面是非标准
+			 	innerText-不识别子标签
+			 	
+				outerHTML-包括自身标签
+				outerText-不包括自身标签
+			 	(;)一条语句结束
+			 * */
+			var div1 = document.getElementById('div1');
+			var a = document.getElementById('a');
+			console.log(div1.id)
+			console.log(div1.className)
+			console.log(a.href)
+			console.log(div1.innerHTML)
+			console.log(div1.innerText)
+			console.log(div1.outerHTML)
+			console.log(div1.outerText)
+
+		</script>
+	</body>
+</html>

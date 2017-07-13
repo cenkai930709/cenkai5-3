@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<script type="text/javascript">
+			/*
+			 	hash  锚信息
+			 	#后边的信息
+			 	不刷新页面
+			 	
+			 	onhashchange
+			 		hash改变时触发
+			 * 
+			 * */
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+				location.hash = 'p=1';
+			}
+			window.onhashchange = function(){
+				console.log(location.hash)
+				var h = location.hash.substr(1);
+				if(h=='p=1'){
+					document.body.style.background = 'red';
+				}else{
+					document.body.style.background = 'blue';
+				}
+			}
+		</script>
+	</body>
+</html>

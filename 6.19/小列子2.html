@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #pages{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        #pages li{
+            width: 50px;
+            height: 50px;
+            border:1px solid #000;
+            line-height: 50px;
+            text-align: center;
+            float: left;
+            margin-right:5px;
+        }
+    </style>
+</head>
+<body>
+
+<input type="button"  value="西边" />
+<input type="button"  value="东边"/>
+<p id="p"></p>
+<ol id="list">
+
+</ol>
+<ul id="pages">
+
+</ul>
+<script>
+    var data={
+        index:['wler','vert'],
+        wler:[
+            {
+                name:'张三1'
+            },
+            {
+                name:'李三1'
+            },
+            {
+                name:'王三1'
+            },
+            {
+                name:'胡三1'
+            },
+            {
+                name:'刘三1'
+            },
+            {
+                name:'张三2'
+            },
+            {
+                name:'李三2'
+            },
+            {
+                name:'王三2'
+            },
+            {
+                name:'胡三2'
+            },
+            {
+                name:'刘三2'
+            },
+            {
+                name:'张三3'
+            },
+            {
+                name:'李三3'
+            },
+            {
+                name:'王三3'
+            },
+            {
+                name:'胡三3'
+            },
+            {
+                name:'刘三3'
+            },
+            {
+                name:'张三4'
+            },
+            {
+                name:'李三4'
+            },
+            {
+                name:'王三4'
+            },
+            {
+                name:'胡三4'
+            },
+            {
+                name:'刘三4'
+            }
+        ],
+        vert:[
+            {
+                name:'张四1'
+            },
+            {
+                name:'李四1'
+            },
+            {
+                name:'王四1'
+            },
+            {
+                name:'胡四1'
+            },
+            {
+                name:'张四2'
+            },
+            {
+                name:'李四2'
+            },
+            {
+                name:'王四2'
+            },
+            {
+                name:'胡四2'
+            },
+            {
+                name:'张四3'
+            },
+            {
+                name:'李四3'
+            },
+            {
+                name:'王四3'
+            },
+            {
+                name:'胡四3'
+            }
+
+        ]
+    };
+    var inps = document.getElementsByTagName('input');
+    var ps=document.getElementById('p');
+    var list=document.getElementById('list');
+    var pages=document.getElementById('pages');
+    var s=location.search.substr(1).split('=')[1];
+    var len=4;
+    var Data=[];
+    if(s){
+        if (s=='w') {
+            Data = data.wler;
+            ps.innerHTML = '西边';
+        } else {
+            Data = data.vert;
+            ps.innerHTML = '东边';
+        }
+
+    }else{
+        Data = data[data.index[0]];
+        ps.innerHTML='西边';
+    }
+    fn();
+    function fn(){
+        var h=location.hash.substr(1).split('=')[1];
+        if(h){
+            var page=h
+
+        }else{
+            var page=1;
+        }
+        var start=(page-1)*len;
+        var end=start+len;
+        if(end>Data.length){
+            end=Data.length;
+        }
+        var str='';
+        for(var i=start;i<end;i++){
+            str+='<li>'+Data[i].name+'</li>'
+        }
+        list.innerHTML=str;
+    }
+    var num=Math.ceil(Data.length/len);
+    for(var i=0;i<num;i++){
+        var li = document.createElement('li');
+        li.innerHTML=i+1;
+        li.onclick=function(){
+            location.hash= 'p='+this.innerHTML;
+        }
+        pages.appendChild(li);
+    }
+    window.onhashchange=function(){
+        fn();
+    }
+    inps[0].onclick=function(){
+        location.hash='p=1';
+        location.search='l=w';
+    }
+    inps[1].onclick=function(){
+        location.hash='p=1';
+        location.search='l=k';
+    }
+</script>
+
+</body>
+</html>

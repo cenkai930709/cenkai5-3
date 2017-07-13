@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			//console.log(a)//报错
+			//console.log(window.a)//undefined
+//1
+//function A(){
+//	
+//	alert(a);//undefined
+//	var a=10;
+//	alert(this.a);//undefined
+//}
+//A();
+
+//2
+//var a = 100;    
+//function fn(){
+//	var b = 2 * a;    
+//	var a = 200;    
+//	var c = a / 2;    
+//	alert(b);//NaN    
+//	alert(c);//100    
+//}    
+//fn()
+
+//3
+//function a(b){
+//	alert(b);//function
+//	function b(){
+//		alert(b);//function
+//	}
+//	b();
+//}
+//a(1);
+
+//4
+//function a(b){
+//	alert(b);//1
+//	b=function (){
+//		alert(b);//function
+//	}
+//	b();
+//}
+//a(1);
+/*
+	b=undefined 
+	b=1
+	alert(b)
+	b=function
+	b()
+	alert(b)
+	
+ * 
+ * 
+ * */
+//var n = 1;
+//div.onclick = function(){
+//	n++
+//	console.log(n)//2
+//}
+//console.log(n)//1
+/*
+ 	var n =undefined
+ 	n = 1
+ 	div.onclick = function
+ 	console.log(n)//1
+ * */
+
+//5
+//var a=3;
+//function c(){
+//  alert(a);
+//}
+//function fn(){
+//var a=4;
+//c();//3
+//}
+//fn();
+
+//6
+//var a=3;
+//function c(a){
+//  alert(a);
+//}
+//function fn(){
+//var a=4;
+//c(a);//4
+//};
+//fn();
+
+//7
+/*
+ 	a,b undefined
+ 	a = function
+ 	alert(a)//function
+ 	alert(b)//undefined
+ 	b = function
+ 	alert(b)//function
+ 	a = 1
+ 	b()//1
+ 	alert(a)//1
+ 	a=12
+ 	alert(a)//12
+ *  a()//报错
+ * */
+//alert(a)
+//alert(b)
+//var b = function(){alert(a)};
+//alert(b)
+//var a = 1;
+//b();
+//alert(a);
+//var a = 12;
+//alert(a);
+//function a(){alert(1)};
+//a();
+//alert(a);
+
+//8
+/*
+ 	a,b undefined
+ 	a = function a
+ 	b = function b
+ *  alert(a)//function a
+ *  a()
+ *  alert(b)//function b
+ *  alert(b())//function 
+ *  b()()//40
+ *  b(9,11)()//40
+ *  alert(a)//function a
+ * */
+//function a(){
+//	return function(){
+//		alert(1);
+//	}
+//}
+//alert(a);
+//a();
+//function b(a,b){
+//	a = 20;
+//	return function(){
+//		b = 10;
+//		a = 30;
+//		alert(a+b);
+//	}
+//}
+//alert(b);
+//alert(b());
+//b()();
+//b(9,11)();
+//alert(a);
+
+//9
+/*
+ 	a = undefined
+ 	a = function a
+ 	alert(a)//function a
+ 	a = function
+ 	a()//1
+ 	alert(a)//function
+ 	alert(a())//1 undefined
+ 	
+ * */
+//alert(a);//function a
+//var a = function(){alert(1)};
+//a();//1
+//alert(a); //function
+//function a(a,b){
+//	alert(1);
+//	a = 10;
+//	return function(b){
+//		a = 1
+//		alert(a);
+//	}
+//}
+//alert(a());//1 undefined
+
+//10
+//var a = 10;	
+//function fn(){
+//	var a = b = 20;
+//	alert(this.a)
+//	alert(this.b)
+//}
+//fn();
+
+		</script>
+	</body>
+</html>

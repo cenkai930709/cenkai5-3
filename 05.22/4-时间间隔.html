@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="开始"/>
+		<input type="button" value="停止"/>
+		<script type="text/javascript">
+			/*
+			 	开启定时器后，每隔一定时间间隔把要执行的代码放到Js代码执行队列里，如果当前有代码正在执行，就需要先排队，如果当前没有正在执行的代码，可以立即执行
+			 * 
+			 * chrome最小时间间隔4ms，如果小于最小时间间隔，按最小4ms走，时间间隔有误差，一般设置到10ms左右就够了
+			 * 
+			 * */
+			var inps = document.getElementsByTagName('input');
+			var timer = null;
+			inps[0].onclick = function(){
+				var old = new Date();
+				timer = setInterval(function(){
+					var now = new Date();
+					console.log(now-old);
+					old = now;	
+				},1)
+			}
+			inps[1].onclick = function(){
+				clearInterval(timer)
+			}
+		</script>
+	</body>
+</html>

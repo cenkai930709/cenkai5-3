@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 400px;
+				height: 400px;
+				border: 1px solid #000;
+				position: relative;
+				font-size: 50px;
+			}
+			#left,#right{
+				width: 50px;
+				height:0;
+				background: red;
+				position: absolute;
+				top:0;
+				overflow: hidden;
+				transition: 3s;
+			}
+			#left{
+				left:0;
+			}
+			#right{
+				right:0;
+			}
+			#center{
+				background: red;
+				width:0;
+				height:50px;
+				line-height: 50px;
+				position: absolute;
+				left:50%;
+				margin-left:-100px;
+				overflow: hidden;
+				transition: 3s;
+				white-space: nowrap;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="left">一二三四五</div>
+			<div id="right">上山打老虎</div>
+			<div id="center">开门大吉</div>
+		</div>
+		<input type="button" value="按钮" id="btn"/>
+		<script>
+			var btn = document.getElementById('btn');
+			var left = document.getElementById('left');
+			var right = document.getElementById('right');
+			var center = document.getElementById('center');
+			btn.onclick = function(){
+				left.style.height = '100%';
+				right.style.height = '100%';
+				center.style.width = '200px';
+			}
+			
+		</script>
+	</body>
+</html>

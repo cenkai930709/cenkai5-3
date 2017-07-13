@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<script type="text/javascript">
+			/*
+			 	top：最外层框架的window，对象
+			 	parent:父级框架的window，对象
+			 * 
+			 * 
+			 * */
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+				//open('http://www.baidu.com','_top')
+				//open('http://www.baidu.com','_parent')
+				//top.document.body.style.background = 'red';
+				document.body.style.background = 'blue';
+				//parent.document.body.style.background = 'red';
+			}
+		</script>
+	</body>
+</html>

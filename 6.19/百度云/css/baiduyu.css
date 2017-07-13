@@ -1,0 +1,363 @@
+
+.boxl{
+	height: 800px;
+	width: 1400px;
+	background: url(../imgyu/bg.png) no-repeat;
+	background-size: 1400px 800px;
+	margin: 0 auto;
+	padding: 3% 5%;
+	box-sizing: border-box;
+	}
+.itself{
+	height: 100%;
+	width: 100%;
+	background: #fff;
+	border-radius: 2%;
+}
+.herder{
+	height: 50px;
+}
+.herder .img1{
+	float: left;
+	margin-left: 15px;
+	margin-top: 8px;
+	margin-right: 5px;
+}
+.herder .a1{
+	float: left;
+	font: 300 16px/50px '';
+	color: #389cd1;
+}
+.right{
+	margin-top: 9px;
+	float: right;
+	height: 32px;
+	width: 100px;
+	margin-right: 30px;
+}
+.img2{
+	float: left;
+	height: 32px;
+	width: 32px;
+	
+}
+.img3{
+	float: left;
+	margin-left: 10px;
+	margin-top: 15px;
+}
+.sps{
+	float: left;
+	height: 22px;
+	width: 1px;
+	background: #e0e6e7;
+	margin: 4px 15px;
+}
+.img4{
+	float: left;
+	margin-top: 8px;
+}
+.centent{
+	height: 48px;
+	border-bottom: 1px solid #d0d9de;
+	border-top: 1px solid #d0d9de;
+	background: #ecf0f6;
+}
+
+.ca1{
+	float: left;
+	line-height: 28px;
+	border: 1px solid #5cb0dd;
+	margin-right: 10px;
+	margin-top: 10px;
+	box-sizing: border-box;
+	height: 28px;
+	width: 65px;
+	margin-left: 20px;
+	padding-left: 35px;
+	background: url(../imgyu/x.png) no-repeat 10px 6px;
+}
+.ca2{
+	float: left;
+	line-height: 28px;
+	border: 1px solid #5cb0dd;
+	margin-right: 10px;
+	margin-top: 10px;
+	box-sizing: border-box;
+	height: 28px;
+	width: 65px;
+	padding-left: 32px;
+	background: url(../imgyu/f.png) no-repeat 10px 6px;
+}
+.ca3{
+	float: left;
+	line-height: 28px;
+	border: 1px solid #5cb0dd;
+	margin-right: 10px;
+	margin-top: 10px;
+	box-sizing: border-box;
+	height: 28px;
+	width: 65px;
+	padding-left: 24px;
+	background: url(../imgyu/y.png) no-repeat 4px 6px;
+}
+.ca4{
+	float: left;
+	line-height: 28px;
+	border: 1px solid #5cb0dd;
+	margin-right: 10px;
+	margin-top: 10px;
+	box-sizing: border-box;
+	height: 28px;
+	width: 65px;
+	padding-left: 24px;
+	background: url(../imgyu/c.png) no-repeat 4px 6px;
+}
+.ca5{
+	float: left;
+	line-height: 28px;
+	border: 1px solid #5cb0dd;
+	margin-right: 10px;
+	margin-top: 10px;
+	box-sizing: border-box;
+	height: 28px;
+	width: 65px;
+	padding-left: 32px;
+	background: url(../imgyu/s.png) no-repeat 10px 6px;
+}
+.ca6{
+	float: left;
+	line-height: 28px;
+	border: 1px solid #5cb0dd;
+	margin-right: 10px;
+	margin-top: 10px;
+	box-sizing: border-box;
+	height: 28px;
+	width: 88px;
+	padding-left: 24px;
+	background: url(../imgyu/xin.png) no-repeat 4px 6px;
+}
+.ca7{
+	float: left;
+	line-height: 28px;
+	border: 1px solid #5cb0dd;
+	margin-right: 10px;
+	margin-top: 10px;
+	box-sizing: border-box;
+	height: 28px;
+	width: 28px;
+	background: url(../imgyu/cf.png) no-repeat 6px 6px;
+}
+.span1{
+	float: right;
+	height: 28px;
+	width: 28px;
+	margin-right: 10px;
+	margin-top: 10px;
+	background: #55addc url(../imgyu/fk.png) no-repeat 6px 6px;
+	position: relative;
+}
+.span2{
+	float: right;
+	height: 28px;
+	width: 28px;
+	margin-right: 10px;
+	margin-top: 10px;
+	background: #55addc url(../imgyu/zuo1.png) no-repeat 6px 6px;
+	position: relative;
+}
+.footer{
+	width: 100%;
+	height: 627px;
+	overflow: hidden;
+}
+.fleft{
+	float: left;
+	width: 20%;
+	height: 98%;
+	border-right:2px solid #000000;
+	box-sizing: border-box;
+}
+.li1{
+	text-indent: 10px;
+	line-height:45px ;
+	font-size: 16px;
+	color: #66757f;
+}
+.li2{
+	line-height: 33px;
+	text-indent: 30px;
+}
+.iimg1{
+	margin-top: 18px;
+}
+.iimg2{
+	margin-top: 14px;
+}
+.iimg3{
+	margin-top: 14px;
+}
+.iimg4{
+	margin-top: 10px;
+}
+.fright{
+	float: left;
+	width: 80%;
+	height: 98%;
+	background:#f5f8fa;
+    /*position: relative;*/
+	
+}
+.li3{
+	line-height: 33px;
+	text-indent: 68px;
+}
+.iimg5{
+	margin-top: 10px;
+}
+.li4{
+	line-height: 33px;
+	text-indent: 50px;
+}
+.iimg6{
+	margin-top: 10px;
+	margin-right: 3px;
+}
+.li5{
+	line-height: 33px;
+	text-indent: 85px;
+}
+.fi1{
+	height: 35px;
+	padding-top:12px ;
+	border-bottom: 2px solid #e1e8ed;
+	text-indent: 10px;
+	font-size: 16px;
+	color: #000;
+	
+}
+.nav_cons { float:left; margin-left:10px;};
+a span{
+	color: #000000;
+}
+.nav_cons li{
+	float: left;
+}
+#sel{
+	float: left;
+	margin-left: 20px;
+	margin-top: 8px;
+}
+.fi1 .list{
+	padding-top: 70px;
+	width: 100%;
+	height: 520px;
+	
+}
+
+.box{
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin-right:10px;
+	/*position: relative;*/
+	border: 2px solid transparent;
+}
+.ditt{
+    height: 100px;
+    width: 100px;
+    position: relative;
+    z-index: 999;
+}
+.cebox{
+	width: 50px;
+	height: 50px;
+	background: url(../imgyu/wenjian.png) no-repeat;
+	background-size:50px 50px ;
+	margin: 10px auto 0;
+    position: relative;
+}
+.ditt .inep{
+    position: absolute;
+    left:0;
+    top:0;
+	display: none;
+}
+.fright #boy{
+    position: absolute;
+    border: 1px solid red;
+    background-color: pink;
+    display: none;
+    z-index: 3;
+    opacity: 0.2;
+}
+#cencen{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.ditt .boxs{
+	line-height: 32px;
+	text-align: center;
+    /*position: relative;*/
+}
+.box.active{
+	background: #ccc;
+}
+.box.active .inep{
+	display: block;
+}
+.you{
+    display: none;
+    width: 100px;
+    position: absolute;
+}
+.you p {
+    width: 100%;
+    line-height: 30px;
+    background: pink;
+    color: yellow;
+    font-size: 20px;
+    text-align: center;
+
+}
+.fz{
+    font-size: 20px;
+    color: #ccc;
+}
+.fi2{
+    line-height: 50px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+.fi2 img{
+    margin-top: 15px;
+}
+.fi2 p{
+    position: absolute;
+    left: 300px;
+    top: 5px;
+}
+.fi2 p img{
+    margin-right: 10px;
+}
+
+
+
+.tc{position: absolute;left:0;top:65px;width:129px;height: 22px;display: none;border: 1px solid yellow;overflow: auto;}
+/*.tc a{width: 30px;height: 22px;line-height:22px;margin-right: 3px;background-color: pink;text-decoration: none;color: #000;font-size: 12px;text-align: center;}*/
+.tc input{float:left;width: 50px;height:22px;line-height:22px;text-align: center;background: #fff;color: #000;margin-right: 3px}
+.box .ditt .tc a{
+    float:left;
+    width: 30px;
+    height: 22px;
+    line-height:22px;
+    margin-right: 3px;
+    background-color: pink;
+    text-decoration: none;
+    color: #000;
+    font-size: 12px;
+    text-align: center;
+    z-index: 9;
+}
+

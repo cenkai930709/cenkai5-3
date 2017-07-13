@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>云盘</title>
+</head>
+<body>
+  <div id="background">
+      <div id="container">
+          <div class="header">
+              <div class="logo"></div>
+              <h1 class="name">妙味云盘</h1>
+              <div class="photoArea">
+                  <div class="photo"></div>
+                  <div class="down"></div>
+                  <div class="setting">
+                      <div class="settingButton"></div>
+                  </div>
+              </div>
+          </div>
+          <div id="btn">
+              <ul>
+                  <li class="function">
+                      <a class="icon1"></a>
+                      <span>下载</span>
+                  </li>
+                  <li class="function">
+                      <a class="icon2"></a>
+                      <span>分享</span>
+                  </li>
+                  <li class="function">
+                      <a class="icon3"></a>
+                      <span>移动到</span>
+                  </li>
+                  <li id="reName" class="function">
+                      <a class="icon4"></a>
+                      <span>重命名</span>
+                  </li>
+                  <li id="remove" class="function">
+                      <a class="icon5"></a>
+                      <span>删除</span>
+                  </li>
+                  <li id="newFile" class="function">
+                      <a class="icon6"></a>
+                      <span>新建文件夹</span>
+                  </li>
+                  <li class="function2">
+                      <a class="icon7"></a>
+                  </li>
+              </ul>
+              <div class="menuArea">
+                  <div class="box">
+                      <div class="box1"></div>
+                      <div class="box2"></div>
+                  </div>
+                  <div class="sort">
+                      <div>
+                          <div class="sort1"></div>
+                          <div class="sort2"></div>
+                      </div>
+                      <div class="menu">
+                          <div class="cover"></div>
+                          <div class="menuBox"> <div class="menuIcon1"></div> 按时间排序</div>
+                          <div class="menuBox" style="background-color:#e1e8ed"> <div class="menuIcon2"></div> 按字母顺序</div>
+                          <div class="menuBox"> <div class="menuIcon3"></div> 显示缩略图</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div id="file">
+              <div class="list">
+                  <!--<ul class="grandfather">
+                      <li>
+                          <div class="all">
+                              <div class="folder1"></div>
+                              <div class="folder2"></div>
+                              微云
+                          </div>
+                          <ul class="father">
+                              <li>
+                                  <div class="fatherStyle">
+                                      <div class="folder1"></div>
+                                      <div class="folder2"></div>
+                                      JS课程
+                                  </div>
+                                  <ul class="son">
+                                      <li>
+                                          <div class="sonStyle son1">
+                                              <div class="folder3"></div>123
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="sonStyle son2">
+                                              <div class="folder4"></div>
+                                              <div class="folder3"></div>
+                                              333
+                                          </div>
+                                      </li>
+                                      <li class="showGrandson">
+                                          <div class="sonStyle son3">
+                                              <div class="folder1"></div>
+                                              <div class="folder2"></div>
+                                              CSS课程
+                                          </div>
+                                          <ul class="grandson">
+                                              <li>
+                                                  <div class="sonStyle son4">
+                                                      <div class="folder3"></div>
+                                                      CSS课程
+                                                  </div>
+                                              </li>
+                                              <li>
+                                                  <div class="sonStyle son4">
+                                                      <div class="folder3"></div>
+                                                      123
+                                                  </div>
+                                              </li>
+                                              <li>
+                                                  <div class="sonStyle son4">
+                                                      <div class="folder3"></div>
+                                                      JS基础课程
+                                                  </div>
+                                              </li>
+                                          </ul>
+                                      </li>
+                                      <li>
+                                          <div class="sonStyle son5">
+                                              <div class="folder2"></div>
+                                              11111
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="sonStyle son5">
+                                              <div class="folder2"></div>
+                                              11111
+                                          </div>
+                                      </li>
+                                  </ul>
+                              </li>
+                          </ul>
+                      </li>
+                  </ul>-->
+              </div>
+              <div id="save">
+                  <div id="guideBar">
+                      <!--<input id="allChecked" type="checkbox" title="all">
+                      <span class="allCheck">全选</span>
+                      <a href="javascript:" class="word" title="back">返回上一级</a>
+                      <span class="arrow"> | </span>
+                      <a href="javascript:" class="word">微云</a>
+                      <span class="arrow"> > </span>
+                      <span class="word2">JS基础课程</span>-->
+                  </div>
+                  <div id="fileContent">
+                      <!--<div class="fileList" style="background-color: #f5f8fa;">
+                          <input class="checkBox" type="checkbox" title="">
+                          <div class="picture"></div>
+                          <p class="word3">JS基础课程</p>
+                          <ul class="operate">
+                              <li class="grayIcon1"></li>
+                              <li class="grayIcon2"></li>
+                              <li class="grayIcon3"></li>
+                              <li class="grayIcon4"></li>
+                              <li class="grayIcon5"></li>
+                          </ul>
+                          <p class="time">2016-08-22 16:08</p>
+                      </div>
+                      <div class="fileList">
+                          <input class="checkBox" type="checkbox" title="">
+                          <div class="picture"></div>
+                          <p class="word3">JS基础课程</p>
+                          <ul class="operate2">
+                              <li class="icon1 iconStyle"></li>
+                              <li class="icon2 iconStyle"></li>
+                              <li class="icon3 iconStyle"></li>
+                              <li class="icon4 iconStyle"></li>
+                              <li class="icon5 iconStyle2"></li>
+                          </ul>
+                          <p class="time">2016-08-22 16:08</p>
+                      </div>-->
+
+                      <!--<div class="fileStyle">
+                          <input type="checkbox">
+                          <div class="fileIcon"></div>
+                          <div class="fileName">
+                              <span>123f</span>
+                          </div>
+                      </div>-->
+
+                      <div id="newInput">
+                          <input type="text" value="新建文件夹" title="" class="input">
+                          <em>√</em>
+                          <em>X</em>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/tool.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

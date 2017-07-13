@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<span>文本1</span>
+			</li>
+			<li>
+				<span>文本2</span>
+			</li>
+			<li>
+				<span>文本3</span>
+			</li>
+			<li>
+				<span>文本4</span>
+			</li>
+			<li>
+				<span>文本5</span>
+			</li>
+		</ul>
+		<script type="text/javascript">
+			var sps=document.getElementsByTagName('span');
+			for(var i=0;i<sps.length;i++){
+				sps[i].onclick=function(){
+//					for(var i=0;i<sps.length;i++){
+//						sps[i].parentNode.style.background='';
+//					}
+//					this.parentNode.style.background='red';
+					this.parentNode.nextElementSibling.children.style.display='none';
+				}
+			}
+		</script>
+	</body>
+</html>

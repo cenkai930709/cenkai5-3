@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			1.获取元素	
+				id class tag css选择器
+				id,css选择器静态
+				class tag动态性
+				即使只有一个元素，也要加[0]
+				建议先生成元素，再获取，再操作元素
+			
+			2.变量
+				命名规范，小驼峰，语义化
+			3.函数
+				声明，调用
+			
+			4.属性操作
+				.  []，行间，可读可写
+			5.if条件判断
+				if(){
+					满足条件就执行
+				}
+				非此即彼，二选一
+				某些条件执行代码，剩余情况都执行代码
+				if(){
+					
+				}else{
+					
+				}
+				
+				if(){
+					
+				}else if(){
+					
+				}else if(){
+					
+				}
+				三个条件都满足，上边只执行第一个，下边都执行，所以上下写法不等价
+				if(){
+					
+				}
+				if(){
+					
+				}
+				if(){
+					
+				}
+			
+			6.for循环
+				4个步骤，重复的事交给for循环
+			7.自定义属性
+				存数据，私有化
+				
+			8.this	
+			
+			必会练习
+				1.图片切换
+					循环顺序，缩略图
+				2.100div
+					找规律，字符串拼接
+				3.动态生成结构
+				4.全选
+		-->
+		<script>
+			
+			var divs = document.getElementsByTagName('div');
+			
+			
+			var str = '';
+			for(var i=0;i<100;i++){
+				str+='<div></div>';
+			}
+			document.body.innerHTML = str;
+			var divs2 = document.querySelectorAll('div');
+			console.log(divs2)
+			
+			
+		</script>
+	</body>
+</html>

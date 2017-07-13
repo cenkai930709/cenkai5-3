@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        ul{
+            height: 480px;
+            width: 640px;
+            /*border:1px solid #000;*/
+            margin: 100px auto 0;
+        }
+        li{
+            float: left;
+            height: 146px;
+            width: 146px;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            background-size: 146px;
+            border: 2px solid #fff;
+       }
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script src="Mtween.js"></script>
+<script>
+    var lis=document.getElementsByTagName('li');
+    //存碰到的元素
+    var arr=[];
+    //数据类型转换
+    for(var i=0;i<lis.length;i++){
+        lis[i].style.backgroundImage='url(img/'+(i+1)+'.jpg)';
+        lis[i].style.left=lis[i].offsetLeft+'px';
+        lis[i].style.top=lis[i].offsetTop+'px';
+        //记录自身坐标，回原位置用
+        lis[i].x = lis[i].offsetLeft;
+        lis[i].y = lis[i].offsetTop;
+        setTimeout(function(i){
+            lis[i].style.position='absolute';
+        },0,i)
+        drag(lis[i])
+    }
+    function drag(obj){
+        //1.元素上按下
+        obj.onmousedown = function(ev){
+            this.style.zIndex='100';
+            ev.preventDefault();
+            var disX = ev.clientX-obj.getBoundingClientRect().left;
+            var disY = ev.clientY-obj.getBoundingClientRect().top;
+            //2.移动
+            document.onmousemove = function(ev){
+                var l = ev.clientX-disX;
+                var t = ev.clientY-disY;
+                obj.style.left = l+'px';
+                obj.style.top = t+'px';
+                //清除第一次碰撞
+                for(var i=0;i<arr.length;i++){
+                    arr[i].style.borderColor='';
+                }
+                arr=[];
+                //判断这次碰到哪个元素，放入数组arr
+                for(var i=0;i<lis.length;i++){
+                    if(obj==lis[i]){
+                        continue;
+                    }
+                    if(duang(obj,lis[i])){
+                        arr.push(lis[i]);
+                    }
+                }
+                //碰到的加红边框，方便看碰到谁
+                for(var i=0;i<arr.length;i++){
+                    arr[i].style.borderColor='red';
+                }
+            }
+            //3.抬起
+            document.onmouseup = function(){
+                //如果arr数组里有东西，这次有碰到元素
+                if(arr.length){
+                    //有碰到
+                    //找出碰到的元素里，中心距离最短的交换位置
+                    //自身中心坐标
+                    var l=obj.offsetLeft+obj.offsetWidth/2;
+                    var t=obj.offsetTop+obj.offsetHeight/2;
+                    //比较最短距离
+                    var min = 99999;
+                    //记录最近的元素
+                    var ele = null;
+                    for(var i=0;i<arr.length;i++){
+                        //碰到元素的中心坐标
+                        var oL=arr[i].offsetLeft+arr[i].offsetWidth/2;
+                        var oT=arr[i].offsetTop+arr[i].offsetHeight/2;
+                        //中心点直线距离，勾股定理，(x*x-y*y)开方
+                        var d=Math.sqrt((l-oL)*(l-oL)+(t-oT)*(t-oT));
+                        if(min>d){
+                            min=d;
+                            ele=arr[i];
+                        }
+                    }
+                    //交换位置，运动完重新记录自己当前位置，为了下一次移动
+                    move({
+                        obj:obj,
+                        attrs:{
+                            left:ele.x,
+                            top:ele.y
+                        },
+                        duration:500,
+                        callBack:function(){
+                            obj.x = obj.offsetLeft;
+                            obj.y = obj.offsetTop;
+                        }
+                    })
+                    move({
+                        obj:ele,
+                        attrs:{
+                            left:obj.x,
+                            top:obj.y
+                        },
+                        duration:500,
+                        callBack:function(){
+                            ele.x = ele.offsetLeft;
+                            ele.y = ele.offsetTop;
+                        }
+                    })
+                }else{
+                    //没碰到,回到自定义属性记录的原位置
+                    move({
+                        obj:obj,
+                        attrs:{
+                            left:obj.x,
+                            top:obj.y
+                        },
+                        duration:500
+                    })
+                }
+                //清除红边框
+                for(var i=0;i<arr.length;i++){
+                    arr[i].style.borderColor='';
+                }
+                arr=[];
+                obj.style.zIndex='';
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+    }
+    function duang(obj1,obj2){
+        var pos1 = obj1.getBoundingClientRect();
+        var pos2 = obj2.getBoundingClientRect();
+        if(pos1.right<pos2.left || pos1.bottom<pos2.top || pos1.left>pos2.right || pos1.top>pos2.bottom){
+            return false;
+        }else{
+            return true;
+        }
+    }
+</script>
+</body>
+</html>

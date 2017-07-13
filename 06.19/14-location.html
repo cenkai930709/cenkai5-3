@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<script type="text/javascript">
+			/*
+			 	location
+			 		地址栏信息
+			 	href 地址栏
+			 	search  查询信息
+			 	
+			 	hash   锚信息
+			 	除了设置hash，设置上边的都会刷新页面，注意别放在全局，不然会无限刷新
+			 * 
+			 * */
+			console.log(location)
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+				//location.href = '13-demo.html';
+				console.log(location.href)
+			}
+		</script>
+	</body>
+</html>

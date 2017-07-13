@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<script>
+			/*
+			 	return 函数返回值,默认值是undefined,函数名()=函数返回值
+			 	作用:
+			 	1.函数执行完返回我们指定的值
+			 	2.终止函数后续代码执行
+			 	3.函数内部声明的变量或函数，外边使用，可以用return
+			 * 
+			 * */
+			//1.返回指定结果
+			function fn(arr){
+				var sum = 0;
+				for(var i=0;i<arr.length;i++){
+					sum += arr[i];
+				}
+//				if(sum>50){
+//					return true;
+//				}else{
+//					return false;
+//				}
+				//有条件终止函数，如果sum大于20终止代码，不大于20执行下面的return sum返回该值
+				if(sum>20){
+					return undefined;
+				}
+				return sum;
+			}
+			console.log(fn([1,2,3,4,5,6]))
+			//2.终止后续代码执行
+			function fn1(){
+				console.log(1)
+				return;
+				console.log(2)
+			}
+			fn1();
+			var btn = document.getElementById('btn');
+			var onOff = true;
+			btn.onclick = function(){
+				if(onOff){
+					return;
+				}
+				console.log('点击')
+			}
+			
+			//3.内部声明的变量函数外边使用
+			function fn2(){
+				var a = 1;
+				function fn3(){
+					console.log('fn3')
+				}
+				return fn3
+			}
+			var A = fn2();
+			console.log(A())
+		</script>
+	</body>
+</html>

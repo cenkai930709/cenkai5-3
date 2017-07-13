@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<script type="text/javascript">
+		/*
+		 	1.找var 有名函数，形参，提前创建，默认值是undefined,有名字重复的只留一个
+		 	2.赋值，形参赋值，小括号
+		 	3.大括号，如果有有名函数，优先赋值给变量
+		 	4.逐行执行代码，开始执行写的代码
+		 	
+		 * 
+		 * */
+		var abc
+		function fn(a,b,c){
+			/*
+			 * //找名字，提前创建
+			 	a,b,c,d,e   undefined
+			 	//形参赋值
+			 	a = 1
+			 	b = 2
+			 	c = 3
+			 	//函数优先
+			 	a = function
+			 	e = function
+			 	alert(a)
+			 	//逐行赋值
+			 	b = 10
+			 	d = 20
+			 	
+			 * */
+			alert(abc)
+			var b = 10;
+			var d = 20;
+			function a(){
+				
+			}
+			function e(){
+				
+			}
+		}
+		fn(1,2,3)
+	</script>		
+	</body>
+</html>

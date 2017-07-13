@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				height: 50px;
+				width: 50px;
+				background: yellow;
+				float: left;
+				margin-right: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<script type="text/javascript">
+			var divs=document.getElementsByTagName('div');
+			var n=0;
+			function fn(){
+				divs[n].index=n;
+				divs[n].onclick=function(){
+					alert(this.index);
+				}
+				n++;
+				if(n<divs.length){
+					fn();
+				}
+			}
+			fn();
+		</script>
+	</body>
+</html>

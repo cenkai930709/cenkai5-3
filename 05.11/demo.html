@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮"/>
+		<input type="button" value="按钮"/>
+		<input type="button" value="按钮"/>
+		<script>
+			var btns = document.getElementsByTagName('input');
+			var n = 10;
+			function fn(){
+				n++;
+				if(n>12){
+					n = 10;
+				}
+			}
+			console.log(n)//10 
+			for(var i=0;i<btns.length;i++){
+				btns[i].onclick = function(){
+					n++;
+					console.log(n)
+				}	
+			}
+			console.log(n)//10
+			fn();
+			console.log(n)//11
+			var n = 0;
+			n--;
+			img.src = arr[n]
+			if(n<0){
+				n=0;
+			}
+			
+			for(var i=0;i<10;i++){
+				var m = 0;
+				for(var j=0;j<10;j++){
+					m++;
+				}
+			}
+			console.log(m)
+		</script>
+	</body>
+</html>

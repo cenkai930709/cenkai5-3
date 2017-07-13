@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*	
+			 	重复型定时器：
+			 		每隔多少毫秒执行一次
+			 		
+			 	开启重复型定时器：	setInterval(函数,时间间隔,实参...)
+			 	
+			 	参数：
+			 	函数：每次执行的代码
+			 	时间间隔：单位毫秒，1秒=1000毫秒
+			 	实参：第3个参数往后，是传给函数的实参
+			 	定时器返回值是数字类型的，从1开始往后排的编号，每次开启定时器都是新编号， 不管开启的是什么类型定时器
+			 	
+			 	关闭重复型定时：	clearInterval(定时器编号)
+			 * 
+			 * 
+			 * */
+			var timer = setInterval(fn,1000)
+//			var timer2 = setTimeout(fn,1000,1,2)
+			var a = 1;
+			function fn(){
+				a++;
+				console.log(a)
+				if(a==10){
+					clearInterval(timer)
+				}
+			}
+			//console.log(timer,timer2)
+			
+		</script>
+	</body>
+</html>

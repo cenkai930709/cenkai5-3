@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	click - 鼠标单击	
+			 	mousedown - 按下
+			 	mouseup - 抬起
+			 	
+			 	mousedown->mouseup->click
+			 	
+			 	dblclick -双击
+			 	在极短的时间内，触发2个单击，触发1个双击
+			 	子元素会触发
+			 	mouseover  移入
+			 	mouseout   移出
+			 	
+			 	子元素不触发
+			 	mouseenter  移入
+			 	mouseleave   移出
+			 	
+			 	
+			 	mousemove 移动
+			 	在元素上移动，一定时间间隔触发一次
+			 	
+			 	mousewheel 滚轮
+			 * 
+			 * */
+			var timer = null;
+			document.onclick = function(){
+				clearTimeout(timer)
+				timer = setTimeout(function(){
+					console.log('click')
+				},200)	
+			}
+//			document.onmousedown = function(){
+//				console.log('down')
+//			}
+//			document.onmouseup = function(){
+//				console.log('up')
+//			}
+//			document.ondblclick = function(){
+//				clearTimeout(timer)
+//				console.log('dblclick')
+//			}
+//			document.onmousemove = function(){
+//				console.log('move');
+//			}
+//			document.onmousewheel = function(){
+//				console.log('wheel');
+//			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        td {
+            text-align: center;
+        }
+    </style>
+   
+</head>
+
+<body>
+
+<form action="" name="form">
+    <p>
+        姓名:<input type="text" name="username"/>
+    </p>
+    <p>
+        年龄:<input type="text" name="age"/>
+    </p>
+    <p>
+        性别: <select name="sex">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+    </p>
+    <p>
+        <input type="button" value="添加" name="add"/>
+    </p>
+</form>
+    <input type="button" value="反选" class="btn">
+    <input type="button" value="批量删除"  class="btn"> 
+    <table id="tab1" width="100%" border="1">
+
+        <thead>
+        <tr>
+            <th>
+                <input id="checkAll" type="checkbox" /> 全选
+            </th>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+             <!--<tr>
+                <td>
+                    <input type="checkbox"/>
+                </td>
+                <td>1</td>
+                <td>周杰伦</td>
+                <td>37</td>
+                <td>男</td>
+                <td>
+                    <a href="javascript:;">上移</a> |
+                    <a href="javascript:;">下移</a> |
+                    <a href="javascript:;">删除</a>
+                </td>
+            </tr> -->
+        </tbody>
+    </table>
+    <script type="text/javascript">
+		var Data = [
+			{
+				id:1,
+				name:'宋小宝',
+				age:36,
+				sex:'男'
+			},
+			{
+				id:2,
+				name:'郭德纲',
+				age:43,
+				sex:'男'
+			},
+			{
+				id:3,
+				name:'黄渤',
+				age:28,
+				sex:'男'
+			},
+			{
+				id:4,
+				name:'赵丽颖',
+				age:25,
+				sex:'女'
+			},
+			{
+				id:5,
+				name:'刘亦菲',
+				age:22,
+				sex:'女'
+			}
+		];
+  	/*
+  	 	1.渲染页面
+  	 	2.上移下移删除
+  	 	3.全选
+  	 	4.反选
+  	 	5.批量删除
+  	 	6.添加数据
+  	 	7.排序
+  	 * */ 
+  
+    </script>
+</body>
+</html>

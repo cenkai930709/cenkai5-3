@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            position: absolute;
+            left: 500px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var box=document.getElementById('box');
+    box.onmousedown=function(ev){
+        var x=ev.clientX;
+        var y=ev.clientY;
+        var pos=this.getBoundingClientRect();
+        var t='';
+            //左
+        if(x-pos.left<10){
+           t='left';
+            //右
+        }else if(pos.right-x<10){
+           t='right';
+            //上
+        }else if(y-pos.top<10){
+            t='top';
+            //下
+        }else if(pos.bottom-y<10){
+            t='bottom';
+            //左上
+        }else if(x-pos.left<10&&y-pos.top<10){
+            t='leftTop';
+            //左下
+        }else if(x-pos.left<10&&pos.bottom-y<10){
+            t='leftBottom';
+            //右上
+        }else if(pos.right-x<10&&y-pos.top<10){
+            t='rightTop';
+            //右下
+        }else if((pos.right-x<10&&pos.bottom-y<10){
+            t='rightBottom';
+        }
+        console.log(t);
+        document.onmousemove=function(ev){
+            var dl=ev.clientX;
+            var dt=ev.clientY;
+            var w, h,xL,xT;
+            if(t=='left'){
+                w=pos.width+(x-dl);
+                if(w>100){
+                    xL=pos.left-(x-dl);
+                    box.style.width=w+'px';
+                    box.style.left=xL+'px';
+                }
+            }else if(t=='top'){
+               h=pos.height+(y-dt);
+                if(h>100){
+                    xT=pos.top-(y-dt);
+                    box.style.height=h+'px';
+                    box.style.top=xT+'px';
+                }
+            }else if(t=='right'){
+                w=pos.width+(dl-x);
+                if(w>100){
+                    xL=pos.right-(dl-x);
+                    box.style.width=w+'px';
+                    box.style.right=xL+'px';
+                }
+            }else if(t=='bottom'){
+                h=pos.height+(dt-y);
+                if(h>100){
+                   xT=pos.bottom-(dt-y);
+                    box.style.height=h+'px';
+                    box.style.bottom=xT+'px';
+                }
+            }
+        }
+        document.onmouseup=function(){
+            document.onmousemove=document.onmouseup=null;
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt"/>
+		<script type="text/javascript">
+			var txt = document.getElementById('txt');
+			txt.onkeypress = function(ev){
+				//键值在非数字段内，阻止默认行为，就不能输入非数字内容了
+				if(ev.keyCode<48||ev.keyCode>57){
+					ev.preventDefault();
+				}
+			}
+			
+		</script>
+	</body>
+</html>

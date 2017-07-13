@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.bj{
+				height: 800px;
+				width: 1000px;
+				margin: 0px auto;
+				background: url(imgs/bg.jpg) no-repeat;
+				border: 2px solid #ccc;
+			}
+			.centent{
+				height: 506px;
+				width: 678px;
+				margin: 142px auto;
+				background: #fff;
+				border-radius: 16px;
+				position: relative;
+			}
+			.left{
+				position: absolute;
+				top: 223px;
+				left: 20px;
+				height: 58px;
+				width: 4px;
+				border: 1px solid #dcdcdc;
+				border-radius: 2px;
+			}
+			.center{
+				position: absolute;
+				top: 47px;
+				left: 45px;
+				height: 410px;
+				width: 560px;
+				background: #000000;
+				border: 1px solid #dcdcdc;
+			}
+			.right{
+				position: absolute;
+				top: 228px;
+				right: 16px;
+				height: 57px;
+				width: 46px;
+				background: url(imgs/miaov.png) no-repeat;
+			}
+			h4{
+				margin: 14px auto;
+				height: 34px;
+				width: 259px;
+			}
+			h4 a{
+				text-decoration: none;
+				float: left;
+				width: 128px;
+				line-height: 34px;
+				color: #fff;
+				text-align: center;
+				border: 1px solid #dcdcdc;
+				border-radius: 2px;
+				font-size: 16px;
+				margin-left: -1px;
+				font-weight: normal;
+			}
+			.active{
+				background: #fff;
+				color: #000000;
+			}
+			p{
+				text-align: center;
+				font-size: 14px;
+				color: #8e8e8e;
+				margin-bottom: 18px;
+			}
+			#imgbox{
+				width: 550px;
+				position: relative;
+				margin: 0 auto;
+			}
+			 
+			#imgbox span{
+				position: absolute;
+				width: 100%;
+				text-align: center;
+				color: #fff;
+				z-index: 9;
+				background: url(imgs/spanbg.png) no-repeat;
+				left: 0;
+				height: 43px;
+				line-height: 34px;
+			}
+			#imgbox em{
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				height: 34px;
+				line-height: 34px;
+				text-align: center;
+				font-size: 16px;
+				color: #fff;
+			}
+			#prev{
+				height: 50px;
+				width: 35px;
+				line-height: 50px;
+				background: #76756d;
+				color: #adaca7;
+				text-decoration: none;
+				font-size: 30px;
+				text-align: center;
+				position: absolute;
+				left: 0;
+				top: 130px;
+			}
+			#next{
+				height: 50px;
+				width: 35px;
+				line-height: 50px;
+				text-align: center;
+				text-decoration: none;
+				font-size: 30px;
+				background: #76756d;
+				color: #adaca7;
+				position: absolute;
+				right: 0;
+				top: 130px;
+			}
+			#tanbox{
+				position: absolute;
+				width: 298px;
+				height: 100px;
+				left: 50%;
+				top: 50%;
+				background: pink;
+				margin-left: -148px;
+				margin-top: -10px;
+				opacity: 0.8;
+				text-align: center;
+				display: none;
+			}
+			#tanbox strong{
+				display: block;
+				text-align: center;
+				font: 900 16px/50px '';
+			}
+			#tanbox a{
+				display:block;
+				text-decoration: none;
+				font-size: 16px;
+				color: #000000;
+				width: 70px;
+				height: 20px;
+				background: yellow;
+				margin-left: 118px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bj">
+			<div class="centent">
+				<div class="left"></div>
+				<div class="center">
+					<h4>
+						<a href="javascript:;" class="active" id="xh">循环切换</a>
+						<a href="javascript:;" id="sx">顺序切换</a>
+					</h4>
+					<p id="tet">图片可以从最后一张跳转到第一张循环切换</p>
+					<div id="imgbox">
+						<span id="sp">1/4</span>
+						<a href="javascript:void(0);" id="prev"><</a>
+						<a href="javascript:void(0);" id="next">></a>
+						<img id="img" src=""/>
+						<em>
+							<strong>图片一</strong>
+						</em>
+					</div>
+				</div>
+				<div class="right"></div>
+			</div>
+			<div id="tanbox">
+				<strong id="rem">已经是最后一张</strong>
+				<a href="javascript:;" id="qd">确定</a>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			//1先声明变量
+			var xh=document.getElementById('xh');
+			var sx=document.getElementById('sx');
+			var tet=document.getElementById('tet');
+			var sp=document.getElementById('sp');
+			var prev=document.getElementById('prev');
+			var next=document.getElementById('next');
+			var img=document.getElementById('img');
+			var tanbox=document.getElementById('tanbox')
+			var btn=document.getElementById('qd')
+			var rem=document.getElementById('rem');
+			var stron=document.getElementsByTagName('strong')[0];
+			var arrImgs=['imgs/img01.jpg','imgs/img02.jpg','imgs/img03.jpg','imgs/img04.jpg'];
+			var arrTet=['图片一','图片二','图片三','图片四'];
+			var n=0;
+			var mode=true;
+			var onOff=true;
+			function tob(){
+				sp.innerHTML=(n+1)+'/'+arrImgs.length;
+				stron.innerHTML=arrTet[n];
+				img.src=arrImgs[n];
+				
+			}
+			tob();
+			xh.onclick=function(){
+				if(mode){
+					xh.className='active';
+					sx.className='';
+					tet.innerHTML='图片可以从最后一张跳转到第一张循环切换';
+				}
+				mode=true;
+			}
+			sx.onclick=function(){
+				if(mode){
+					sx.className='active';
+					xh.className='';
+					tet.innerHTML='图片可以从最后一张跳转到第一张顺序切换';
+				}
+				mode=false;
+			}
+			//下一张
+			next.onclick=function(){
+				if(onOff){
+					n++;
+					if(n>arrImgs.length-1){
+						if(mode){
+							n=0;
+						}else{
+							n=arrImgs.length-1;
+							tanbox.style.display='block';
+							rem.innerHTML='已经是最后一张';
+							onOff=false;
+						}
+					}
+					tob();
+				}
+			}
+			//上一张
+			prev.onclick=function(){
+				if(onOff){
+					n--;
+					if(n<0){
+						if(mode){
+							n=arrImgs.length-1;
+						}else{
+							n=0;
+							tanbox.style.display='block';
+							rem.innerHTML='这是第一张';
+							onOff=false;
+						}
+					}
+					tob();
+				}
+			}
+			btn.onclick=function(){
+				tanbox.style.display='none';
+				onOff=true;
+			}
+		</script>
+	</body>
+</html>

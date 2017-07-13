@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<script>
+			/*
+			 	函数参数
+			 		我们在函数调用时，可以传入一些参数，改变函数执行的结果，增加函数的可用性和扩展性
+			 		形参
+			 			在函数内部使用的变量，在函数声明时要定义形参，默认值是undefined,写在小括号内，多个值间用逗号分隔
+			 		实参
+			 			在函数调用时传入的值，一一对应赋值给形参，写在函数调用的小括号里，多个值间用逗号分隔
+			 			
+			 			
+			 	使用：
+			 		1.使函数有些变化，让函数内的一些东西可变，不再是写死的了
+			 		2.由于作用域问题，拿不到想要的值，所以需要传参传入
+			 * 
+			 * */
+			function fn(a,b){
+				console.log(a)
+			}
+			fn(3,2)
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+				//console.log(this)
+				//作用域原因fn2函数拿不到这个函数this,可以用传参传入
+				var a = 1;
+				fn2(this,a);
+			}
+			function fn2(_this,_a){
+				console.log(_this,_a)
+			}
+		</script>
+	</body>
+</html>

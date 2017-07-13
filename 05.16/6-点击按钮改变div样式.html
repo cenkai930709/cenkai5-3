@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				line-height: 100px;
+				text-align: center;
+				font-size:30px;
+			}
+			#box2{
+				width: 100px;
+				height: 100px;
+				background: yellow;
+				line-height: 100px;
+				text-align: center;
+				font-size:30px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="width"/>
+		<input type="button" value="height"/>
+		<input type="button" value="color"/>
+		<input type="button" value="background"/>
+		<div id="box">1</div>
+		<div id="box2">2</div>
+		<script>
+			var btns = document.getElementsByTagName('input');
+			var box = document.getElementById('box');
+			var box2 = document.getElementById('box2');
+			btns[0].onclick = function(){
+				//标识符
+				//box.style.width = '200px';
+				fn(box,'width','200px')
+				fn(box2,'width','200px')
+			}
+			btns[1].onclick = function(){
+				//box.style.height = '200px';
+				fn(box,'height','200px')
+				fn(box2,'height','200px')
+			}
+			btns[2].onclick = function(){
+				//box.style.color = '#fff';
+				fn(box,'color','#fff')
+				fn(box2,'color','#fff')
+			}
+			btns[3].onclick = function(){
+				//box.style.background = 'blue';
+				fn(box,'background','blue')
+				fn(box2,'background','blue')
+			}
+			function fn(obj,attr,val){
+				obj.style[attr] = val;
+			}
+			
+		</script>
+	</body>
+</html>

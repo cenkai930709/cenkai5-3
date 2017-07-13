@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr=[1,8,6,2,4,5,3,7,9,33,23,27];
+			function qiue(arr){
+				if(arr.length<=1){
+					return arr;
+				}
+				var cur=arr.shift();
+				var left=[];
+				var right=[];
+				while (arr.length){
+					if(cur>arr[0]){
+						left.push(arr.shift());
+					}else{
+						right.push(arr.shift());
+					}
+				}
+				return qiue(left).concat(cur,qiue(right));
+			}
+			console.log(qiue(arr))
+		</script>
+	</body>
+</html>

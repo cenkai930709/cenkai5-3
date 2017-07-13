@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>招贤纳士-社会招聘</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div id="wrap">
+  	<div class="left">
+    	<h2>招贤纳士</h2>
+      <ul>
+      	<!--<li class="focus"><a href="javascript:;">社会招聘</a></li>
+      	<li><a href="javascript:;">校园招聘</a></li> -->
+      </ul>
+    </div>
+  	<div class="right">
+    	<div class="title">
+      	<img src="img/shzp.gif" />
+      </div>
+      <div class="info">
+
+      	<!--<p class="zp">
+        	<span><a href="">★ 职位需求：测试工程师【社会招聘】</a></span>
+          <span>需求人数：2名</span>
+         	<span class="date">2013年7月30日</span>
+        </p>
+      	<p class="yq">1.计算机或相关专业本科以上学历；2.从事软件测试工作3年及以上；3.具备良好的沟通能力和快速学习能力；4.精通测试策略和方法、测试用例设计；5.熟悉DB2、AIX等平台的基本操作；6.具备2年以上金...[<a href="">查看详情</a>]
+        </p>
+
+      	<p class="zp">
+        	<span><a href="">★ 职位需求：测试工程师【社会招聘】</a></span>
+          <span>需求人数：12名</span>
+         	<span class="date">2013年7月30日</span>
+         	<span class="date">2013年7月30日</span>
+        </p>
+      	<p class="yq">1.计算机或相关专业本科以上学历；2.从事软件测试工作3年及以上；3.具备良好的沟通能力和快速学习能力；4.精通测试策略和方法、测试用例设计；5.熟悉DB2、AIX等平台的基本操作；6.具备2年以上金...[<a href="">查看详情</a>]
+        </p>
+
+      	<p class="zp">
+        	<span><a href="">★ 职位需求：测试工程师【社会招聘】</a></span>
+          <span>需求人数：21名</span>
+         	<span class="date">2013年7月30日</span>
+        </p>
+      	<p class="yq">1.计算机或相关专业本科以上学历；2.从事软件测试工作3年及以上；3.具备良好的沟通能力和快速学习能力；4.精通测试策略和方法、测试用例设计；5.熟悉DB2、AIX等平台的基本操作；6.具备2年以上金...[<a href="">查看详情</a>]
+        </p>-->
+
+      </div>
+      <div class="pages">
+        <span class="prev">
+          <a href="javascript:;">
+            <img src="img/pre.gif">
+          </a>
+        </span>
+        <span class="next">
+          <a href="javascript:;">
+            <img src="img/next.gif">
+          </a>
+        </span>
+        <p>
+         <!--<span class="focus">
+            <a href="javascript:;">1</a>
+          </span>
+          <span>
+            <a href="javascript:;">2</a>
+          </span>
+          <span>
+            <a href="javascript:;">3</a>
+          </span>-->
+        </p>
+        
+      </div>
+      
+    </div>
+    <div class="clear"></div>
+  </div>
+<script src="js/data.js"></script>
+<script>
+var ul = document.getElementsByTagName('ul')[0];
+var img = document.getElementsByTagName('img')[0];
+var info = document.getElementsByClassName('info')[0];
+var pages = document.getElementsByClassName('pages')[0];
+var prev = document.getElementsByClassName('prev')[0];
+var next = document.getElementsByClassName('next')[0];
+var ps = pages.getElementsByTagName('p')[0];
+var lis = ul.getElementsByTagName('li');
+var spans = ps.getElementsByTagName('span');
+//存当前页面数据
+var data = [];
+var str = '';
+for(var i=0;i<aData.list.length;i++){
+	str+='<li><a href="javascript:;">'+aData.list[i].text+'</a></li>';
+}
+ul.innerHTML = str;
+//l=sh社会,l=xy校园
+var search = location.search.substr(1).split('=');
+//1.拿到当前页面要显示的数据
+if(search[0]=='l'){
+	//有设置,走获取到的
+	data = aData[search[1]];
+	if(search[1]=='sh'){
+		lis[0].className = 'focus';
+	}else{
+		lis[1].className = 'focus';
+	}
+}else{
+	//第一次，没有search,设置默认社会
+	data = aData[aData.list[0].lx];
+	lis[0].className = 'focus';
+}
+img.src = data.img;
+console.log(data)
+//li点击设置search
+for(var i=0;i<lis.length;i++){
+	lis[i].lx = aData.list[i].lx;
+	lis[i].onclick = function(){
+		location.hash = 'p=1';
+		location.search = 'l='+this.lx;
+	}
+}
+//2.页码
+//p=1
+var p;
+var hash = location.hash.substr(1).split('=')[1];
+//console.log(hash)
+if(hash){
+	//有设置
+	p = hash;
+}else{
+	//第一次
+	p = 1;
+}
+console.log(p)
+var len = 2;
+//渲染列表内容
+var start = (p-1)*len;
+var end = start+len;
+if(end>data.text.length){
+	end = data.text.length;
+}
+str = '';
+var arr = data.text;
+for(var i=start;i<end;i++){
+	var t = arr[i].info[0].l.join('');
+	if(t.length>100){
+		t = t.substr(0,100)+'...';
+	}
+	str += `<p class="zp">
+        	<span><a href="content.html?l=${data.name}#n=${i}">★ 职位需求：${arr[i].zw}</a></span>
+          <span>需求人数：${arr[i].rs}名</span>
+         	<span class="date">${aData.date(arr[i].sj)}</span>
+        </p>
+      	<p class="yq">${t}[<a href="content.html?l=${data.name}#n=${i}">查看详情</a>]
+        </p>
+`;
+}
+info.innerHTML = str;
+//生成页码
+var num = Math.ceil(arr.length/len);
+str = '';
+for(var i=0;i<num;i++){
+	var span = document.createElement('span');
+	span.n = i+1;
+	span.innerHTML = '<a href="javascript:;">'+(i+1)+'</a>';
+	span.onclick = function(){
+		 location.hash = 'p='+this.n;
+	}
+	ps.appendChild(span);
+}
+//页码高亮
+for(var i=0;i<spans.length;i++){
+	spans[i].className = '';
+}
+spans[p-1].className = 'focus';
+window.onhashchange = function(){
+	//重新拿hash
+	var hash = location.hash.substr(1).split('=')[1];
+	if(hash){
+		//有设置
+		p = hash;
+	}else{
+		//第一次
+		p = 1;
+	}
+	//重新渲染列表内容
+	var start = (p-1)*len;
+	var end = start+len;
+	if(end>data.text.length){
+		end = data.text.length;
+	}
+	str = '';
+	var arr = data.text;
+	for(var i=start;i<end;i++){
+		var t = arr[i].info[0].l.join('');
+		if(t.length>100){
+			t = t.substr(0,100)+'...';
+		}
+		str += `<p class="zp">
+	        	<span><a href="content.html?l=${data.name}#n=${i}">★ 职位需求：${arr[i].zw}</a></span>
+	          <span>需求人数：${arr[i].rs}名</span>
+	         	<span class="date">${aData.date(arr[i].sj)}</span>
+	        </p>
+	      	<p class="yq">${t}[<a href="content.html?l=${data.name}#n=${i}">查看详情</a>]
+	        </p>
+	`;
+	}
+	info.innerHTML = str;
+	//页码高亮
+	for(var i=0;i<spans.length;i++){
+		spans[i].className = '';
+	}
+	spans[p-1].className = 'focus';
+}
+//上一页
+prev.onclick = function(){
+		if(p>1){
+			location.hash = 'p='+(p-1)
+		}
+}
+//下一页
+next.onclick = function(){
+	if(p<num){
+		location.hash = 'p='+(Number(p)+1);
+	}
+}
+</script>
+</body>
+</html>

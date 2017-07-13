@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+    <ul id="list"></ul>
+		<script type="text/javascript">
+			var data = {
+				maxId:2,
+				'0':{
+					path:'data_0',
+					name:'css',
+					type:'file',
+					child:{
+						maxId:1,
+						'0':{
+							path:'data_0_child_0',
+							name:'js',
+							type:'file'
+						},
+						'1':{
+							path:'data_0_child_1',
+							name:'js',
+							type:'file'
+						}
+					}
+				},
+				'1':{
+					name:'css',
+					type:'file'
+				},
+				'2':{}
+			}
+
+        var list=document.getElementById('list');
+            fn(list,data);
+        function fn(obj,arr){
+            var li=document.createElement('li');
+            ;for(var i=0;i<arr.maxId.length;i++){
+                li[i].innerHTML+='<span>'+arr.maxId[i].name+'</span><span>'+arr.maxId[i].type+'</span>';
+            }
+            obj.appendChild(li);
+
+        }
+		</script>
+	</body>
+</html>

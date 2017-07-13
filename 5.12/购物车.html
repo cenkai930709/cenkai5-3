@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+</head>
+<body>
+<ul>
+    <li>
+        <input type="button" value="-">
+        <span>0</span>
+        <input type="button" value="+"> <span>小计：0</span>
+    </li>
+    <li>
+        <input type="button" value="-">
+        <span>0</span>
+        <input type="button" value="+"> <span>小计：0</span>
+    </li>
+    <li>
+        <input type="button" value="-">
+        <span>0</span>
+        <input type="button" value="+"> <span>小计：0</span>
+    </li>
+    <li>
+        <input type="button" value="-">
+        <span>0</span>
+        <input type="button" value="+"> <span>小计：0</span>
+    </li>
+    <li>
+        <input type="button" value="-">
+        <span>0</span>
+        <input type="button" value="+"> <span>小计：0</span>
+    </li>
+</ul>
+<p></p>
+<p></p>
+<p></p>
+<script>
+    var inputs=document.getElementsByTagName('input');
+    var lis=document.getElementsByTagName('li');
+    var spans=document.getElementsByTagName('span');
+    var ps=document.getElementsByTagName('p');
+    var Num=[0,0,0,0,0];
+    var price=[5,2,4,3,1];
+    function total() {
+        ps[0].innerHTML='总件数：'+(Num[0]+Num[1]+Num[2]+Num[3]+Num[4]);
+        ps[1].innerHTML='总价格：'+(Num[0]*price[0]+Num[1]*price[1]+Num[2]*price[2]+Num[3]*price[3]+Num[4]*price[4]);
+        var max=0;
+        for(var a=0;a<lis.length;a++){
+            if(Num[a]&&max<price[a]){
+                max=price[a];
+            }
+        }
+        ps[2].innerHTML='最高价：'+max;
+    }
+    function sub(x) {
+        if(x>0){
+            x--;
+        }
+        return x;
+    }
+    function change(x) {
+        spans[x*2].innerHTML=Num[x];
+        spans[x*2+1].innerHTML='单价'+price[x]+'元  小计：'+(Num[x]*price[x]);
+        total();
+    }
+    for(var a=0;a<lis.length;a++){
+        change(a);
+    }
+    for(var i=0;i<inputs.length;i++){
+        inputs[i].num=Math.floor(i/2);
+        if(i%2){
+            inputs[i].onclick=function () {
+                Num[this.num]++;
+                change(this.num);
+            }
+        }else {
+            inputs[i].onclick=function () {
+                Num[this.num]=sub(Num[this.num]);
+                change(this.num);
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

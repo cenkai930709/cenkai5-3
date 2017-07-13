@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+ul , p { width:300px; padding:0; margin:0; margin:0 auto; }
+p { padding-top:20px; }
+li { list-style:none; border-bottom:1px solid #333; height:30px; line-height:30px; }
+li:hover{
+	color:#fff;
+}
+.yellow{
+	background-color: yellow;
+}
+.red{
+	background-color: red;
+}
+.hover{
+	background-color: black;
+	color: #fff;
+}
+.checked{
+	background-color: green;
+}
+
+</style>
+</head>
+
+<body>
+
+<ul>
+	<li><input type="checkbox" />信乐团 - 海阔天空</li>
+	<li><input type="checkbox" />五月天 - 倔强</li>
+	<li><input type="checkbox" />薛之谦 - 演员</li>
+	<li><input type="checkbox" />杨宗纬 - 一次就好</li>
+	<li><input type="checkbox" />周杰伦 - 安静</li>
+</ul>
+<p><input type="checkbox" id="all"/> 全选</p>
+
+<script>
+	//eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('3 a=p.v(\'s\');3 b=p.i(\'w\')[0];3 c=b.i(\'x\');3 d=b.i(\'y\');j(3 e=0;e<d.m;e++){7(e%2){d[e].6=\'A\'}l{d[e].6=\'z\'};d[e].o=d[e].6;d[e].t=5(){1.6=\'u\'};d[e].D=5(){1.6=1.o};c[e].k=e;c[e].n=5(){7(1.4){d[1.k].9.8=\'r\'}l{d[1.k].9.8=\'\';};a.4=f(c)}};5 f(g){j(3 h=0;h<g.m;h++){7(!g[h].4){q B}};q C};a.n=5(){j(3 g=0;g<c.m;g++){c[g].4=1.4;7(1.4){d[g].9.8=\'r\'}l{d[g].9.8=\'\'}}}',40,40,'|this||var|checked|function|className|if|background|style|||||||||getElementsByTagName|for|index|else|length|onchange|color|document|return|green|all|onmouseover|hover|getElementById|ul|input|li|red|yellow|false|true|onmouseout'.split('|'),0,{}))
+	/*
+	 	1.鼠标移入li
+	 		未选中
+	 			背景变黑
+	 			
+	 * 	2.鼠标移出li
+	 * 		未选中
+	 * 			还原原来颜色
+	 * 	3.鼠标点击li
+	 * 		选中
+	 * 			变绿
+	 * 		未选中
+	 * 			变黑
+	 * 	
+	 * 
+	 * */
+	var ul = document.getElementsByTagName('ul')[0];
+	var lis = ul.getElementsByTagName('li');
+	var inps = ul.getElementsByTagName('input');
+	var all = document.getElementById('all');
+	var color = ['red','yellow'];
+	for(var i=0;i<lis.length;i++){
+		//1.隔行变色方法1
+//		if(i%2){
+//			lis[i].className = 'red';
+//		}else{
+//			lis[i].className = 'yellow';
+//		}
+		//隔行变色方法2
+		lis[i].className = color[i%color.length];
+		//2.索引值计算还原原来颜色
+		lis[i].index = i;
+		//自定义属性记录颜色还原
+		lis[i].color = lis[i].className;
+
+		lis[i].check = false;
+		//4.鼠标移入li
+		lis[i].onmouseover = function(){
+			//!布尔值取反
+			if(!this.check){
+				this.className = 'hover';
+			}
+		}
+		//5.鼠标移出li
+		lis[i].onmouseout = function(){
+			if(!this.check){
+				this.className = this.color;
+			}
+		}
+		lis[i].onclick = function(){
+			if(this.check){
+				//选中
+				this.check = false;
+				this.className = 'hover';
+				inps[this.index].checked = false;
+			}else{
+				//未选中
+				this.check = true;
+				this.className = 'checked';
+				inps[this.index].checked = true;
+			}
+			var m=0;
+			for(var i=0;i<inps.length;i++){
+				if(inps[i].checked){
+					m++;
+				}
+			}
+			if(m==inps.length){
+				all.checked=true;
+			}else{
+				all.checked=false;
+			}
+		}
+		all.onclick=function(){
+			if(this.checked){
+				for(var i=0;i<inps.length;i++){
+					inps[i].checked=true;
+					lis[i].check=true;
+					lis[i].className='checked';
+				}
+			}else{
+				for(var i=0;i<inps.length;i++){
+					inps[i].checked=false;
+					lis[i].check=false;
+					lis[i].className = color[i%color.length];
+				}
+			}
+		}
+	
+	}
+	
+</script>
+
+</body>
+</html>

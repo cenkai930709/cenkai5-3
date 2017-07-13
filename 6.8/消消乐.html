@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 660px;
+				height: 600px;
+				margin:50px auto 0;
+			}
+			#box div{
+				width: 50px;
+				height: 50px;
+				margin-right:5px;
+				margin-bottom: 5px;
+				background: red;
+				line-height: 50px;
+				border: 5px solid transparent;
+				text-align: center;
+				border-radius: 15px;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			/*
+			 * 1,10*10，随机颜色
+			 * 2，点击找到附近颜色相同的div，只能上下左右
+			 * 3，加黑框
+			 * 
+			 * 
+			 */
+			var box = document.getElementById('box');
+			var str = '';
+			for(var i=0;i<100;i++){
+				str +='<div style="background:'+color()+';">'+(i+1)+'</div>';
+			}
+			box.innerHTML = str;
+			var divs = box.getElementsByTagName('div');
+			for(var i=0;i<divs.length;i++){
+				divs[i].index = i;
+				divs[i].color=divs[i].style.backgroundColor;
+				divs[i].onclick = function(){
+					show(findEle(this.index));
+				}
+			}
+			function color(n){
+				var arr=['red','yellow','blue','green','orange','purple'];
+				return n?arr[0]:arr[Math.round(Math.random()*(arr.length-1))]
+			}
+			function findEle(index){
+				var arr = [];
+				fn(index);
+				function fn(n){
+					if(arr.includes(divs[n])){
+						return;
+					}else{
+						arr.push(divs[n]);
+					}
+//					if(!divs[n].onOff){
+//						return;
+//					}
+//					divs[n].style.background = 'blue';
+//					divs[n].onOff = false;
+					//左
+					if(divs[n-1]&&Math.floor((n-1)/10)==Math.floor(n/10)&&divs[n-1].color == divs[n].color){
+						fn(n-1);
+					}
+					//右
+					if(divs[n+1]&&Math.floor((n+1)/10)==Math.floor(n/10)&&divs[n+1].color == divs[n].color){
+						fn(n+1);
+					}
+					//上
+					if(divs[n-10]&&divs[n-10].color == divs[n].color){
+						fn(n-10);
+					}
+					//下
+					if(divs[n+10]&&divs[n+10].color == divs[n].color){
+						fn(n+10);
+					}
+				}
+				return arr;
+			}
+			
+			function show(arr){
+				for(var i=0;i<divs.length;i++){
+					divs[i].style.borderColor = '';
+				}
+				for(var i=0;i<arr.length;i++){
+					arr[i].style.borderColor = '#000';
+				}
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+a{
+    text-decoration: none;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+input{
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+
+    #box{
+        width: 500px;
+        height: 500px;
+        background-color: blue;
+        position: relative;
+    }
+    #content{
+        position: absolute;
+        top:50px;
+        left: 30px;
+        background-color: white;
+        width: 400px;
+        color:black;
+        font-weight: bold;
+    }
+    #open{
+        position: absolute;
+        top:35px;
+        right: 10px;
+        text-align: center;
+    }
+    #open a{
+        display: block;
+        width: 50px;
+        line-height: 30px;
+    }
+    #open>a{
+        background-color: #ccc;   
+        color: white; 
+    }
+    #open li a{
+
+        background-color: #C0C0C0;
+        color:black;
+    }
+    #open li a:hover{
+        background-color: #E76308;
+        color: white;
+    }
+    #fun{
+        position: absolute;
+        bottom: 20px;
+        left: 28px;
+        border: 5px solid #E71063;
+        width: 400px;
+        background-color: #E7E7B5;
+
+    }
+    #fun .btns{
+        width: 370px;
+        margin: 0 auto;
+        height: 50px;
+        border-bottom: 2px solid #E73100;
+
+    }
+    #fun .btns a{
+        float: left;
+        width: 70px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #E7E7B5;
+        color: black;
+        margin-top: 20px;
+    }
+    #fun .btns .active{
+        background-color: #E73100;
+        color: white;
+    }
+    #search,#replace{
+        height: 30px;
+        padding: 20px;
+        display: none;
+    }
+    #fun input{
+        height: 25px;
+        width: 140px;
+    }
+    #fun input:focus{
+        outline-color: #E73100; 
+    } 
+    #fun input[type="button"]{
+        width: 50px;
+        height: 30px;
+    }
+    span{
+        background-color: #FFFF00;
+    }
+    #open ul .active{
+        background-color: #E73100;
+        color: white;
+    }
+</style>
+</head>
+<body>
+<div id="box">
+    <div id="content">
+        目前主要针对的是javascript培训，同时还提供了css教程、javascript视频、js特效等，最新推出了外地学员们喜欢的javascript网络课程服务，同时还为处于javascript入门阶段的朋友录制了大量javascript视频，其中涉及了大量javascript基础知识，希望妙味课堂推出的javascript网络培训课程能带给大家更多惊喜。目前主要针对的是javascript培训，同时还提供了css教程、javascript视频、js特效等，最新推出了外地学员们喜欢的javascript网络课程服务，同时还为处于javascript入门阶段的朋友录制了大量javascript视频，其中涉及了大量javascript基础知识，希望妙味课堂推出的javascript网络培训课程能带给大家更多惊喜。目前主要针对的是javascript培训，
+    </div>
+    <div id="open">
+        <a href="javascript:;">展开</a>
+        <ul style="display: none;">
+            <li><a href="javascript:;">查找</a></li>
+            <li><a href="javascript:;">替换</a></li>
+        </ul>
+    </div>
+    <div id="fun" style="display: none;">
+        <div class="btns">
+            <a href="javascript:;" class="active">查找</a>
+            <a href="javascript:;">替换</a>
+        </div>
+
+        <div id="search" style="display: block;" >
+            <input type="text"/>
+            <input type="button" value="查找"/>
+        </div>
+        <div id="replace">
+            <input type="text"/>
+            <input type="text"/>
+            <input type="button" value="替换"/>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	var open = document.getElementById('open');
+	var as = open.getElementsByTagName('a');
+	var ul = open.getElementsByTagName('ul')[0];
+	var fun = document.getElementById('fun');
+	var search = document.getElementById('search');
+	var replace = document.getElementById('replace');
+	var btns = fun.getElementsByTagName('a');
+	var searchInps = search.getElementsByTagName('input');
+	var replaceInps = replace.getElementsByTagName('input');
+	var content = document.getElementById('content');
+	var txt = content.innerText;
+	//true:收缩，false:展开
+	var onOff = true;
+	//展开按钮
+	as[0].onclick = function(){
+		if(onOff){
+			ul.style.display = 'block';
+		}else{
+			ul.style.display = 'none';
+		}
+		onOff = !onOff;
+	}
+	//查找按钮
+	as[1].onclick = btns[0].onclick = function(){
+		fun.style.display = 'block';
+		search.style.display = 'block';
+		replace.style.display = 'none';
+		btns[0].className = 'active';
+		btns[1].className = '';
+	}
+	//替换按钮
+	as[2].onclick = btns[1].onclick =  function(){
+		fun.style.display = 'block';
+		search.style.display = 'none';
+		replace.style.display = 'block';
+		btns[0].className = '';
+		btns[1].className = 'active';
+	}
+	//查找功能
+	searchInps[1].onclick = function(){
+		var val = searchInps[0].value;
+		//console.log(val)
+		//用查找的词分隔字符串，再用包着span的查找词join，查找词就被加上span了
+		content.innerHTML = txt.split(val).join('<span>'+val+'</span>')
+	}
+	//替换功能
+	replaceInps[2].onclick = function(){
+		var val1 = replaceInps[0].value;
+		var val2 = replaceInps[1].value;
+		content.innerHTML = txt.split(val1).join('<span>'+val2+'</span>');
+		//txt存的是所有内容，当替换修改了内容，所以txt要重新存一下
+		txt = content.innerText;
+	}
+</script>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			ul , p { width:300px; padding:0; margin:0; margin:0 auto; }
+			ul{
+				margin: 100px auto 0;
+			}
+			p { padding-top:20px; }
+			li { list-style:none; border-bottom:1px solid #333; height:30px; line-height:30px; }
+			
+			.hover{
+				background-color: blue;
+				color: #fff;
+			}
+			.checked{
+				background-color: green;
+			}
+			.red{
+				background-color: red;
+			}
+			.pink{
+				background-color: pink;
+			}
+
+
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li><input type="checkbox"/>信乐团-海阔天空</li>
+			<li><input type="checkbox"/>五月天-倔强</li>
+			<li><input type="checkbox"/>薛之谦-演员</li>
+			<li><input type="checkbox"/>杨宗纬-一次就好</li>
+			<li><input type="checkbox"/>周杰伦-安静</li>
+		</ul>
+		<p><input type="checkbox" id="qx" />全选</p>
+		<script>
+			var ul=document.getElementsByTagName('ul')[0];
+			var lis=ul.getElementsByTagName('li');
+			var inps=ul.getElementsByTagName('input');
+			var ap=document.getElementById('qx');
+			//li隔行变色
+			for(var i=0;i<lis.length;i++){
+				if(i%2){
+					lis[i].className='red';
+				}else{
+					lis[i].className='pink';
+				}
+			}
+			//鼠标移入变色，移出还原
+			for(var i=0;i<lis.length;i++){
+				lis[i].index=i;
+				//鼠标移入
+				lis[i].onmouseover=function(){
+					if(!inps[this.index].checked){
+						this.className='hover';
+					}
+				}
+				//鼠标移出
+				lis[i].onmouseout=function(){
+					if(!inps[this.index].checked){
+						if(this.index%2){
+							this.className='red';
+						}else{
+							this.className='pink';
+						}
+					}
+				}
+			}
+			//inps点勾变色，未点鼠标默认
+			for(var i=0;i<inps.length;i++){
+				inps[i].index=i;
+				inps[i].onclick=function(){
+					if(this.checked){
+						lis[this.index].className='checked';
+					}else{
+						lis[this.index].className='hover';
+						
+					}
+					//判断是否全部选中是true否false
+					var m=0;
+					for(var i=0;i<inps.length;i++){
+						if(inps[i].checked){
+							m++;
+						}
+					}
+					if(m==inps.length){
+						ap.checked=true;
+					}else{
+						ap.checked=false;
+						
+					}
+				}
+			}
+			//全选点击事件
+			ap.onclick=function(){
+				if(this.checked){
+					for(var i=0;i<inps.length;i++){
+						inps[i].checked=true;
+						lis[i].className='checked';
+					}
+				}else{
+					for(var i=0;i<inps.length;i++){
+						this.index=i;
+						inps[i].checked=false;
+						if(this.index%2){
+							lis[i].className='red';
+						}else{
+							lis[i].className='pink';
+							
+						}
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

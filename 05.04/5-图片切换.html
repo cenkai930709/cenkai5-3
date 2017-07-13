@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 400px;
+				height: 500px;
+				border: 1px solid #000;
+				margin:50px auto;
+				position: relative;
+			}
+			img{
+				width: 100%;
+				height: 100%;
+			}
+			#prev,#next{
+				position: absolute;
+				top:200px;
+				font-size:50px;
+				font-weight: bold;
+				text-decoration: none;
+			}
+			#prev{
+				left:-100px;
+			}
+			#next{
+				right:-100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="img/1.png" alt="" id="img" />
+			<a href="javascript:;" id="prev"><</a>
+			<a href="javascript:;" id="next">></a>
+		</div>
+		<script>
+			var img = document.getElementById('img');
+			var prev = document.getElementById('prev');
+			var next = document.getElementById('next');
+			/*
+			 	1.下一张
+			 		
+			 * 
+			 * */
+			//第一张图片数字是1，所以这里n=1
+			var n = 1;
+			next.onclick = function(){
+				//n++,左侧变量n自增+1
+				n++;
+				img.src = 'img/'+n+'.png';
+				//图片切换到最后一张，需要限制，要用到if条件判断
+			}
+		</script>
+	</body>
+</html>

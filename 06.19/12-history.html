@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="13-demo.html">跳转</a>
+		<input type="button" value="前进" id="btn"/>
+		<script type="text/javascript">
+			/*
+				 history
+				 	历史记录
+				 back() 后退
+				 foward() 前进
+			 * 
+			 * */
+			console.log(history)
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+				history.forward()
+			}
+		</script>
+	</body>
+</html>

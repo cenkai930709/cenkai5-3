@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function fn(){
+				var arr=[];
+				while(arr.length<10){
+					var num = Math.round(Math.random()*100)
+					if(!arr.includes(num)){
+						arr.push(num);
+					}
+					
+				}
+				return arr;
+			}
+			console.log(fn());
+		</script>
+	</body>
+</html>

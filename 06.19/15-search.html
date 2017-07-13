@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<script type="text/javascript">
+			/*
+			 	search  查询信息
+			 	刷新页面
+			 	www.miaov.com?q=1#h=2
+			 	?后边到#前边这段信息叫查询信息
+			 * 
+			 * */
+			btn.onclick = function(){
+				//location.search = 'q=1';
+				location.href = '16-demo.html?q=2';
+			}
+//			console.log(location.search)
+//			var s = location.search.substr(1);
+//			if(s=='q=1'){
+//				document.body.style.background = 'red';
+//			}else{
+//				document.body.style.background = 'blue';
+//			}
+		</script>
+	</body>
+</html>

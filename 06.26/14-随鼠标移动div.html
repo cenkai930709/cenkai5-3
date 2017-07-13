@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				position: absolute;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			var box = document.getElementById('box');
+			document.onmousemove = function(ev){
+				var l = ev.clientX-box.offsetWidth/2;
+				var t = ev.clientY-box.offsetHeight/2;
+				box.style.left = l+'px';
+				box.style.top = t+'px';
+			}
+			for(var i=0;i<lis.length;i++){
+				lis[i].style.left=lis[i].offsetLeft+'px';
+				lis[i].style.top=lis[i].offsetTop+'px';
+				setTimeout(function(){
+					lis[i].style.position='absolute';
+				})
+			}
+		</script>
+	</body>
+</html>

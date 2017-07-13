@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				transition: 3s;
+				border-radius: 50%;
+				position: absolute;
+				left:0;
+				top:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" placeholder="width,height,left,top"/>
+		<input type="text" placeholder="100"/>
+		<input type="button" value="按钮"/>
+		<div id="box"></div>
+		<script>
+			var box = document.getElementById('box');
+			var inps = document.getElementsByTagName('input');
+			inps[2].onclick = function(){
+				var val1 = inps[0].value;
+				var val2 = Number(inps[1].value);
+				fn(val1,val2)
+				//通过函数传参，可以操作width,height,left,top,让函数的可用性增强
+				function fn(attr,val){
+					//获取到当前值+输入的要增加的值
+					val += parseInt(getComputedStyle(box)[attr]);
+					box.style[attr] = val+'px';
+				}
+			}
+		</script>
+	</body>
+</html>

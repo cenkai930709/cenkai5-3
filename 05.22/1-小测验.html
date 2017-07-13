@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			1.写出ECMAScript和typeof的数据类型
+				ECMA:string number boolean null undefined object
+				typeof:string number boolean function undefined object
+			2.写出转成布尔值是false的情况
+				'',0,NaN,null,undefined
+			3.写出Number()转化下列数据的结果
+			['20px','',true,'1.23xO',[1,2,3]]
+			NaN,0,1,NaN,NaN
+			4.写出parseInt()转化下列数据的结果
+			[false,'27i9.24px','',null]
+			NaN,27,NaN,NaN	
+			5.写出下面代码的结果
+			8>2 && false || 4==='4' && 0 || '1'!= 1 && (1+2)*3 || [] && !'s' || 7 && null
+				null
+			5<2 || null==undefined && 0 && ''|| (!'0' || true && function(){})	
+				function(){}
+			6.有6个li和6个div，每个div里都有数字0，li有2种状态，用class名active表示选中，点击li选中和未选中状态切换，只有li是选中状态，对应的div点击里边的数字+1，元素已获取到lis,divs
+			
+			7.写出下列代码执行结果,用序号注明每次弹出结果的顺序
+			fn(5)
+			var a = 10;
+			var b = function(){
+				return function(){
+					alert(a)
+				}
+			}
+			alert(b()())
+			var a = function(){
+				var a = 30;
+				alert(this.a)
+			}
+			function fn(b){
+				a++;
+				alert(a);
+			}
+			a()
+			
+			8.写出下列代码执行结果,用序号注明每次弹出结果的顺序
+			function fn(a){
+				alert(a)
+				var a = 10;
+				function fn1(){
+					a++;
+					alert(a)
+				}
+				return fn1
+			}
+			fn(5);
+			var f = fn();
+			
+			f();
+			f();
+			var f2 = fn();
+			f2();
+			f2();
+		-->
+	<script>
+		/*
+		 		a,b,fn undefined
+		 * 		fn = function
+		 * 		fn(5)
+		 * 		undefined++
+		 * 		alert(a)//1.NaN
+		 *      a=10
+		 *      b=function
+		 * 		alert(b()())//2.10//3.undefined
+		 *      a=function
+		 *      a()//4.function
+		 * */
+// 			fn(5)
+//			var a = 10;
+//			var b = function(){
+//				return function(){
+//					alert(a)
+//				}
+//			}
+//			alert(b()())
+//			var a = function(){
+//				var a = 30;
+//				alert(this.a)
+//			}
+//			function fn(b){
+//				a++;
+//				alert(a);
+//			}
+//			a()
+			
+			
+			
+			
+			//function fn(a){
+				/*
+				 	a,fn,undefined
+				 	a=5
+				 	fn1=function
+				 * 
+				 * */
+//				alert(a)
+//				var a = 10;
+//				function fn1(){
+//					a++;
+//					alert(a)
+//				}
+//				return fn1
+//			}
+//			fn(5);//1.5
+//			//f存的是函数体
+//			//var f = fn
+//			//f存的是函数返回值
+//			var f = fn();//2.undefined
+//			var f2 = fn();//3.undefined
+//			f();//4.11
+//			f();//5.12
+//			f2();//6.11
+//			f2();//7.12
+			console.log(5<2 || null==undefined && 8 || (!'0' || true && function(){}))
+	</script>
+	</body>
+</html>

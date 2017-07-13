@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		a{
+			text-decoration: none;
+			font-size: 50px;
+		}
+		.red{
+			color:red;
+		}
+		.green{
+			color:green;
+		}
+		.yellow{
+			color:yellow;
+		}
+	</style>
+</head>
+<body>
+	<p><a href="javascript:;">★</a><a href="javascript:;">★</a><a href="javascript:;">★</a><a href="javascript:;">★</a><a href="javascript:;">★</a></p>
+<script type="text/javascript">
+	/*
+	 	1.鼠标移入
+	 		前1,2个绿，后3,4个黄,5红
+	 	2.点击
+	 		无颜色变化，记录点的第几个
+	 	3.移出
+	 		没点过
+	 			全回复蓝色
+	 		点过
+	 			根据点的第几个保留颜色
+	 * 
+	 * */
+	var as = document.getElementsByTagName('a');
+	//索引值是从0开始，-1小于0，区别是否有记录
+	var n = -1;
+	for(var i=0;i<as.length;i++){
+		as[i].index = i;
+		as[i].onmouseover = function(){
+			for(var i=0;i<as.length;i++){
+				as[i].className = '';
+			}
+			for(var i=0;i<=this.index;i++){
+				if(this.index<2){
+					as[i].className = 'green';
+				}else if(this.index<4){
+					as[i].className = 'yellow';
+				}else if(this.index==4){
+					as[i].className = 'red';
+				}
+			}
+		}
+		as[i].onmouseout = function(){
+			for(var i=0;i<as.length;i++){
+				as[i].className = '';
+			}
+			if(n>=0){
+				//有点击
+				for(var i=0;i<=n;i++){
+					if(n<2){
+						as[i].className = 'green';
+					}else if(n<4){
+						as[i].className = 'yellow';
+					}else if(n==4){
+						as[i].className = 'red';
+					}
+				}
+			}
+			
+		}
+		as[i].onclick = function(){
+			n = this.index;
+		}
+	}
+</script>
+</body>
+</html>

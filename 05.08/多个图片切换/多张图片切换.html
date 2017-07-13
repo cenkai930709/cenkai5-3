@@ -1,0 +1,156 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	#box{
+		width: 875px;
+		height: 553px;
+		background: url(img/bg.png) no-repeat;
+		margin: 0 auto;
+		position: relative;
+	}
+	img{
+		position: absolute;
+		top: 114px;
+		height: 245px;
+		cursor: pointer;
+	}
+	#box img:nth-of-type(1){
+		width:448px;
+		left: 49px;
+	}
+	#box img:nth-of-type(2){
+		width: 248px;
+		left:559px;
+	}
+	i{
+		position: absolute;
+		bottom: 143px;
+		font-weight: bold;
+	}
+	#box i:nth-of-type(1){
+		left: 49px;
+	}
+	#box i:nth-of-type(2){
+		right: 297px;
+	}
+	a{
+		position: absolute;
+		top:54px;
+		width: 60px;
+		height: 20px;
+	}
+	#box a:nth-of-type(1){
+		left:23px;
+	}
+	#box a:nth-of-type(2){
+		left: 100px;
+	}
+	p{
+		height: 20px;
+		width: 200px;
+		position: absolute;
+		bottom: 150px;
+		text-align: center;
+	}
+	#box p:nth-of-type(1){
+		left: 136px;
+	}	
+	#box p:nth-of-type(2){
+		width: 130px;
+		left: 634px;
+	}
+</style>
+</head>
+
+<body>
+	<div id="box">
+		<a href="javascript:;" class="left"></a>
+		<a href="javascript:;" class="right"></a>
+		<img src="" alt="" class="left" id="img"/>
+		<img src="" alt="" class="right"/>
+		<i class="left"></i>
+		<i class="right"></i>
+		<p class="left"></p>
+		<p class="right"></p>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var lefts = document.getElementsByClassName('left');
+	var rights = document.getElementsByClassName('right');
+	//左边图片
+	var arrLeft = ['img/0.jpg','img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'];
+	//右边图片
+	var arrRight = ['img/2.jpg','img/3.jpg','img/4.jpg'];
+	//左边文字
+	var arrTxt1 = ['左一','左二','左三','左四','左五'];
+	//右边文字
+	var arrTxt2 = ['右一','右二','右三'];
+	//控制左边图片
+	var n = 0;
+	//控制右边图片
+	var m = 0;
+	tabLeft()
+	tabRight()
+	function tabRight(){
+		//右图片
+		rights[1].src = arrRight[m];
+		//右序号
+		rights[2].innerHTML = m+1+'/'+arrRight.length;
+		//右文字
+		rights[3].innerHTML = arrTxt2[m];
+	}
+	function tabLeft(){
+		//左图片
+		lefts[1].src = arrLeft[n];
+		//左序号
+		lefts[2].innerHTML = n+1+'/'+arrLeft.length;
+		//左文字
+		lefts[3].innerHTML = arrTxt1[n];
+	}
+	//左侧单图片切换
+	lefts[1].onclick = function(){
+		n++;
+		if(n>arrLeft.length-1){
+			n = 0;
+		}
+		tabLeft();
+	}
+	//右侧单图片切换
+	rights[1].onclick = function(){
+		m++;
+		if(m>arrRight.length-1){
+			m = 0;
+		}
+		tabRight();
+	}
+	//上一组
+	lefts[0].onclick = function(){
+		n--;
+		m--;
+		if(n<0){
+			n = arrLeft.length-1;
+		}
+		if(m<0){
+			m = arrRight.length-1;
+		}
+		tabLeft();
+		tabRight();
+	}
+	//下一组
+	rights[0].onclick = function(){
+		n++;
+		if(n>arrLeft.length-1){
+			n = 0;
+		}
+		tabLeft();
+		m++;
+		if(m>arrRight.length-1){
+			m = 0;
+		}
+		tabRight();
+	}
+</script>

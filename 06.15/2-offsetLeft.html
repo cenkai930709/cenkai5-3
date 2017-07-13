@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 150px;
+				height: 150px;
+				padding: 100px;
+				background: red;
+				position: relative;
+				border: 10px solid #000;
+			}
+			#div2{
+				width: 50px;
+				height: 50px;
+				padding:50px;
+				background: yellow;
+			}
+			#div3{
+				width: 30px;
+				height: 30px;
+				background: blue;
+				border: 10px solid #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">
+				<div id="div3"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			/*
+			 	元素.offsetLeft
+			 		自身左外边界到定位父级的左内边界的距离，不带单位
+			 	元素.offsetTop
+			 		自身上外边界到定位父级的上内边界的距离，不带单位	
+			 * 
+			 * */
+			var div1 = document.getElementById('div1');
+			var div2 = document.getElementById('div2');
+			var div3 = document.getElementById('div3');
+			console.log(div2.offsetLeft)
+		</script>
+	</body>
+</html>

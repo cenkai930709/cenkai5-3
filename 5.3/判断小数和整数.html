@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="" value="" />
+		<input type="button"value="按钮" />
+		<script type="text/javascript">
+			var inps=document.getElementsByTagName('input');
+			inps[1].onclick=function(){
+				var val=inps[0].value;
+				if(parseInt(val)==parseFloat(val)){
+					alert('整数')
+				}else{
+					alert('小数')
+				}
+			}
+		</script>
+	</body>
+</html>

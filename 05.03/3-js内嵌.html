@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script>
+			//单行注释ctrl+/
+			
+			/*
+			 	多行注释
+			 	ctrl+shift+/
+			 * */
+			
+			/*
+			 	内嵌js
+			 		推荐位置：
+			 			body的结束标签上边
+			 		如果放在head里，处理
+			 		窗口加载完执行
+			 		window.onload = function(){
+			 	代码写这里	
+			 		}
+			 			
+			 			
+			 *  通过id的方式获取元素
+			 * document.getElementById('id名')
+			 * 
+			 * 注意：
+			 * 		1.必须是document
+			 * 		2.括号里id名加引号
+			 * 
+			 * 给元素的点击事件绑定处理函数
+			 * 元素.onclick = function(){
+			 		点击后要执行的代码	
+			 * }
+			 * 
+			 * 
+			 * 调试代码错误的工具：
+				 * 控制台，打印
+				 * console.log()
+				 * 详细信息
+				 * console.dir()
+				 * alert():暂停代码执行
+			 * */
+			document.getElementById('div1').onclick = function(){
+				alert(1)
+			}
+			console.dir(document.getElementById('div1'))
+		</script>
+	</body>
+</html>

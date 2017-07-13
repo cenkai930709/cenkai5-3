@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	其他浏览器
+			 		onmousewheel
+			 		ev.wheelDelta
+			 			向上：120整数倍
+			 			向下：-120整数倍
+			 	火狐
+			 		DOMMouseScroll，必须用addEventListener添加
+			 		ev.detail
+			 			向上：-3整数倍
+			 			向下：3整数倍
+			 * 
+			 * */
+//			document.onmousewheel = function(ev){
+//				console.log(ev.wheelDelta)
+//			}
+//			document.addEventListener('DOMMouseScroll',function(ev){
+//				console.log(ev.detail)
+//			})
+			document.onmousewheel=function(ev){
+				console.log(ev.wheelDelta)
+			}
+			document.addEventListener('DOMMouseScroll',function(ev){
+				console.log(ev.detail)
+			})
+			
+			
+		</script>
+	</body>
+</html>

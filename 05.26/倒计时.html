@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		时：<input type="text"  />
+		分：<input type="text"  />
+		秒：<input type="text"  />
+		<input type="button"  value="开始" /><br><br><br>
+		<img src="images/0.jpg"/>
+		<img src="images/0.jpg"/>
+		<img src="images/c.jpg"/>
+		<img src="images/0.jpg"/>
+		<img src="images/0.jpg"/>
+		<img src="images/c.jpg"/>
+		<img src="images/0.jpg"/>
+		<img src="images/0.jpg"/>
+		<script type="text/javascript">
+		/*
+			 * 当前时间
+			 * 设置的目标时间
+			 * 1s=1000ms
+			 * 1m=60s
+			 * 1h=3600s
+			 * 1t=86400s
+			 * 
+			 * 剩余天：Math.floor(shyTime/86400)
+			 * 剩余时：Math.floor(shyTime%86400/3600)
+			 * 剩余分：Math.floor(shyTime%86400%3600/60)
+			 * 剩余秒：Math.floor(shyTime%60)
+			 * 
+			 */
+			var imgs=document.getElementsByTagName('img');
+			var inps=document.getElementsByTagName('input');
+			inps[3].onclick=function(){
+				var h=inps[0].value||0;
+				var m=inps[1].value||0;
+				var s=inps[2].value||0;
+				//设置时分秒
+				var data=new Date();
+				data.setHours(h);
+				data.setMinutes(m);
+				data.setSeconds(s);
+				var onOff=true;
+				var timer=null;
+				timer=setInterval(function(){
+					var New=new Date();
+					//设定时间减去当前时间等于剩余时间
+					var shyTime=(data-New)/1000;
+					if(shyTime>0){
+						var syH=Math.floor(shyTime%86400/3600);
+						var syM=Math.floor(shyTime%86400%3600/60);
+						var syS=Math.floor(shyTime%60);
+						var str='';
+						str+=tew(syH)+':'+tew(syM)+':'+tew(syS);
+						for(var i=0;i<imgs.length;i++){
+							if(i==2||i==5){
+								continue;
+							}
+							imgs[i].src='images/'+str[i]+'.jpg';
+						}
+					}else{
+						alert('时间到了')
+					}
+				},1000)
+			}
+			function tew(n){
+				return n<10?'0'+n:''+n;
+			}
+		</script>
+	</body>
+</html>

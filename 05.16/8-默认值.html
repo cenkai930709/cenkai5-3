@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	b：0-3之间的整数，1代表：
+			 * */
+			function fn(init){
+				//如果传入的值转布尔值正好是false,需要加一个条件判断
+				if(init.b!==0){
+					//没传值，默认值是undefined
+					//传值，b=传的值，没转值，默认是1
+					init.b = init.b || 1;
+				}
+				//console.log(init.a,init.b,init.c)
+			}
+			//要传入多个值，一般我们用对象传入
+			fn({
+				c:3,
+				a:1
+			})
+			
+			//ES6新增默认值
+			//在形参赋值默认值
+			function fn1(a,b=1,c){
+				console.log(a,b,c)
+			}
+			fn1(1,0,3)
+		</script>
+	</body>
+</html>

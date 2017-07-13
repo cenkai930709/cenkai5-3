@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    	
+    </style>
+</head>
+<body>
+<table border="1" id="tab">
+    <thead>
+	    <tr>
+	        <td>编号</td>
+	        <td>姓名</td>
+	        <td>年龄</td>
+	        <td>性别</td>
+	    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+    var data=[
+        {
+            id:1,
+            name:'小明',
+            age:18,
+            sex:'男'
+
+        },
+        {
+            id:2,
+            name:'小红',
+            age:22,
+            sex:'女'
+
+        },
+        {
+            id:3,
+            name:'小强',
+            age:22,
+            sex:'男'
+
+        },
+        {
+            id:4,
+            name:'小丽',
+            age:24,
+            sex:'女'
+
+        }
+     ];
+    var taH = document.getElementById('tab');
+    var tab = taH.tBodies[0];
+    data.forEach(function(a){
+        var tr = tab.insertRow();
+        for(var k in a){
+            var td=tr.insertCell();
+            td.innerHTML=a[k];
+        }
+        return tr;
+    })
+</script>
+</body>
+</html>

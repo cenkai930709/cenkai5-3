@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 330px;
+				height:330px;
+				position: relative;
+			}
+			#box div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				float: left;
+				margin-right:10px;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<script type="text/javascript">
+			var divs = document.getElementById('box').getElementsByTagName('div');
+			//布局转换，浮动布局转成定位布局
+			for(var i=0;i<divs.length;i++){
+				//offsetLeft获取元素左到定位父级左的距离
+				divs[i].style.left = divs[i].offsetLeft + 'px';
+				divs[i].style.top = divs[i].offsetTop + 'px';
+				//元素是定位属性，浮动立马消失，所以不能获取正确的offsetLeft，可以利用定时器特性处理，就能获取到正确的了
+				setTimeout(function(i){
+					divs[i].style.position = 'absolute';
+				},0,i)	
+			}
+		</script>
+	</body>
+</html>

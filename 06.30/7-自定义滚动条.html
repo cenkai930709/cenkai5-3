@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 50px;
+				height: 500px;
+				background: #000;
+				position: relative;
+				float: left;
+			}
+			span{
+				position: absolute;
+				top:0;
+				left:0;
+				width: 50px;
+				height: 50px;
+				background: red;
+			}
+			#div{
+				width: 100px;
+				height: 100px;
+				background: blue;
+				float: left;
+				margin-left:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<span></span>
+		</div>
+		<div id="div"></div>
+		<script>
+			var box = document.getElementById('box');
+			var sp = box.getElementsByTagName('span')[0];
+			var div = document.getElementById('div');
+			sp.onmousedown = function(ev){
+				var disY = ev.clientY - this.getBoundingClientRect().top;
+				var maxT = box.clientHeight - this.offsetHeight;
+				document.onmousemove = function(ev){
+					var y = ev.clientY-disY-box.getBoundingClientRect().top;
+					if(y<0){
+						y = 0;
+					}
+					if(y>maxT){
+						y = maxT;
+					}
+					sp.style.top = y+'px';
+					var scale = y/maxT;
+					div.style.width = scale*400+100+'px';
+					div.style.height = scale*400+100+'px';
+				}
+				document.onmouseup = function(){
+					document.onmousemove = document.onmouseup = null;
+				}
+			}
+		</script>
+	</body>
+</html>

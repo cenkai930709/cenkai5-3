@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<div id="div1"></div>
+		<script>
+			/*
+			 	n++
+			 		先赋值后++
+			 	++n
+			 		先++后赋值
+			 * */
+			var arr = ['red','blue','yellow','green'];
+			var btn = document.getElementById('btn');
+			var div1 = document.getElementById('div1');
+			var n = 0;
+//			n++;
+//			n++;
+//			console.log(n++)
+//			console.log(n)
+//			console.log(++n)
+//			console.log(n)
+			btn.onclick = function(){
+				//n++;
+				//++n;
+//				div1.style.background = arr[n];
+//				div1.style.background = arr[n++];
+				div1.style.background = arr[++n];
+			}
+		</script>
+	</body>
+</html>

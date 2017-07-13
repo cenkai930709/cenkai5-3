@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	函数.call(新this对象,实参1,实参2...)
+			 	函数.apply(新this对象,[实参1,实参2...])
+			 	apply第二个参数可以传arguments或数组
+			 		改变函数内this指向
+			 * */
+			var j = {
+				a:1,
+				fn:function(){
+					console.log(this.a)
+				}
+			}
+			var j2 = {
+				a:2
+			}
+			j.fn.call(j2)
+		</script>
+	</body>
+</html>

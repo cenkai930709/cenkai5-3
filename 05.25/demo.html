@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//left:0,top:0
+			var attrs ={
+				left:400,
+				top:300
+			}
+			var j = {};
+			for(var k in attrs){
+				j[k] = {};
+				j[k].b = 100;
+				j[k].c = attrs[k]-j[k].b
+			}
+			console.log(j)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	break,终止,跳出循环
+			 	终止break后续代码执行，同时跳出循环，后边的循环也不执行
+			 * 
+			 * */
+			for(var i=0;i<10;i++){
+				//console.log(i)
+				if(i>5){
+					break;
+				}
+				//console.log(i)
+			}
+			var arr = [1,2,3,4,5];
+			for(var k in arr){
+				if(k>2){
+					break;
+				}
+				console.log(arr[k])
+			}
+			function fn(){
+				//只能用在终止循环，不能终止函数执行
+				console.log(1)
+				break;
+				console.log(2)
+			}
+		</script>
+	</body>
+</html>

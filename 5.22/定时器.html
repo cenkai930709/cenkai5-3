@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				font-size: 25px;
+				float: left;
+				border:1px solid #000;
+				margin-right: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>1</div>
+		<div>1</div>
+		<div>1</div>
+		<script type="text/javascript">
+			var divs=document.getElementsByTagName('div');
+			for(var i=0;i<divs.length;i++){
+				divs[i].n=1;
+				divs[i].onclick=function(){
+					var _this=this;
+					
+					this.timer=setInterval(function(){
+						_this.n++;
+						if(_this.n==10){
+							clearInterval(_this.timer);
+							return
+						}
+						_this.innerHTML=_this.n;
+						
+						
+					},1000)
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var arr = ['red','yellow','blue','green'];
+			var str = '';
+			var n = 1;
+			for(var i=0;i<100;i++){
+				str += '<div style="width:50px;height:50px;position:absolute;left:'+i%10*60+'px;top:'+Math.floor(i/10)*60+'px;background:'+arr[0]+';"></div>'
+			}
+			document.body.innerHTML = str;
+			var divs = document.getElementsByTagName('div');
+			for(var i=0;i<divs.length;i++){
+				divs[i].onOff = false;
+				divs[i].onmouseover = function(){
+					this.style.background=arr[n%arr.length];
+					this.onOff=true;
+					for(var i=0;i<divs.length;i++){
+						if(divs[i].onOff===false){
+							break;
+						}
+					}
+					if(i===100){
+						n++;
+						for(var i=0;i<divs.length;i++){
+							divs[i].onOff=false;
+						}
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

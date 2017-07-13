@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+<script type="text/javascript">
+	var data = [
+		{
+			id:1,
+			name:'小白1',
+			child:[
+				{
+					id:5,
+					name:'小红5',
+					child:[
+					   {
+					   	  id:8,
+					   	  name:'小明8',
+					   	  child:[]
+					   },
+					   {
+					   	  id:9,
+					   	  name:'小明9',
+					   	  child:[]
+					   },
+					   {
+					   	  id:10,
+					   	  name:'小明10',
+					   	  child:[]
+					   }
+					]
+				},
+				{
+					id:6,
+					name:'小红6',
+					child:[]
+				},
+				{
+					id:7,
+					name:'小红7',
+					child:[
+						{
+					   	  id:11,
+					   	  name:'小明11',
+					   	  child:[]
+					   },
+					   {
+					   	  id:12,
+					   	  name:'小明12',
+					   	  child:[]
+					   }
+					]
+				}
+			]
+		},
+		{
+			id:2,
+			name:'小白2',
+			child:[]
+		},
+		{
+			id:3,
+			name:'小白3',
+			child:[
+				{
+					id:13,
+					name:'小红13',
+					child:[
+					   {
+					   	  id:14,
+					   	  name:'小明14',
+					   	  child:[]
+					   },
+					   {
+					   	  id:15,
+					   	  name:'小明15',
+					   	  child:[]
+					   },
+					   {
+					   	  id:16,
+					   	  name:'小明16',
+					   	  child:[]
+					   }
+					]
+				},
+				{
+					id:17,
+					name:'小红17',
+					child:[]
+				},
+				{
+					id:18,
+					name:'小红18',
+					child:[
+						{
+					   	  id:19,
+					   	  name:'小明19',
+					   	  child:[]
+					   },
+					   {
+					   	  id:20,
+					   	  name:'小明20',
+					   	  child:[]
+					   }
+					]
+				}
+			]
+		},
+		{
+			id:4,
+			name:'小白4',
+			child:[]
+		}
+	];
+	var n = 0;
+	//根据id,在多维数组里，用递归找到目标数据并返回
+	function getData(arr,id){
+		var obj = null;
+		fn(arr);
+		function fn(arr){
+			//forEach不能终止循环，找到了目标，还要继续后续循环，forEach里写return,fn没有返回值，
+			//arr.forEach(function(){
+				
+			//})
+			for(var k of arr){
+				n++;
+				console.log(n)
+				//终止条件，找到了目标就停
+				if(k.id==id){
+					obj = k;
+					return;
+				}
+				if(k.child.length){
+					fn(k.child);
+				}	
+			}
+		}
+		return obj;
+	}
+	console.log(getData(data,1))
+</script>
+	</body>
+</html>

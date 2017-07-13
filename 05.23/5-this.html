@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	this对象
+			 		指针，指向该函数的执行环境
+			 		全局环境下，window
+			 		函数内部，this指向函数执行环境
+			 * 
+			 * */
+			//alert(this)
+//			div.onclick = function(){
+//				this
+//			}
+//			var div = {
+//				onclick:function(){
+//					this
+//				}
+//			}
+			var j = {
+				a:1,
+				fn:function(){
+					console.log(this.a)
+				}
+			}
+			j.fn()//j
+			
+			var arr = [function(){
+				console.log(this)
+			}]
+			arr[0]()//arr
+		</script>
+	</body>
+</html>

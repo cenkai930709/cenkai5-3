@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+		<script>
+			var lis = document.getElementsByTagName('li');
+			for(var i=0;i<lis.length;i++){
+				//console.log(i)
+				lis[i].index = i;
+				lis[i].onclick = function(){
+					//点哪个li都是i=6
+					//console.log(i)
+					//1.this
+					//this.style.background = 'red'
+					//2.索引值
+					lis[this.index].style.background = 'red'
+				}
+
+			}
+			//console.log(lis[1].index)
+		</script>
+	</body>
+</html>

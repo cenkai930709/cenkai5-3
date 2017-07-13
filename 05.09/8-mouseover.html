@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+			#box div{
+				width: 100px;
+				height: 100px;
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div></div>
+		</div>
+		<script>
+			var box = document.getElementById('box');
+			/*
+			 	mouseover
+			 		鼠标从元素外移入元素内，从元素内移入子元素，都会触发
+			 		
+			 	mouseout
+			 		鼠标从元素内移到元素外，从元素内移入子元素，都会触发
+			 * */
+			box.onmouseover = function(){
+				console.log('mouseover')
+			}
+			box.onmouseout = function(){
+				console.log('mouseout')
+			}
+		</script>
+	</body>
+</html>

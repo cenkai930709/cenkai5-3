@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	<script type="text/javascript">
+		/*
+		 * 选择题
+		 	1.B
+		 	2.BCD
+		 	3.B
+		 	4.B
+		 	5.C
+		 	6.B
+		 	7.ABCD
+		 	8.B
+		 	9.B
+		 	10.D
+		 	11.C
+		 	12.AD
+		 	13.B
+		 	14.A
+		 	15.C
+		 	16.B
+		 	17.C
+		 	18.D
+		 	19.ABC
+		 	20.AAB
+		 	21.DD
+		 	22.AC
+		 	23.A
+		 	24.BAB
+		 	25.C
+		 	26.D
+		 	27.A
+		 	28.BC
+		 	29.B
+		 	30.A
+		 * 
+		 * */
+		//问答题
+		//1.
+//		var divs = document.getElementsByTagName('div');
+//		var arr = [-1,-2,-6,-10,-4,-8];
+//		function fn(arr){
+//			//方法1
+////			var max = -Infinity;
+////			//var max = arr[0];
+////			for(var i=0;i<arr.length;i++){
+////				if(max<arr[i]){
+////					max = arr[i];
+////				}
+////			}
+////			return max;
+//			//方法2
+////			arr.sort(function(a,b){
+////				return b-a;
+////			})
+////			return arr[0];
+//			//方法3
+//			//return Math.max.apply(null,arr)
+//			console.log(Array.prototype.slice)
+//			return Array.prototype.slice.call(arr)
+//		}
+		//console.log(fn(1,2,3,4,5,6))
+		
+//		var f = fn(divs);
+//		f.push(1);
+//		console.log(f)
+		//console.log(Math.max(-1,-2,-6,-10,-4,-8))
+		
+		
+		
+		
+		
+		
+		//2
+//		var str = 'miao-wei-ke-tang';
+//		function fn(str){
+//			var arr = str.split('-');
+//			//[miao,wei,ke,tang]
+//			for(var i=1;i<arr.length;i++){
+//				arr[i] = arr[i][0].toUpperCase()+arr[i].substr(1);
+//			}
+//			console.log(arr)
+//			return arr.join('');
+//			
+//		}
+//		console.log(fn(str))
+
+
+		//3
+//		var data = [
+//			{
+//				name:'小白1',
+//				age:18,
+//				sex:'man',
+//				marry:false
+//			},
+//			{
+//				name:'小白2',
+//				age:35,
+//				sex:'woman',
+//				marry:false
+//			},
+//			{
+//				name:'小白3',
+//				age:28,
+//				sex:'man',
+//				marry:true
+//			},
+//			{
+//				name:'小白4',
+//				age:38,
+//				sex:'man',
+//				marry:true
+//			},
+//			{
+//				name:'小白5',
+//				age:22,
+//				sex:'woman',
+//				marry:false
+//			}
+//		];
+//		function fn(arr){
+//			return arr.filter(function(a){
+//				return a.age<30&&a.sex=='man'&&!a.marry;
+//			})
+//		}
+//		console.log(fn(data))
+
+
+       //4
+//     var str = 'abcabcabcabcabcabda';
+//     var target = 'ab';
+//     function fn(str,target){
+//     		return str.split(target).length-1;
+//     }
+//     console.log(fn(str,target))
+       
+       
+       //5
+       function fn(){
+       	   var arr = [];
+       	   while(arr.length<10){
+       	   		var num = Math.round(Math.random()*100);
+       	   		if(!arr.includes(num)){
+       	   			arr.push(num);
+       	   		}
+       	   }
+       	   return arr;
+       }
+       //console.log(fn())
+       function fc(){
+       	var arr=[];
+       	while(arr.length<10){
+       		var num=Math.round(Math.random()*100)
+       		if(!arr.includes(num)){
+       			arr.push(num)
+       		}
+       	}
+       	return arr;
+       }
+       console.log(fc())
+       
+       
+	</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				float: left;
+				padding:10px 20px;
+				border:1px solid #000;
+			}
+			#list{
+				width: 75px;
+				border:1px solid #000;
+				position: absolute;
+				top:50px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">导航</div>
+		<ul id="list">
+			<li>菜单</li>
+			<li>菜单</li>
+			<li>菜单</li>
+		</ul>
+		<script type="text/javascript">
+			var box = document.getElementById('box');
+			var list = document.getElementById('list');
+			var timer = null;
+			box.onmouseover = function(){
+				clearTimeout(timer);
+				list.style.display = 'block';
+			}
+			box.onmouseout = function(){
+			timer = setTimeout(function(){
+					list.style.display = '';
+				},500)
+				
+			}
+			list.onmouseover = function(){
+				clearTimeout(timer);
+			}
+			list.onmouseout = function(){
+				timer = setTimeout(function(){
+					list.style.display = '';
+				},500)
+				
+			}
+		</script>
+	</body>
+</html>

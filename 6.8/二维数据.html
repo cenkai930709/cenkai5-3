@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 660px;
+				height: 660px;
+				margin:50px auto 0;
+				position: relative;
+			}
+			#box div{
+				width: 50px;
+				height: 50px;
+				background: red;
+				line-height: 50px;
+				text-align: center;
+				border: 2px solid #fff;
+				border-radius:20px ;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			var box=document.getElementById('box');
+			var row=10;
+			var cell=10;
+			var n=0;
+			var arr=['red','yellow','blue','green','orange','purple'];
+			var boxs=[];
+			for(var i=0;i<row;i++){
+				boxs[i]=[];
+			}
+			//console.log(boxs)
+			var str='';
+			for(var i=0;i<row;i++){
+				for(var j=0;j<cell;j++){
+					str+='<div style="top:'+i*56+'px;left:'+j*56+'px;"></div>';
+				}
+			}
+			box.innerHTML=str;
+			var divs=box.getElementsByTagName('div');
+			for(var i=0;i<divs.length;i++){
+				divs[i].innerHTML=i+1;
+				divs[i].x=i%cell;
+				divs[i].y=Math.floor(i/row);
+				boxs[i%cell].push(divs[i]);
+				divs[i].color=Math.round(Math.random()*(arr.length-1));
+				divs[i].style.backgroundColor=arr[divs[i].color];
+				divs[i].onOff=true;
+				divs[i].onclick=function(){
+					for(var i=0;i<divs.length;i++){
+						divs[i].style.border='';
+						divs[i].onOff=true;
+					}
+					console.log(boxs[this.x][this.y])
+					fn(this.x,this.y)
+					
+				}
+			}
+			function fn(x,y){
+				if(!boxs[x][y].onOff){
+					return;
+				}
+				boxs[x][y].style.borderColor='#000';
+				boxs[x][y].onOff=false;
+				if(boxs[x+1]&&boxs[x][y].color==boxs[x+1][y].color){
+					fn(x+1,y);
+				}
+				if(boxs[x-1]&&boxs[x][y].color==boxs[x-1][y].color){
+					fn(x-1,y);
+				}
+				if(boxs[x][y+1]&&boxs[x][y].color==boxs[x][y+1].color){
+					fn(x,y+1);
+				}
+				if(boxs[x][y-1]&&boxs[x][y].color==boxs[x][y-1].color){
+					fn(x,y-1);
+				}
+			}
+		</script>
+	</body>
+</html>

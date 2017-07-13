@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				height: 100px;
+				width: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="btn" value="按钮" />
+		<div id="box"></div>
+		<script type="text/javascript">
+			var box=document.getElementById('box');
+			var btn=document.getElementById('btn');
+			var onOff=true;
+			btn.onclick=function(){
+				if(onOff){
+					move(box,'left',1000,400,function(){
+						move(box,'top',1000,400,function(){
+							move(box,'left',1000,0,function(){
+								move(box,'top',1000,50)
+							})
+						})
+					})
+				}else{
+					move(box,'top',1000,400,function(){
+						move(box,'left',1000,400,function(){
+							move(box,'top',1000,50,function(){
+								move(box,'left',1000,0)
+							})
+						})
+					})
+				}
+				onOff=!onOff;
+				
+			}
+			function move(obj,attr,duration,target,callBack){
+				var b = css(obj,attr);
+				var c = target-b;
+				
+				var d = duration;
+				//记录运动开始时间
+				var start = new Date();
+				//关闭定时器
+				clearInterval(obj.timer)
+				//
+				obj.timer=setInterval(function(){
+					//当前时间
+					var now = new Date();
+					//已经运到时间=当前时间-运动开始时间
+					var t = now-start;
+					if(t>=d){
+						t=d;
+					}
+					//当前运动到的位置计算
+					var v = b+c/d*t;
+					//赋值移动到当前应运动到的位置
+					css(obj,attr,v)
+					//到达设定时间，关闭定时器，如果有回调函数执行回调函数
+					if(t==d){
+						clearInterval(obj.timer);
+						typeof callBack=='function'&&callBack.call(obj)
+					}
+					
+				},20)
+			}
+			function css(obj,attr,val){
+				//2个参数是获取样式，3个参数是设置样式
+				//typeof val=='undefined',也可以用来判断是获取还是设置
+				if(arguments.length==2){
+					//获取
+					var v = parseFloat(getComputedStyle(obj)[attr]);
+					if(attr == 'opacity'){
+						//Math.round，四舍五入
+						v = Math.round(v*100);
+					}
+					return v;
+				}
+				//设置
+				if(attr == 'opacity'){
+					val = val/100;
+					obj.style[attr] = val;	
+				}else{
+					obj.style[attr] = val+'px';	
+				}	
+			}
+		</script>
+	</body>
+</html>

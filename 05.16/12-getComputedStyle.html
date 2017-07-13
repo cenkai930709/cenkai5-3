@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				transition: 3s;
+				transform: rotate(45deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box" style="width:200px;"></div>
+		<script>
+			/*
+			 	getComputedStyle(元素对象)
+					获取某个元素对象渲染到页面上，计算后的样式的对象,带单位
+				getComputedStyle(元素对象).样式名
+				获取复合样式,颜色,css3需要注意下
+			 * */
+			var box = document.getElementById('box');
+			console.log(getComputedStyle(box).transform)
+		</script>
+	</body>
+</html>

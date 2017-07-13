@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1" class="" style=""></div>
+		<script>
+			/*
+			 	属性操作
+			 		操作的是行间属性，可读可写
+			 * 	通过.的方式
+			 * 		不满足小驼峰命名，带-，去掉-,后边单词首字符大写
+			 * 	通过[]的方式
+			 * 		变量必须用[]
+			 * */
+			var div1 = document.getElementById('div1');
+			console.dir(div1)
+			//console.log(div1.id);
+			console.log(div1.style)
+//			div1.style.width = '100px';
+//			div1.style.height = '100px';
+//			div1.style.backgroundColor='red';
+			var w = 'width'
+			div1.style[w] = '100px';
+			div1.style.height = '100px';
+			div1.style['background-color']='red';
+
+			/*
+			 	数据类型简单了解
+			 	字符串：''
+			 	数字：1
+			 	未定义：undefined
+			 	空：null
+			 	对象：键值对
+			 		键:值
+			 	布尔值：true false	
+			 * 
+			 * */
+		</script>
+	</body>
+</html>

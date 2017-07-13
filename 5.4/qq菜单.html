@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul,ol{
+				padding: 0;
+				margin: 0;
+			}
+			li{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+				color: blue;
+				width: 100%;
+				text-align: center;
+			}
+			h2{
+				margin: 0;
+				background: url(img/right.gif) no-repeat 10px center #ccc;
+				padding-left: 20px;
+				line-height: 30px;
+			}
+			ul{
+				border: 1px solid #000000;
+				width: 150px;
+				margin: 100px auto;
+			}
+			ol{
+				display: none;
+			}
+			ol li{
+				display: block;
+				line-height: 30px;
+				border-top: 1px solid blue;
+				text-align: center;
+				cursor: pointer;
+			}
+			ol li:only-child(1){
+				display: none;
+			}
+			ol li.active{
+				background: pink;
+			}
+			h2.active{
+				background: url(img/down.gif)no-repeat 8px center #ccc;
+			}
+			h2.active+ol{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<h2><a href="javascript:;">我的好友</a></h2>
+				<ol>
+					<li>张三</li>
+					<li>张三</li>
+					<li>张三</li>
+					<li>张三</li>
+				</ol>
+			</li>
+			<li>
+				<h2><a href="javascript:;">企业好友</a></h2>
+				<ol>
+					<li>李三</li>
+					<li>李三</li>
+					<li>李三</li>
+					<li>李三</li>
+				</ol>
+			</li>
+			<li>
+				<h2><a href="javascript:;">黑名单</a></h2>
+				<ol>
+					<li>张三李</li>
+					<li>张三李</li>
+					<li>张三李</li>
+					<li>张三李</li>
+				</ol>
+			</li>
+		</ul>
+		<script type="text/javascript">
+			/*
+	 	1.点击h2
+	 		上一次和这次点的是同一个H2,展开收缩
+	 		上一次和这次点的不是同一个H2,收缩上一个，展示这一个
+	 	2.点击li
+	 		上一次和这次点的是同一个li,高亮/取消高亮
+	 		上一次和这次点的不是同一个li,取消上一个，高亮这一个
+	 * 		
+	 * */
+		//h2点击事件
+		var hs=document.getElementsByTagName('h2');
+		//for循环h2
+		for(var i=0;i<hs.length;i++){
+			hs[i].onOff=false;
+			hs[i].onclick=function(){
+				if(this.onOff){
+					this.className='';
+					this.onOff=false;
+				}else{
+					for(var i=0;i<hs.length;i++){
+						hs[i].className='';
+						hs[i].onOff=false;
+					}
+					this.className='active';
+					this.onOff=true;
+				}
+			}
+		}
+		//li点击事件
+		var ols=document.getElementsByTagName('ol');
+		for(var i=0;i<ols.length;i++){
+			var lis=ols[i].getElementsByTagName('li');
+			for(var j=0;j<lis.length;j++){
+				lis[j].index = ols[i];
+				lis[j].onOff=false;
+				lis[j].onclick=function(){
+					var lis=this.index.getElementsByTagName('li');
+					if(this.onOff){
+						this.className='';
+						this.onOff=false;
+					}else{
+						for(var i=0;i<lis.length;i++){
+							lis[i].className='';
+							lis[i].onOff=false;
+						}
+						this.className='active';
+						this.onOff=true;
+					}
+				}
+			}
+		}
+		
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				padding:100px;
+				border: 10px solid #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<span>内容</span>
+		<script type="text/javascript">
+			/*
+			 	offsetWidth/offsetHeight
+			 		占位尺寸
+			 	width+padding+border	
+			 		
+			 * 
+			 * */
+			var box = document.getElementById('box');
+			var span = document.getElementsByTagName('span')[0];
+			console.log(box.offsetHeight)
+			console.log(box.offsetWidth)
+//			console.log(span.offsetHeight)
+//			console.log(span.offsetWidth)
+		</script>
+	</body>
+</html>

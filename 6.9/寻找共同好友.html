@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			var data = [
+//				{
+//					name:'小妙',
+//					friends:['小白','小红','小黑']
+//				},
+//				{
+//					name:'小味',
+//					friends:['小白','小兰','小黑','小红']
+//				},
+//				{
+//					name:'小乐',
+//					friends:['小白','小红','小美']
+//				},
+//				{
+//					name:'小仙',
+//					friends:['小白','小玉','小黑','小红']
+//				}
+//			];
+//			function fn(data){
+//				var f=[];
+//				var t=data[0].friends;
+//				t.forEach(function(a){
+//					if(data.every(function(b){
+//						return b.friends.includes(a);
+//					})){
+//						f.push(a)
+//					}
+//				})
+//				return f;
+//			}
+//			console.log(fn(data))
+			//随机选择颜色
+//			function fn1(n){
+//				var arr=['pink','red','yellwo','blue'];
+//				arr.sort(function(a){
+//					return Math.random()-0.5;
+//				})
+//				return arr[arr.length-1];
+//			}
+//			console.log(fn1());
+			//找到最多的放回
+			var str='jshajkshjfaxusdajjujasbdfyuas';
+			function fn2(str){
+				var j={};
+				for(var i=0;i<str.length;i++){
+					if(j[str[i]]){
+						j[str[i]]++;
+					}else{
+						j[str[i]]=1;
+					}
+				}
+				var max={
+					name:'',
+					num:0
+				}
+				for(var k in j){
+					if(j[k]>max.name){
+						max.name=j[k];
+						max.num=k;
+					}
+				}
+				return max;
+			}
+			console.log(fn2(str));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#txt::selection{
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="" id="a">跳转</a>
+		<input type="text" id="txt"/>
+		<select name="" id="sel">
+			<option value="">1</option>
+			<option value="">2</option>
+		</select>
+		<input type="button" value="按钮" id="btn"/>
+		<script>
+			/*
+			 	焦点事件
+			 		不是所有元素都有焦点事件，只有可交互性的元素才有，比如表单元素，a标签
+			 		页面中只能有一个元素有焦点，一个聚焦，另一个就失焦，默认在document
+			 * 
+			 *  onfocus
+			 * 		聚焦触发事件
+			 *  onblur
+			 * 		失焦触发事件
+			 *  focus()聚焦方法
+			 *  blur()失焦方法
+			 * 	select()聚焦，并且选中文本
+			 *  setSelectionRange(start,end)
+			 * 	选中范围文本，从start位置到end位置，不包含end位置，选中，focus()后才能看得到
+			 * 
+ 
+			 *  切换焦点3种方法
+			 * 	1.鼠标点击
+			 *  2.tab
+			 *  3.js方法
+			 * */
+			var a = document.getElementById('a');
+			var txt = document.getElementById('txt');
+			var sel = document.getElementById('sel');
+			var btn = document.getElementById('btn');
+			a.onfocus = function(){
+				console.log('a-focus')
+			}
+			txt.onfocus = function(){
+				console.log('txt-focus')
+			}
+			sel.onfocus = function(){
+				console.log('sel-focus')
+			}
+			a.onblur = function(){
+				console.log('a-blur')
+			}
+			txt.onblur = function(){
+				console.log('txt-blur')
+			}
+			sel.onblur = function(){
+				console.log('sel-blur')
+			}
+			btn.onOff = true;
+			btn.onclick = function(){
+//				if(this.onOff){
+//					txt.focus();
+//				}else{
+//					txt.blur();
+//				}
+//				this.onOff = !this.onOff;
+				//txt.select();
+				txt.setSelectionRange(1,5);
+				txt.focus();
+			}
+		</script>
+	</body>
+</html>

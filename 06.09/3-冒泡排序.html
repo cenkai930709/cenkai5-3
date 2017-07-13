@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [1,2,5,3,8,7,6,4];
+			//冒泡排序，两两比较，如果前边比后边大，就交换位置，大的放后边，最后得到从小到大排序后的数组
+			//1,2,3,5,6,5,7,8
+			var n = 0;
+			function bubbleSort(arr){
+				//比较多少轮，第一次得到最大，第二次得到第二大
+				for(var i=0;i<arr.length-1;i++){
+					//每一轮两两比较
+					var onOff = true;
+					for(var j=0;j<arr.length-1-i;j++){
+						//如果前边比后边大，交换位置
+						if(arr[j]>arr[j+1]){
+							var a = arr[j];
+							var b = arr[j+1];
+							arr[j] = b;
+							arr[j+1] = a;
+							//如果有交换，就变false
+							onOff = false;
+						}
+						n++;
+					}
+					//如果这一轮都没有交换，证明已经排好了，break
+					if(onOff){
+						break;
+					}
+				}
+				return arr;
+			}
+			console.log(bubbleSort(arr))
+			console.log(n)
+		</script>
+	</body>
+</html>

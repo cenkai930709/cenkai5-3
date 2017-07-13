@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+		a{
+			text-decoration: none;
+			font-size: 50px;
+		}
+		.red{
+			color:red;
+		}
+		.green{
+			color:green;
+		}
+		.yellow{
+			color:yellow;
+		}
+		</style>
+	</head>
+	<body>
+		<p>
+		<a href="javascript:;">★</a>
+		<a href="javascript:;">★</a>
+		<a href="javascript:;">★</a>
+		<a href="javascript:;">★</a>
+		<a href="javascript:;">★</a>
+		</p>
+		<script type="text/javascript">
+			var as=document.getElementsByTagName('a');
+			//声明负数
+			var n=-1;
+			for(var i=0;i<as.length;i++){
+				as[i].index=i;
+				//鼠标移入
+				as[i].onmouseover=function(){
+					//大清洗鼠标移入过的
+					for(var i=0;i<as.length;i++){
+						as[i].className='';
+					}
+					//判断鼠标移入小于2时，背景颜色为green，不是背景颜色为yellow
+					if(this.index<2){
+						for(var i=0;i<=this.index;i++){
+							as[i].className='green';
+						}
+						
+					}else{
+						for(var i=0;i<=this.index;i++){
+							as[i].className='yellow';
+						}
+						
+					}
+				}
+				//鼠标移出
+				as[i].onmouseout=function(){
+					//大清洗鼠标移出为默认样式
+					for(var i=0;i<as.length;i++){
+						as[i].className='';
+					}
+					//判断n不等于-1时，执行的结果
+					if(n=>0
+					){
+						//循环n所有的值
+						for(var i=0;i<=n;i++){
+							//判断鼠标移出到n小于2时背景颜色为green，不是为yellow
+							if(n<2){
+								as[i].className='green';
+							}else{
+								as[i].className='yellow';
+							}
+						}
+					}
+				}
+				//鼠标点击
+				as[i].onclick=function(){
+					//n等于索引值鼠标点击到哪里n值，到哪里的星就变颜色
+					n=this.index;
+				}
+			}
+		</script>
+	</body>
+</html>

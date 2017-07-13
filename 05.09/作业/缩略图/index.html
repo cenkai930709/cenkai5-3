@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				height: 600px;
+				width: 800px;
+				margin: 50px auto ;
+				background: red;
+				position: relative;
+			}
+			.img1{
+				position: absolute;
+				left: 0;
+				top: 0;
+				height: 600px;
+				width: 800px;
+				background-size: 800px 600px;
+			}
+			a{
+				height: 50px;
+				width: 50px;
+				line-height: 50px;
+				text-decoration: none;
+				text-align: center;
+				background: #ccc;
+				color: #000000;
+				font-weight: 900;
+				font-size: 30px;
+				border-radius: 50%;
+			}
+			a:hover{
+				background: yellow;
+				color: red;
+			}
+			#prev{
+				position: absolute;
+				left: 10px;
+				top: 275px;
+			}
+			#next{
+				position: absolute;
+				right: 10px;
+				top: 275px;
+			}
+			.centent{
+				height: 400px;
+				width: 600px;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+			#img{
+				height: 100%;
+				width: 100%;
+			}
+			span{
+				float: left;
+				margin-right: 15px;
+				height: 15px;
+				width: 15px;
+				background: #ccc;
+				border-radius: 50%;
+				position: relative;
+			}
+			
+			span .imgs{
+				display: none;
+				position: absolute;
+				top: -80px;
+				left: -30px;
+				width: 70px;
+				height: 70px;
+				background-size: 50px 50px;
+			}
+			#footer{
+				width: 150px;
+				height: 15px;
+				position: absolute;
+				left: 320px;
+				bottom: 60px;
+			}
+			span.active{
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<img class="img1" src="img/5.jpg"/>
+			<a href="javasrcipt:;" id="prev"><</a>
+			<a href="javasrcipt:;" id="next">></a>
+			<div class="centent">
+				<img id="img" src=""/>
+			</div>
+			<div id="footer">
+				<span class="sps1">
+					<img class="imgs" src="img/0.jpg"/>
+				</span>
+				<span class="sps2">
+					<img class="imgs" src="img/1.jpg"/>
+					
+				</span>
+				<span class="sps3">
+					<img class="imgs" src="img/2.jpg"/>
+					
+				</span>
+				<span class="sps4">
+					<img class="imgs" src="img/3.jpg"/>
+					
+				</span>
+				<span class="sps5">
+					<img class="imgs" src="img/4.jpg"/>
+					
+				</span>
+			</div>
+			
+		</div>
+		<script type="text/javascript">
+			var prev=document.getElementById('prev');
+			var next=document.getElementById('next');
+			var sps=document.getElementsByTagName('span');
+			var img=document.getElementById('img');
+			var imgs=document.getElementsByClassName('imgs');
+			var arr=['img/0.jpg','img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'];
+			var n=0;
+			//初始化
+			img.src=arr[n];
+			sps[n].className='active';
+			function forsps(){
+				for(var j=0;j<sps.length;j++){
+					sps[j].className='';
+				}
+				sps[n].className='active';
+				
+			}
+			//上一张
+			prev.onclick=function(){
+				n--;
+				if(n<0){
+					n=arr.length-1;
+				}
+				img.src=arr[n];
+				forsps();
+			}
+			//下一张
+			next.onclick=function(){
+				n++;
+				if(n>arr.length-1){
+					n=0;
+				}
+				img.src=arr[n];
+				forsps();
+			}
+			for(var i=0;i<sps.length;i++){
+				sps[i].index=i;
+				
+				//鼠标移入事件
+				sps[i].onmouseover=function(){
+					imgs[this.index].style.display='block';
+				}
+				//鼠标移出
+				sps[i].onmouseout=function(){
+					imgs[this.index].style.display='none';
+				}
+				//鼠标点击事件
+				sps[i].onclick=function(){
+					n=this.index;
+					img.src=arr[this.index];
+					for(var i=0;i<sps.length;i++){
+						sps[i].className='';
+						imgs[i].style.display='none';
+					}
+					this.className='active';
+					imgs[n].style.display='block';
+				}
+			}
+		</script>
+	</body>
+</html>

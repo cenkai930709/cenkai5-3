@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#list{
+				margin:0;
+				padding:0;
+				list-style: none;
+				width:200px;
+				line-height: 30px;
+				background: pink;
+				text-align: center;
+			}
+			li{
+				border-bottom:1px solid #000 ;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="txt"/>
+		<input type="button" value="发送" id="btn"/>
+		<ul id="list"></ul>
+		<script>
+			/*
+			 	1.获取元素
+			 	2.点击发送按钮
+			 	3.获取输入内容
+			 	4.生成一行信息
+			 * 
+			 * */
+			//1
+			var txt = document.getElementById('txt');
+			var btn = document.getElementById('btn');
+			var list = document.getElementById('list');
+			//2
+			btn.onclick = function(){
+				//3
+				var val = txt.value;
+				//4
+				list.innerHTML = '<li>'+val+'</li>';
+				//字符串+变量+字符串
+				//+连接符
+			}
+		</script>
+	</body>
+</html>

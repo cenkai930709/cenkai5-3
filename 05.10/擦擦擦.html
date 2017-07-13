@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div div{
+			position: absolute;
+			width: 50px;
+			height: 50px;
+		}
+		#list{
+			padding:0;
+			margin:0;
+			list-style: none;
+			position: absolute;
+			top:8px;
+			left:650px;
+		}
+		#div{
+			position: relative;
+		}
+		#list li{
+			position: absolute;
+			width: 50px;
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="div"></div>
+	<ul id="list"></ul>
+</body>
+</html>
+<script type="text/javascript">
+	var div = document.getElementById('div');
+	var list = document.getElementById('list');
+	var str = '';
+	var color = ['red','yellow','blue','green'];
+	for(var i=0;i<100;i++){
+		str += '<div style="top:'+Math.floor(i/10)*60+'px;left:'+i%10*60+'px;background:'+color[i%color.length]+';"></div>';
+	}
+	div.innerHTML = str;
+	var divs = div.getElementsByTagName('div');
+	var n = 0;
+	for(var i=0;i<divs.length;i++){
+		divs[i].index = i;
+		divs[i].onmouseover = function(){
+			this.style.background = 'url(img/pic.jpg)';
+			this.style.backgroundPosition = -this.index%10*60+'px '+-Math.floor(this.index/10)*60+'px';
+		}
+		divs[i].onOff = true;
+		divs[i].onclick = function(){
+			if(this.onOff){
+				this.onOff = false;
+				list.innerHTML += '<li style="background:url(img/pic.jpg) '+-this.index%10*60+'px '+-Math.floor(this.index/10)*60+'px ;left:'+n%10*60+'px;top:'+Math.floor(n/10)*60+'px;"></li>';
+				n++;
+			}
+			
+		}
+	}
+	
+</script>

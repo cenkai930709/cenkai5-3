@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	delete 删除对象下的属性
+			 * */
+			var obj = {
+				a:1,
+				b:2
+			}
+			
+			
+			var c = 10;
+			d = 20;
+			//delete c;
+			//delete d;
+			//console.log(c)
+			//console.log(d)
+			/*
+			 * 对象下属性的
+			 configurable:可不可以用delete删除,默认值true
+			 enumerable:可不可以用for in，默认值true
+			 writable:可不可以被修改，默认值：true
+			 value:默认值undefined
+			 * 
+			 * */
+			Object.defineProperty(obj,'a',{
+				configurable:false,
+				writable:false
+			})
+//			Object.defineProperty(window,'c',{
+//				configurable:true,
+//				writable:false
+//			})
+			delete obj.a;
+			//obj.a = 3
+			console.log(obj)
+		</script>
+	</body>
+</html>

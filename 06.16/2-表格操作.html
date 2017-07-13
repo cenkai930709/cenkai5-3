@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table{
+				border-collapse: collapse;
+			}
+		</style>
+	</head>
+	<body>
+		<table border="1" cellspacing="" cellpadding="" id="table">
+			
+		</table>
+		<script type="text/javascript">
+			/*
+			 * 新建插入
+			 	createTHead()  表头
+			 	createTBody()  表身
+			 	createTFoot()  表尾
+			 	
+			 *  insertRow([pos])  行
+			 *  pos:插入到第几行前，num
+			 *  不写参数，默认插入到最后一位
+			 * 
+			 *  insertCell([pos])  列
+			 *  pos:插入到第几列前，num
+			 *  不写参数，默认插入到最后一位
+			 * 
+			 *  deleteRow(pos)  删除行
+			 *  deleteCell(pos)  删除列
+			 *  pos:删除第几个
+			 * */
+			var table = document.getElementById('table');
+			table.createTHead();
+			table.createTBody();
+			table.createTFoot();
+//			table.deleteTFoot()
+//			table.deleteTHead()
+		var tr = table.tHead.insertRow();
+		tr.innerHTML = 1;
+		table.tHead.insertRow(0);
+		table.tHead.insertRow();
+		tr.insertCell()
+		tr.insertCell(0)
+		tr.deleteCell(0)
+		</script>
+	</body>
+</html>

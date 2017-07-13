@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left:0px;
+			}
+			div:nth-of-type(1){
+				top:50px;
+			}
+			div:nth-of-type(2){
+				top:160px;
+			}
+			div:nth-of-type(3){
+				top:270px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<div></div>
+		<div></div>
+		<div></div>
+		<script type="text/javascript">
+			var divs = document.getElementsByTagName('div');
+			var  btn = document.getElementById('btn');
+			btn.onclick = function(){
+				for(var i=0;i<divs.length;i++){
+					move(divs[i],'left',10,i*200+200,function(){
+						this.style.background = 'blue';
+						
+					})
+				}
+			}
+			/*
+			 	obj:要运动的元素,obj
+			 	attr:样式，str
+			 	speed:每次运动多少，num
+			 	target：目标点，num
+			 	callBack：回调函数，运动完要执行的代码，function
+			 * 
+			 * */
+			function move(obj,attr,speed,target,callBack){
+				//把定时器存在obj下，防止开多个定时器
+				//var timer = null;
+				clearInterval(obj.timer)
+				obj.timer = setInterval(function(){
+					var b = css(obj,attr);
+					b += speed;
+					if(b>=target){
+						b = target;
+					}
+					css(obj,attr,b);
+					if(b==target){
+						clearInterval(obj.timer);
+						//如果传进来的是函数，前边为真，返回后边，相当于函数执行，防止没传入时undefined()报错，或者传入的不是函数也会报错
+						typeof callBack == 'function'&&callBack.call(obj);
+					}
+				},20)
+			}
+			function css(obj,attr,val){
+				//2个参数是获取样式，3个参数是设置样式
+				//typeof val=='undefined',也可以用来判断是获取还是设置
+				if(arguments.length==2){
+					//获取
+					var v = parseFloat(getComputedStyle(obj)[attr]);
+					if(attr == 'opacity'){
+						//Math.round，四舍五入
+						v = Math.round(v*100);
+					}
+					return v;
+				}
+				//设置
+				if(attr == 'opacity'){
+					val = val/100;
+					obj.style[attr] = val;	
+				}else{
+					obj.style[attr] = val+'px';	
+				}	
+			}
+		</script>
+	</body>
+</html>

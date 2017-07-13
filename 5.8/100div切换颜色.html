@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 1.生成100个div
+			 * 2.鼠标移入到所有的div切换颜色
+			 * 		a.循环所有的div，判断已经被移入为false，m++;
+			 * 		b.判断m等于等于0重新开始循环，此时所有div的布尔值为true，n++
+			 * 		c.判断所有div它的this的布尔值为false已经被移入之后，this循环切换数组颜色
+			 * 		
+			 * 		
+			 * 
+			 * 
+			 * 
+			 * 
+			 */
+			var arr=['pink','red','blue','yellow'];
+			var n=0;
+			var str='';
+			for(var i=0;i<100;i++){
+				str+='<div style="width:50px;height:50px;position:absolute;left:'+i%10*60+'px;top:'+Math.floor(i/10)*60+'px;background:'+arr[0]+';"></div>';
+			}
+			document.body.innerHTML=str;
+			var divs=document.getElementsByTagName('div');
+			for(var i=0;i<divs.length;i++){
+				//false代表已经被选中
+				divs[i].onOff=false;
+				//鼠标移入显示
+				divs[i].onmouseover=function(){
+					//声明全局m=0，代表切换从0开始
+					var m=0;
+					//a.循环所有的div，判断已经被移入为false，m++;
+					for(var i=0;i<divs.length;i++){
+						if(divs[i].onOff){
+							m++;
+						}
+					}
+					
+					//b.判断m等于等于0开始循环，此时所有div的布尔值为true，for循环n++
+					if(m==0){
+						for(var i=0;i<divs.length;i++){
+							divs[i].onOff=true;
+						}
+						n++;
+					}
+					
+					//c.判断所有div它的this的布尔值为false代表已经被移入之后，this循环数组颜色
+					if(this.onOff){
+						this.onOff=false;
+						this.style.background=arr[n%arr.length];
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

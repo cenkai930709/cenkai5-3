@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//找到最小的数字
+			var arr=[3,4,1,6,5,7,8];
+			function fn(arr){
+				arr.sort(function(a,b){
+					return b-a;
+				})
+				return arr[0];
+			}
+			console.log(fn(arr));
+		</script>
+	</body>
+</html>

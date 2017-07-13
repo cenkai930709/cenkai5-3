@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box"></div>
+		<ul>
+			<li class="abc"></li>
+			<li class="abc"></li>
+			<li class="abc"></li>
+			<li class="abc"></li>
+		</ul>
+		<ul id="list">
+			<li class="abc"></li>
+			<li class="abc"></li>
+			<li class="abc"></li>
+			<li class="abc"></li>
+		</ul>
+		<script type="text/javascript">
+			function fn(name,parent){
+				var t=name.substring(0,1);
+				var s=name.substring(1);
+				parent=parent||document;
+				if(t=='#'){
+					return document.getElementById(s);
+				}else if(t=='.'){
+					return document.getElementsByClassName(s);
+				}else{
+					return document.getElementsByTagName(name);
+				}
+			}
+			console.log(fn('li',list))
+		</script>
+	</body>
+</html>

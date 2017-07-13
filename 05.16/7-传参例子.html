@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<script>
+			/*
+			 	结构相同，功能相同，用函数传参
+			 * */
+			var uls = document.getElementsByTagName('ul');
+			for(var i=0;i<uls.length;i++){
+				fn(i)
+			}
+			function fn(n){
+				var lis = uls[n].getElementsByTagName('li');
+				for(var i=0;i<lis.length;i++){
+					lis[i].onclick = function(){
+						for(var i=0;i<lis.length;i++){
+							lis[i].style.background = '';
+						}
+						this.style.background = 'red';
+					}
+				}
+			}
+			
+		</script>
+	</body>
+</html>

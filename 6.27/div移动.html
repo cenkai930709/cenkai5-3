@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            position: absolute;
+        }
+        span{
+            height: 10px;
+            width: 10px;
+            background-color: yellow;
+            position: absolute;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    var box=document.getElementsByTagName('div')[0];
+    var timer=null;
+    var code={
+        left:false,
+        top:false,
+        right:false,
+        bottom:false
+    }
+
+    //鼠标按下
+    document.onkeydown=function(ev){
+        switch(ev.keyCode){
+            case 37:
+                code.left = true;
+                break;
+            case 38:
+                code.top = true;
+                break;
+            case 39:
+                code.right = true;
+                break;
+            case 40:
+                code.bottom = true;
+                break;
+        }
+        if(ev.keyCode==32){
+             boom();
+         }
+    }
+    //鼠标抬起
+    document.onkeyup=function(ev){
+        //clearInterval(timer);
+        switch(ev.keyCode){
+            case 37:
+                code.left = false;
+                break;
+            case 38:
+                code.top = false;
+                break;
+            case 39:
+                code.right = false;
+                break;
+            case 40:
+                code.bottom = false;
+                break;
+        }
+    }
+    //定时器
+    setInterval(function(){
+        var l=parseFloat(getComputedStyle(box).left);
+        var t=parseFloat(getComputedStyle(box).top);
+        for(var k in code){
+            if(code[k]&&k=='left'){
+                box.style.left=(l-5)+'px';
+            }
+            if(code[k]&&k=='top'){
+                box.style.top=(t-5)+'px';
+            }
+            if(code[k]&&k=='right'){
+                box.style.left=(l+5)+'px';
+            }
+            if(code[k]&&k=='bottom'){
+                box.style.top=(t+5)+'px';
+            }
+        }
+    },15)
+    function boom(){
+        var sps=document.createElement('span');
+        var l=box.getBoundingClientRect().right;
+        var t=box.getBoundingClientRect().top+box.offsetHeight/2;
+        sps.style.left=l+'px';
+        sps.style.top=t+'px';
+        sps.trimer=setInterval(function(){
+           //var t=sps.getBoundingClientRect().left;
+            sps.style.left=(l+=5)+'px';
+            if(l>=800){
+                clearInterval(sps.trimer);
+                document.body.removeChild(sps);
+            }
+        },13)
+        document.body.appendChild(sps);
+    }
+
+
+</script>
+</body>
+</html>

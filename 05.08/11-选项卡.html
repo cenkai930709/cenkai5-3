@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 230px;
+				border: 1px solid #000;
+			}
+			#btns{
+				height:30px;
+				border-bottom:1px solid #000 ;
+			}
+			#btns span{
+				float: left;
+				width: 50px;
+				text-align: center;
+				line-height: 30px;
+				height:30px;
+			}
+			#btns span.active{
+				background: red;
+			}
+			#content{
+				height: 200px;
+				position: relative;
+			}
+			#content div{
+				position: absolute;
+				left:0;
+				top:0;
+				display: none;
+			}
+			#content div.show{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="btns">
+				<span class="active">菜单1</span>
+				<span>菜单2</span>
+				<span>菜单3</span>
+			</div>
+			<div id="content">
+				<div class="show">1</div>
+				<div>2</div>
+				<div>3</div>
+			</div>
+		</div>
+		<script>
+			var spans = document.getElementsByTagName('span');
+			var content = document.getElementById('content');
+			var divs = content.getElementsByTagName('div');
+			var prev = spans[0];
+			for(var i=0;i<spans.length;i++){
+				spans[i].index = i;
+				spans[i].onclick = function(){
+
+					prev.className = '';
+					divs[prev.index].className = '';
+					
+			
+					this.className = 'active';
+					divs[this.index].className = 'show';
+					
+					prev = this;
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			/*
+			 	css获取或设置css样式函数
+			 	参数：
+			 		obj：元素，obj
+			 		attr:样式名,str
+			 		val：值，num
+			 	传前2个参数是获取样式值，传3个参数是设置样式值	
+			 * */
+			function css(obj,attr,val){
+				if(arguments.length==2){
+					//获取样式
+					var v = parseFloat(getComputedStyle(obj)[attr]);
+					//如果获取到的是不透明度，放大100倍处理
+					if(attr == 'opacity'){
+						v = Math.round(v*100);
+					}
+					//返回获取到的样式值
+					return v;
+				}
+				//设置样式
+				if(attr == 'opacity'){
+					val = val/100;
+					obj.style[attr] = val;
+				}else{
+					obj.style[attr] = val + 'px';
+				}	
+			}
+			var box = document.getElementById('box');
+			console.log(css(box,'width'))
+			/*
+			 	move运动函数(速度版)
+			 * 参数：
+			 * 	obj：要运动的元素，obj
+			 *  attr:样式,str
+			 *  speed:每次走多少，num
+			 * target:目标点,num
+			 * callBack：回调函数，运动结束后要干的事，放到回调函数里传进来
+			 * 
+			 * */
+		function move(obj,attr,speed,target,callBack){
+			clearInterval(obj.timer)
+			obj.timer = setInterval(function(){
+				//获取当前值
+				var b = css(obj,attr);
+				//加上一次要走的距离
+				b += speed;
+				//有可能每次走的距离不能正好到目标点，所以限制正好到目标点
+				if(b>=target){
+					b = target;
+				}
+				//赋值，就完成一次运动
+				css(obj,attr,b);
+				if(b==target){
+					clearInterval(obj.timer);
+					//回调函数放在运动代码都执行完之后
+					//如果运动完不需要干其他事了，callBack不传，默认值是undefined，前边为假返回前边，不走callBack(),不然会报错
+					//用call改变回调函数this指向，回调函数里的this指向obj
+					typeof callBack == 'function'&&callBack.call(obj);
+				}
+			},20)
+		}
+		
+		function fn(a,b){
+			console.log(a,b,this.c)
+		}
+		var j = {c:10};
+		function fn1(){
+//			fn.apply(j,arguments)
+//			fn.call(j,1,2)
+			//返回改变了this指向的新函数，原函数fn的this没变
+			var f = fn.bind(j);
+			f()
+			fn()
+		}
+		fn1(1,2)
+		
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		
+			/*
+			 	函数
+			 		复用多行代码，先声明函数，在需要用的地方调用该函数，函数里的代码会逐行执行
+			 		函数声明式
+			 			function fn(){
+			 				
+			 			}
+			 			可以先调用，后声明,js会在当前作用域代码执行前，优先解析函数声明式,函数声明式在声明就觉得了可访问的范围
+			 		函数表达式
+			 			var fn = function(){}
+			 			var obj={
+			 				a:function(){}
+			 			}
+			 			只能先声明，后调用，可访问的范围由变量在哪声明决定
+			 * 
+			 * */
+			fn();
+			function fn(){
+				console.log('声明式')
+			}
+			
+			var fn1 = function(){
+				console.log('表达式')
+			}
+			fn1();
+			
+			var fn2;
+			function fn3(){
+				function fn4(){
+					console.log('fn4')
+				}
+				fn4()
+				
+				fn2 = function(){
+					console.log('fn2')
+				}
+			}
+			fn3()
+			fn2()
+		</script>
+	</body>
+</html>

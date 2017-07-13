@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			a{
+				text-decoration: none;
+				padding:10px 20px;
+				border: 5px solid #000;
+				float: left;
+				margin-right:10px;
+			}
+			a.active{
+				border-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="javascript:;">男</a>
+		<a href="javascript:;">女</a>
+		<a href="javascript:;">其他</a>
+		<script>
+			var as = document.getElementsByTagName('a');
+			var prev = null;
+			for(var i=0;i<as.length;i++){
+				as[i].onclick = function(){
+//					for(var i=0;i<as.length;i++){
+//						as[i].className = '';
+//					}
+					if(prev){
+						prev.className = '';
+					}
+					this.className = 'active';
+					prev = this;
+				}
+			}
+		</script>
+	</body>
+</html>

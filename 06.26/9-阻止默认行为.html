@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		11111111111111
+		<img src="add.png" alt="" />
+		<script type="text/javascript">
+			/*
+			 	阻止默认行为
+			 		1.先找到触发的事件
+			 		2.阻止默认行为
+				 		return false
+				 		ev.preventDefault()
+			 		
+			 	addEventListener只能用ev.preventDefault()
+			 * 
+			 * */
+//			document.onmousedown = function(ev){
+//				//return false;
+//				ev.preventDefault()
+//			}
+			document.addEventListener('mousedown',function(ev){
+				ev.preventDefault()
+			})
+		</script>
+	</body>
+</html>

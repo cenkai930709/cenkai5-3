@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var info = [
+				{
+					name:'小丽1',
+					age:18
+				},
+				{
+					name:'小丽2',
+					age:16
+				},
+				{
+					name:'小丽3',
+					age:22
+				},
+				{
+					name:'小丽4',
+					age:24
+				},
+				{
+					name:'小丽5',
+					age:14
+				},
+				{
+					name:'小丽6',
+					age:12
+				},
+				{
+					name:'小丽7',
+					age:26
+				}
+			];
+			var info2 = [
+				{
+					name:'小白1',
+					age:27
+				},
+				{
+					name:'小白2',
+					age:31
+				},
+				{
+					name:'小白3',
+					age:35
+				},
+				{
+					name:'小白4',
+					age:23
+				},
+				{
+					name:'小白5',
+					age:28
+				},
+				{
+					name:'小白6',
+					age:33
+				},
+				{
+					name:'小白7',
+					age:20
+				}
+			];
+			function fn(arr){
+				//Infinity无穷，js数字里最大值，最小值-Infinity
+				var n = Infinity;
+				var obj = null;
+//				for(var k in arr){
+//					if(arr[k].age<n){
+//						n = arr[k].age;
+//						obj = arr[k];
+//					}
+//				}
+				for(var i=0;i<arr.length;i++){
+					if(arr[i].age<n){
+						n = arr[i].age;
+						obj = arr[i];
+					}
+				}
+				return obj;
+			}
+			console.log(fn(info2))
+		</script>
+	</body>
+</html>

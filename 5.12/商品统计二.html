@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul class="list">
+			<li>
+				<i>-</i>
+				<em>0</em>
+				<i>+</i>
+				<div>
+					单价：
+					<span>12.5元</span>
+					小计：
+					<strong>0</strong>
+				</div>
+			</li>
+			<li>
+				<i>-</i>
+				<em>0</em>
+				<i>+</i>
+				<div>
+					单价：
+					<span>10.5元</span>
+					小计：
+					<strong>0</strong>
+				</div>
+			</li>
+			<li>
+				<i>-</i>
+				<em>0</em>
+				<i>+</i>
+				<div>
+					单价：
+					<span>8.5元</span>
+					小计：
+					<strong>0</strong>
+				</div>
+			</li>
+			<li>
+				<i>-</i>
+				<em>0</em>
+				<i>+</i>
+				<div>
+					单价：
+					<span>8元</span>
+					小计：
+					<strong>0</strong>
+				</div>
+			</li>
+			<li>
+				<i>-</i>
+				<em>0</em>
+				<i>+</i>
+				<div>
+					单价：
+					<span>14.5元</span>
+					小计：
+					<strong>0</strong>
+				</div>
+			</li>
+		</ul>
+		<div class="info">
+			<span>
+				商品公合计
+				<em>0</em>
+				件
+			</span>
+			<span>
+				共花费了
+				<em>0</em>
+				元
+			</span>
+			<br>
+			<br>
+			<span>
+				其中最贵的商品单价是：
+				<em>0</em>
+				元
+			</span>
+		</div>
+		<script type="text/javascript">
+			var ul=document.getElementsByClassName('list')[0];
+			var lis=ul.getElementsByTagName('li');
+			var btn=lis.getElementsByTagName('i');
+			var ems=lis.getElementsByTagName('em');
+			var spas=lis.getElementsByTagName('span');
+			var inof=document.getElementsByClassName('info')[0];
+			var em=inof.getElementsByTagName('em');
+			var arr=[0,0,0,0,0];
+			var price=[12.5,10.5,8.5,8,14.5];
+			function tab(){
+				//数量
+				em[0].innerHTML+=arr[0]+arr[1]+arr[2]+arr[3]+arr[4];
+				//总价
+				em[1].innerHTML+=arr[0]*price[0]+arr[1]*price[1]+arr[2]*price[2]+arr[3]*price[3]+arr[4]*price[4];
+				//最高价
+				var max=0;
+				for(var i=0;i<lis.length;i++){
+					if(arr[i]&&max<price[i]){
+						max=price[i];
+					}
+				}
+				em[2].innerHTML=max;
+			}
+			function sun(n){
+				if(n>0){
+					n--;
+				}
+				return n;
+			}
+		</script>
+	</body>
+</html>

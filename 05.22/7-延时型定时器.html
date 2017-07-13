@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			/*
+			 	延时型定时器：
+			 		延时多少毫秒只执行一次
+			 		
+			 	开启延时型定时器：	setTimeout(函数,延时时间,实参...)
+			 	
+			 	参数：
+			 	函数：要执行的代码
+			 	延迟时间：单位毫秒，1秒=1000毫秒
+			 	实参：第3个参数往后，是传给函数的实参
+			 	
+			 	关闭延时型定时：	clearTimeout(定时器编号)
+			 * 
+			 * */
+//			setTimeout(function(){
+//				alert('炸了')
+//			},3000)
+			
+			var a = 10;
+			setTimeout(function(){
+				console.log(a)
+			},1000)
+			a++;
+//			var box = document.getElementById('box');
+//			box.onclick = function(){
+//				var _this = this;
+//				setTimeout(function(){
+//					_this.style.transition = '3s';
+//				},0)
+//				//this.style.transition = '3s';
+//				this.style.width = '400px';
+//				
+//			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+		  <li><a href="javascript:void(0);" onclick="naver('A')">锚点A</a></li>
+		  <li><a href="javascript:void(0);" onclick="naver('B')">锚点B</a></li>
+		  <li><a href="javascript:void(0);" onclick="naver('C')">锚点C</a></li>
+		  <li><a href="javascript:void(0);" onclick="naver('D')">锚点D</a></li>
+		</ul>
+		<div style="background-color: #f60; height: 400px;" class="A">
+		  AAA
+		</div>
+		<div style="background-color: #f06; height: 400px;" class="A">
+		  BBB
+		</div>
+		<div style="background-color: #60f; height: 400px;" class="A">
+		  CCC
+		</div>
+		<div style="background-color: #06f; height: 400px;" class="A">
+		  DDD
+		</div>
+		<script>
+		//设置锚点
+		function naver(A){
+		  var obj = document.getElementsByClassName('A');
+		  var oPos = obj.offsetTop;
+		  return window.scrollTo(0, oPos-36);
+		}
+		for(var i=0;i<A.length;i++){
+			
+		}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 递
+			 	[1,2,5,3,8,7,6,4]
+			 	 [],1,[2,5,3,,8,7,6,4]
+			 *         [],2,[3,5,8,7,6,4]
+			 *            [3,4],5,[8,7,6]
+			 *       [],3,[4]      [7,6],8,[]
+			 *                       [6],7,[]
+			 *  归
+			 	[1,2,3,4,5,6,7,8]
+			 	 [],1,[2,3,4,5,6,7,8]
+			 *         [],2,[3,4,5,6,7,8]
+			 *            [3,4],5,[6,7,8]
+			 *          [3,4]       [6,7],8,[]
+			 *                        [6,7]
+			 * */
+			var arr = [1,2,5,3,8,7,6,4];
+			function quick(arr){
+				//如果空数组或只有1项终止递归
+				if(arr.length<=1){
+					return arr;
+				}
+				//删除第一项，当目标值
+				var cur = arr.shift();
+				var left = [];
+				var right = [];
+				while(arr.length){
+					//第一位和目标值比，切出来放在left或right里，比目标小的放left,大的放right
+					if(cur>arr[0]){
+						left.push(arr.shift());
+					}else{
+						right.push(arr.shift());
+					}	
+				}
+				//返回left+cur+right连接的新数组，即排好顺序的数组，left,right递归继续拆分
+				return quick(left).concat(cur,quick(right))
+			}
+			console.log(quick(arr))
+		</script>
+	</body>
+</html>

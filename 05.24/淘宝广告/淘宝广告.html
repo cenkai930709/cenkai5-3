@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box{
+			width:500px;
+			border:1px solid black;
+			margin: 50px auto 0;
+			position: relative;
+		}
+		img{
+			width:350px;
+			margin: 10px 75px 20px;
+			height: 290px;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top:10px;
+		}
+		ul:nth-of-type(1){
+			left:5px;
+		}
+		ul:nth-of-type(2){
+			right:15px;
+		}
+		li{
+			list-style: none;
+			width:50px;
+			height: 30px;
+			margin: 5px 0;
+			border: 1px solid black;
+			line-height: 30px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.active{
+			color:white;
+			background-color:black; 
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li class="active">连衣裙</li>
+			<li>雪纺</li>
+			<li>T恤</li>
+			<li>铅笔裤</li>
+			<li>婚纱</li>
+			<li>T恤</li>
+			<li>铅笔裤</li>
+			<li>婚纱</li>
+		</ul>
+		<ul>
+			<li>包包</li>
+			<li>凉鞋</li>
+			<li>单鞋</li>
+			<li>太阳镜</li>
+			<li>丝袜</li>
+			<li>T恤</li>
+			<li>铅笔裤</li>
+			<li>婚纱</li>
+		</ul>
+		<img src="img/0.jpg" alt="">
+	</div>
+	<script type="text/javascript">
+		var box = document.getElementById('box');
+		var lis = box.getElementsByTagName('li');
+		var img = box.getElementsByTagName('img')[0];
+		//控制图片切换，初始化为0
+		var n = 0;
+		var arr = ['img/0.jpg','img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/0.jpg','img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/0.jpg','img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/0.jpg'];
+		//用来存定时器编号，为了关闭定时器用
+		var timer = null;
+		//图片切换函数，根据n显示当前图片
+		function tab(){
+			img.src = arr[n];
+			for(var i=0;i<lis.length;i++){
+				lis[i].className = '';
+			}
+			lis[n].className = 'active';
+		}
+		//给li加点击切换图片
+		for(var i=0;i<lis.length;i++){
+			//加索引值，为了知道移入的是第几个li
+			lis[i].index = i;
+			lis[i].onmouseover = function(){
+				n = this.index;
+				tab();
+			}
+		}
+		//全局开启定时器，页面一打开就会自动切换图片
+		timer = setInterval(autoPlay,500);
+		//自动切换函数
+		function autoPlay(){
+			if(n<lis.length/2){
+				//左侧
+				n++;
+				//左侧是0-7，当n=8，直接让n=15最后一个
+				if(n==lis.length/2){
+					n = lis.length-1;
+				}
+			}else{
+				//右侧
+				n--;
+				//右侧是8-15，当n=7，直接让n=0回到第一个
+				if(n==lis.length/2-1){
+					n = 0;
+				}
+			}
+			tab();
+		}
+		//移入父级关闭定时器
+		box.onmouseover = function(){
+			clearInterval(timer);
+		}
+		//移出父级重新开启定时器
+		box.onmouseout = function(){
+			timer = setInterval(autoPlay,500);
+		}
+	</script>
+</body>
+</html>
+

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		姓名：
+		<input type="text" name="" id="" value="" />
+		年龄：
+		<input type="text" name="" id="" value="" />
+		<input type="button" value="添加" />
+		</br>
+		</br>
+		</br>
+		<input type="button" value="按年龄" />
+		<input type="button" value="按Id" />
+		<ul></ul>
+		<script type="text/javascript">
+			var data=[
+				{
+					id:1,
+					name:'小红',
+					age:18
+					
+				},
+				{
+					id:2,
+					name:'小明',
+					age:28
+					
+				},
+				{
+					id:3,
+					name:'小白',
+					age:20
+					
+				},
+				{
+					id:4,
+					name:'小强',
+					age:22
+					
+				},
+				{
+					id:5,
+					name:'小黑',
+					age:16
+					
+				},
+				{
+					id:6,
+					name:'小微',
+					age:26
+					
+				},
+				{
+					id:7,
+					name:'小丹',
+					age:24
+					
+				}
+			];
+			var list=document.getElementsByTagName('ul')[0];
+			var inps=document.getElementsByTagName('input');
+			var max=zuida(data);
+			//获取li数据
+			function show(arr){
+				var str='';
+				arr.forEach(function(a){
+					str+='<li>id: '+a.id+' 姓名: '+a.name+' 年龄: '+a.age+'</li>';
+				})
+				list.innerHTML=str;
+				var lis=list.getElementsByTagName('li');
+				for(var i=0;i<lis.length;i++){
+					lis[i].data=arr[i];
+					lis[i].onclick=function(){
+						renoveById(this.data.id,data);
+						show(data);
+					}
+				}
+			}
+			show(data);
+			//封装最大值
+			function zuida(arr){
+				var n=0;
+				arr.forEach(function(a){
+					if(a.id>n){
+						n=a.id
+					}
+				})
+				return n;
+			}
+			//点击按年龄从小到大排序
+			inps[3].onclick=function(){
+				data.sort(function(a,b){
+					return a.age-b.age;
+				})
+				show(data);
+			}
+			//点击按id从小到大排序
+			inps[4].onclick=function(){
+				data.sort(function(a,b){
+					return a.id-b.id;
+				})
+				show(data);
+			}
+			//添加数据
+			inps[2].onclick=function(){
+				data.push({
+					id:++max,
+					name:inps[0].value,
+					age:Number(inps[1].value)
+				})
+				show(data);
+			}
+			//封装函数点击li删除数据
+			function renoveById(id,arr){
+				arr.forEach(function(a,b){
+					if(a.id==id){
+						arr.splice(b,1)
+					}
+				})
+				console.log(data)
+			}
+		</script>
+	</body>
+</html>

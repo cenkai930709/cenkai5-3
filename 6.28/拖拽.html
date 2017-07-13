@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+            position: absolute;
+        }
+        #box2{
+            height: 100px;
+            width: 100px;
+            background-color: pink;
+            position: absolute;
+            left: 300px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div id="box2"></div>
+<script>
+    var box=document.getElementById('box');
+    brod(box);
+    brod(box2);
+    function brod(obj){
+        obj.onmousedown=function(ev){
+            ev.preventDefault();
+            var divX=ev.clientX-obj.getBoundingClientRect().left;
+            var divY=ev.clientY-obj.getBoundingClientRect().top;
+            document.onmousemove=function(ev){
+                var l=ev.clientX-divX;
+                var t=ev.clientY-divY;
+                obj.style.left=l+'px';
+                obj.style.top=t+'px';
+            }
+            document.onmouseup=function(){
+                document.onmousemove=null;
+                document.onmouseup=null;
+            }
+
+        }
+    }
+</script>
+</body>
+</html>

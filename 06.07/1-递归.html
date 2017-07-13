@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				float: left;
+				margin-right:5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<script type="text/javascript">
+			/*
+			 	递归
+			 		函数自己调用自己
+			 *  注意别写成死循环
+			 * 	有规律，重复的事情，用递归
+			 * 
+			 *  1.有条件的调用自己
+			 * 
+			 * */
+			var n = 0;
+//			function fn(){
+//				if(n<10){
+//					n++;
+//					console.log(n);
+//					fn();
+//				}
+//			}
+//			fn();
+			var divs = document.getElementsByTagName('div');
+//			for(var i=0;i<divs.length;i++){
+//				divs[i].onclick = function(){
+//					alert(1)
+//				}
+//			}
+			var i=0;
+//			function fn(){
+//				divs[i].index = i;
+//				divs[i].onclick = function(){
+//					alert(this.index)
+//				}
+//				i++;
+//				if(i<divs.length){
+//					fn();
+//				}				
+//			}
+//			fn();
+//			do{
+//				divs[i].index = i;
+//				divs[i].onclick = function(){
+//					alert(this.index)
+//				}
+//				i++;
+//			}while(i<divs.length)
+			var i=0;
+			while(i<divs.length){
+				divs[i].index = i;
+				divs[i].onclick = function(){
+					alert(this.index)
+				}
+				i++;
+			}
+			function fn(){
+				if(i<divs.length){
+					divs[i].index = i;
+					divs[i].onclick = function(){
+						alert(this.index)
+					}
+					i++;
+					fn();
+				}				
+			}
+			fn();
+			
+			
+		</script>
+	</body>
+</html>

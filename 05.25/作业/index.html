@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 50px;
+				height: 50px;
+				background: red;
+				position: absolute;
+				top:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="btn" value="按钮" />
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<script src="move.js"></script>
+		<script type="text/javascript">
+			var divs = document.getElementsByTagName('div');
+			for(var i=0;i<divs.length;i++){
+				divs[i].style.left = i*60+'px';
+			}
+			var btn=document.getElementById('btn');
+			var n=0;
+			var timer=null;
+			var onOff=true;
+			btn.on=true;
+			btn.onclick=function(){
+				if(this.on){
+					this.on=false;
+					timer=setInterval(function(){
+						fn(n);
+						n++;
+						if(n==divs.length){
+							n=0;
+							clearInterval(timer);
+						}
+					},150)
+				}
+			}
+			function fn(k){
+				move(divs[k],{top:onOff?200:50},200,'linear',function(){
+					divs[k].on=!divs[k].on;
+					var m=0;
+					for(var i=0;i<divs.length;i++){
+						if(divs[i].on){
+							m++;
+						}
+					}
+					if(m==0||m==divs.length){
+						onOff=!onOff;
+						btn.on=true;
+					}
+				})
+			}
+			for(var i=0;i<divs.length;i++){
+				divs[i].index=i;
+				divs[i].on=true;
+				divs[i].onclick=function(){
+					if(btn.on){
+						btn.on=false;
+						var n1=this.index+1;
+						var n2=this.index-1;
+						fn(this.index);
+						timer=setInterval(function(){
+							if(n1<divs.length){
+								fn(n1);
+							}
+							n1++;
+							if(n2>=0){
+								fn(n2);
+							}
+							n2--;
+							if(n1>divs.length-1&&n2<0){
+								clearInterval(timer);
+							}
+						},200)
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

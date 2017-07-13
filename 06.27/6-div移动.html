@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			var box = document.getElementById('box');
+			//代理
+			var code = {
+				t:false,
+				l:false,
+				r:false,
+				b:false
+			}
+			document.onkeydown = function(ev){
+				if(ev.keyCode==37){
+					code.l = true;
+				}else if(ev.keyCode==38){
+					code.t = true;
+				}else if(ev.keyCode==39){
+					code.r = true;
+				}else if(ev.keyCode==40){
+					code.b = true;
+				}
+			}
+			document.onkeyup = function(ev){
+				if(ev.keyCode==37){
+					code.l = false;
+				}else if(ev.keyCode==38){
+					code.t = false;
+				}else if(ev.keyCode==39){
+					code.r = false;
+				}else if(ev.keyCode==40){
+					code.b = false;
+				}
+			}
+			setInterval(function(){
+				var l = parseFloat(getComputedStyle(box).left);
+				var t = parseFloat(getComputedStyle(box).top);
+				if(code.l){
+					//左
+					box.style.left = (l-5)+'px';
+				}
+				if(code.t){
+					//上
+					box.style.top = (t-5)+'px';
+				}
+				if(code.r){
+					//右
+					box.style.left = (l+5)+'px';
+				}
+				if(code.b){
+					//下
+					box.style.top = (t+5)+'px';
+				}
+			},10)
+		</script>
+	</body>
+</html>

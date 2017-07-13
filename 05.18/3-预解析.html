@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function fn(a){
+				/*
+				 	a = undefined
+				 *  a = 20
+				 *  a = function(){}
+				 *  a = 10
+				 * */
+				console.log(a)//function
+				var a = 10;
+				console.log(a)//10
+				function a(){
+					
+				}
+			}
+			fn(20)
+		</script>
+	</body>
+</html>

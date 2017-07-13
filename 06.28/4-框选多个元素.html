@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				margin:0;
+				padding:0;
+				list-style: none;
+				width:330px;
+				height:330px;
+				margin:50px auto 0;
+			}
+			li{
+				width: 100px;
+				height: 100px;
+				background: red;
+				float: left;
+				margin-right: 10px;
+				margin-bottom: 10px;
+			}
+			#box{
+				background: skyblue;
+				position: absolute;
+				opacity: .5;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<div id="box"></div>
+		<script>
+			var box = document.getElementById('box');
+			var lis = document.getElementsByTagName('li');
+			//存选中的元素
+			var arr = [];
+			document.onmousedown = function(ev){
+				ev.preventDefault();
+				var nL = ev.clientX;
+				var nT = ev.clientY;
+				box.style.display = 'block';
+				document.onmousemove = function(ev){
+					var dL = ev.clientX;
+					var dT = ev.clientY;
+					var w = Math.abs(nL-dL);
+					var h = Math.abs(nT-dT);
+					var l = nL>dL?dL:nL;
+					var t = nT>dT?dT:nT;
+					box.style.width = w+'px';
+					box.style.height = h+'px';
+					box.style.left = l+'px';
+					box.style.top = t+'px';
+					//清除
+					for(var i=0;i<arr.length;i++){
+						arr[i].style.background = '';
+					}
+					arr = [];
+					//每次都是当前被选中的
+					for(var i=0;i<lis.length;i++){
+						if(duang(box,lis[i])){
+							lis[i].style.background='yellow';
+							arr.push(lis[i])
+						}
+					}
+				}
+				document.onmouseup = function(){
+					box.style.cssText = '';
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+			}
+			
+			function duang(obj1,obj2){
+				var pos1 = obj1.getBoundingClientRect();
+				var pos2 = obj2.getBoundingClientRect();
+				if(pos1.right<pos2.left || pos1.bottom<pos2.top || pos1.left>pos2.right || pos1.top>pos2.bottom){
+					return false;
+				}else{
+					return true;
+				}
+			}
+			//布局转换
+			for(var i=0;i<lis.length;i++){
+				lis[i].style.left = lis[i].offsetLeft+'px';
+				lis[i].style.top = lis[i].offsetTop+'px';
+
+				setTimeout(function(i){
+					lis[i].style.position = 'absolute';
+				},0,i)
+			}
+
+			//li上阻止冒泡，不会触发document上按下的框选
+			for(var i=0;i<lis.length;i++){
+				lis[i].onmousedown = function(ev){
+					ev.cancelBubble = true;
+					//在选中的li上按下，arr里有this
+					if(arr.includes(this)){
+						//console.log('有')
+						//按下坐标
+						var nL = ev.clientX;
+						var nT = ev.clientY;
+						//循环每个选中的li，记录按下点到选中li原点的距离
+						for(var i=0;i<arr.length;i++){
+							var pos = arr[i].getBoundingClientRect();
+							var liL = pos.left;
+							var liT = pos.top;
+							arr[i].disX = nL-liL;
+							arr[i].disY = nT-liT;
+							
+						}
+						document.onmousemove = function(ev){
+							//移动时当前鼠标坐标
+							var dL = ev.clientX;
+							var dT = ev.clientY;
+							//让每个li都保持刚才的距离
+							for(var i=0;i<arr.length;i++){
+								//console.log(arr[i].disX,arr[i].disY)
+								var l = dL-arr[i].disX;
+								var t = dT-arr[i].disY;
+								arr[i].style.left = l+'px';
+								arr[i].style.top = t+'px';
+							}	
+						}
+						document.onmouseup = function(){
+							document.onmousemove = null;
+							document.onmouseup = null;
+						}
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

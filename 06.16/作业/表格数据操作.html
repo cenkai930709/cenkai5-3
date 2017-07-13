@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        td {
+            text-align: center;
+        }
+    </style>
+   
+</head>
+
+<body>
+
+<form action="" name="form">
+    <p>
+        姓名:<input type="text" name="username"/>
+    </p>
+    <p>
+        年龄:<input type="text" name="age"/>
+    </p>
+    <p>
+        性别: <select name="sex">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+    </p>
+    <p>
+        <input type="button" value="添加" name="add"/>
+    </p>
+</form>
+    <input type="button" value="反选" class="btn">
+    <input type="button" value="批量删除"  class="btn"> 
+    <table id="tab1" width="100%" border="1">
+
+        <thead>
+        <tr>
+            <th>
+                <input id="checkAll" type="checkbox" /> 全选
+            </th>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+             <!--<tr>
+                <td>
+                    <input type="checkbox"/>
+                </td>
+                <td>1</td>
+                <td>周杰伦</td>
+                <td>37</td>
+                <td>男</td>
+                <td>
+                    <a href="javascript:;">上移</a> |
+                    <a href="javascript:;">下移</a> |
+                    <a href="javascript:;">删除</a>
+                </td>
+            </tr> -->
+        </tbody>
+    </table>
+    <script type="text/javascript">
+		var Data = [
+			{
+				id:1,
+				name:'宋小宝',
+				age:36,
+				sex:'男'
+			},
+			{
+				id:2,
+				name:'郭德纲',
+				age:43,
+				sex:'男'
+			},
+			{
+				id:3,
+				name:'黄渤',
+				age:28,
+				sex:'男'
+			},
+			{
+				id:4,
+				name:'赵丽颖',
+				age:25,
+				sex:'女'
+			},
+			{
+				id:5,
+				name:'刘亦菲',
+				age:22,
+				sex:'女'
+			}
+		];
+  	/*
+  	 	1.渲染页面
+  	 	2.上移下移删除
+  	 	3.全选
+  	 	4.反选
+  	 	5.批量删除
+  	 	6.添加数据
+  	 	7.排序
+  	 * */
+
+        var table = document.getElementById('tab1');
+        var checkAll=document.getElementById('checkAll');
+        var tBody = table.tBodies[0];
+        var btns = document.getElementsByClassName('btn');
+        var Form = document.getElementsByTagName('form')[0];
+        var idSort = table.tHead.rows[0].cells[1];
+        var ageSort = table.tHead.rows[0].cells[3];
+
+        function fn(arr){
+            var tr = tBody.insertRow();
+            tr.insertCell().innerHTML='<input type="checkbox"/>';
+            var inp=tr.getElementsByTagName('input')[0];
+            inp.Id=arr.id;
+            inp.tr=tr;
+            for(var k in arr){
+                tr.insertCell().innerHTML = arr[k];
+            }
+            inp.onclick=function(){
+                checkA();
+            }
+            var tb = tr.insertCell();
+            var a1=document.createElement('a');
+            var a2=document.createElement('a');
+            var a3=document.createElement('a');
+            a1.innerHTML='上移';
+            a2.innerHTML='下移';
+            a3.innerHTML='删除';
+            a1.href=a2.href=a3.href='javascript:;';
+            var t1=document.createTextNode(' | ');
+            var t2=document.createTextNode(' | ');
+            tb.appendChild(a1);
+            tb.appendChild(t1);
+            tb.appendChild(a2);
+            tb.appendChild(t2);
+            tb.appendChild(a3);
+            a1.onclick=function(){
+                if(tr.previousElementSibling){
+                    tBody.insertBefore(tr,tr.previousElementSibling);
+                }
+            }
+            a2.onclick=function(){
+                if(tr.nextElementSibling){
+                    tBody.insertBefore(tr.nextElementSibling,tr);
+                }
+            }
+            a3.onclick=function(){
+                //删除页面结构
+                tBody.removeChild(tr);
+                //删除数据
+                for(var i=0;i<Data.length;i++){
+                    if(arr.id==Data[i].id){
+                        Data.splice(i,1)
+                    }
+                }
+                //console.log(Data);
+            }
+
+         }
+        var inps = tBody.getElementsByTagName('input');
+        //判断全选函数
+        function checkA(){
+            var m=0;
+            for(var i=0;i<inps.length;i++){
+                if(inps[i].checked){
+                    m++;
+                }
+            }
+            if(m==inps.length){
+                checkAll.checked=true;
+            }else{
+                checkAll.checked=false;
+            }
+        }
+        //判断是否全选
+        checkAll.onclick=function(){
+            for(var i=0;i<inps.length;i++){
+                if(this.checked){
+                    inps[i].checked=true;
+                }else{
+                    inps[i].checked=false;
+                }
+            }
+
+        }
+        //反选
+        btns[0].onclick=function(){
+            for(var i=0;i<inps.length;i++){
+                if(inps[i].checked){
+                    inps[i].checked=false;
+                }else{
+                    inps[i].checked=true;
+                }
+            }
+            checkA();
+        }
+        //批量删除
+        btns[1].onclick=function(){
+            var trs=tBody.getElementsByTagName('tr');
+            for(var i=0;i<inps.length;i++){
+                if(inps[i].checked){
+                    for(var j=0;j<Data.length;j++){
+                        if(inps[i].parentNode.parentNode.nextSibling.innerHTML==Data[j].id){
+                            Data.splice(j,1)
+                        }
+                    }
+                    tBody.removeChild(trs[i]);
+                    i--;
+                }
+            }
+         }
+        //找到数据最大id
+        function maxid(){
+            var max=-Infinity;
+            Data.forEach(function(a){
+                if(a.id>max){
+                    max=a.id;
+                }
+            })
+            return max;
+        }
+        //添加数据
+        var idNum=maxid();
+        Form.add.onclick=function(){
+            var j;
+            j = {
+                id: ++idNum,
+                name: Form.username.value,
+                age: Number(Form.age.value),
+                sex: Form.sex.value
+            };
+            Data.push(j);
+            fn(j);
+            checkA();
+        }
+        //渲染页面
+        Data.forEach(function(a){
+            fn(a);
+        });
+        //排序
+        //id
+        idSort.onOff=true;
+        idSort.onclick=function(){
+            Data.sort(function(a,b){
+                if(idSort.onOff){
+                    return b.id-a.id;
+                }else{
+                    return a.id-b.id;
+                }
+            });
+            tBody.innerHTML='';
+            Data.forEach(function(a){
+                fn(a);
+            })
+            this.onOff=!this.onOff;
+        }
+        //age
+        ageSort.onOff=true;
+        ageSort.onclick=function(){
+            Data.sort(function(a,b){
+                if(ageSort.onOff){
+                    return b.age-a.age;
+                }else{
+                    return a.age-b.age;
+                }
+            });
+            tBody.innerHTML='';
+            Data.forEach(function(a){
+                fn(a);
+            })
+            this.onOff=!this.onOff;
+        }
+    </script>
+</body>
+</html>

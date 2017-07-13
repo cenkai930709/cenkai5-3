@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="" id="form">
+			<input type="text" name="txt"/>
+			<input type="password" name="pw"/>
+			<input type="button" name="btn" value="按钮"/>
+		</form>
+		<script type="text/javascript">
+			/*
+			 	表单可以通过name操作
+			 * 
+			 * */
+			var form = document.getElementById('form');
+			console.log(form.txt)
+			form.btn.onclick = function(){
+				console.log(form.txt.value)
+				console.log(form.pw.value)
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="西部"/>
+		<input type="button" value="东部"/>
+		<p id="p"></p>
+		<ol id="list"></ol>
+		<script type="text/javascript">
+			var data = {
+				index:[
+				'west','east'
+				],
+				
+				west:[
+					{
+						name:'库里'
+					},
+					{
+						name:'哈登'
+					},
+					{
+						name:'伦纳德'
+					},
+					{
+						name:'保罗'
+					},
+					{
+						name:'加索尔'
+					}
+				],
+				east:[
+					{
+						name:'詹姆斯'
+					},
+					{
+						name:'欧文'
+					},
+					{
+						name:'乔治'
+					},
+					{
+						name:'韦德'
+					}
+				]
+			};
+			var inps = document.getElementsByTagName('input');
+			var p = document.getElementById('p');
+			var list = document.getElementById('list');
+			//1.获取信息
+			//2.处理字段
+			var s = location.search.substr(1).split('=')[1];
+			//放当前页面的数据
+			var Data = [];
+			//l=e
+//			console.log(s);
+			//3.判断信息，得到当前页面要渲染的数据
+			if(s){
+				//有search,按获取到的值走
+				console.log(s)
+				if(s=='w'){
+					Data = data.west;
+					p.innerHTML = '西部';
+				}else{
+					Data = data.east;
+					p.innerHTML = '东部';
+				}
+				
+			}else{
+				//第一次没有search，需要给默认值
+				Data = data[data.index[0]];
+				p.innerHTML = '西部';
+			}
+			console.log(Data)
+			//4.渲染页面
+			var str = '';
+			Data.forEach(function(a){
+				str += '<li>姓名：'+a.name+'</li>';
+			})
+			list.innerHTML = str;
+			//西部
+			inps[0].onclick = function(){
+				location.search = 'l=w';
+			}
+			//东部
+			inps[1].onclick = function(){
+				location.search = 'l=e';
+			}
+		</script>
+	</body>
+</html>

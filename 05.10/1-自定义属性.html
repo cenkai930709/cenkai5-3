@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮1"/>
+		<input type="button" value="按钮2"/>
+		<input type="button" value="按钮3"/>
+		<script>
+			var a = 1;
+			
+			var inps = document.getElementsByTagName('input');
+			for(var i=0;i<inps.length;i++){
+				inps[i].n = 1;
+				inps[i].onclick = function(){
+//				a++;
+//				console.log(a)
+				this.n++
+				console.log(this.n)
+				}
+			}
+			
+		</script>
+	</body>
+</html>

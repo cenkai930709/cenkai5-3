@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [
+				{
+					id:1,
+					name:'小白1'
+				},
+				{
+					id:3,
+					name:'小白3'
+				},
+				{
+					id:5,
+					name:'小白5'
+				},
+				{
+					id:4,
+					name:'小白4'
+				},
+				{
+					id:7,
+					name:'小白7'
+				},
+				{
+					id:2,
+					name:'小白2'
+				},
+				{
+					id:6,
+					name:'小白6'
+				}
+			];
+			function find(arr,id){
+				var n = null;
+				arr.forEach(function(a){
+					if(a.id==id){
+						n = a;
+					}
+				})
+				return n;
+			}
+			console.log(find(arr,4))
+		</script>
+	</body>
+</html>

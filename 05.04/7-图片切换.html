@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 400px;
+				height: 500px;
+				border: 1px solid #000;
+				margin:50px auto;
+				position: relative;
+			}
+			img{
+				width: 100%;
+				height: 100%;
+			}
+			#prev,#next{
+				position: absolute;
+				top:200px;
+				font-size:50px;
+				font-weight: bold;
+				text-decoration: none;
+			}
+			#prev{
+				left:-100px;
+			}
+			#next{
+				right:-100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="img/1.png" alt="" id="img" />
+			<a href="javascript:;" id="prev"><</a>
+			<a href="javascript:;" id="next">></a>
+		</div>
+		<script>
+			var img = document.getElementById('img');
+			var prev = document.getElementById('prev');
+			var next = document.getElementById('next');
+			/*
+			 	数组 []
+			 	存多个数据
+			 	2个数据间用逗号分隔
+			 	length:数据个数
+			    [0]:数字下标取值，从0开始
+			    最后一位是length-1
+			 * */
+			var arr = ['img/1.png','img/2.png','img/3.png','img/4.png'];
+			//console.log(arr[arr.length-1])
+			//n控制数组下标取值，数组第一个数据下标是0，所以n=0
+			var n = 0;
+			next.onclick = function(){
+				//n++,左侧变量n自增+1		
+				n++;
+				if(n>arr.length-1){
+					n = arr.length-1;
+				}
+//				if(n>arr.length-1){
+//					n = 0;
+//				}
+				img.src = arr[n];
+			}
+			prev.onclick = function(){
+				//n--,左侧变量n自减-1
+				n--;
+//				if(n<0){
+//					n = 0;
+//				}
+				if(n<0){
+					n = arr.length-1;
+				}
+				img.src = arr[n];
+			}
+		</script>
+	</body>
+</html>

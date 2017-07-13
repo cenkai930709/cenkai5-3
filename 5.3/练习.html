@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul>li{
+				border: 1px solid #000;
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<ul>
+			<li>
+				<p>老神仙</p>
+				<dl>
+					<dt>爱好</dt>
+					<dd>打球</dd>
+					<dd>游泳</dd>
+					<dd>下棋</dd>
+				</dl>
+				<strong>交友信息</strong>
+				<ol>
+					<li>年轻漂亮</li>
+					<li>互联网行业</li>
+					<li>会做饭</li>
+				</ol>
+			</li>
+		</ul>-->
+		<script type="text/javascript">
+			var arr=[
+					['老神仙',
+					['爱好',['吃饭','睡觉','唱歌']],
+					['交友信息',['漂亮姑娘','爱玩','懒惰']]
+					],
+					['老司机',
+					['爱好',['开车','游泳','下棋']],
+					['交友信息',['老实人','同行的','温柔姑娘']]
+					],
+					['老流氓',
+					['爱好',['赌博','喝酒','踢足球']],
+					['葬爱家族',['丰满女人','甲方或','卡沙俊']]
+					]
+					];
+					//声明空字符串
+					var str='';
+					str='<ul>'
+					for(var i=0;i<arr.length;i++){
+						str+='<li>'+
+							'<p>'+arr[i][0]+'</p>'+
+							'<dl>'+
+								'<dt>'+arr[i][1][0]+'</dt>'
+								for(var j=0;j<arr[i][1][1].length;j++){
+								str+='<dd>'+arr[i][1][1][j]+'</dd>'
+								}
+							str+='</dl>'+
+							'<strong>'+arr[i][2][0]+'</strong>'+
+							'<ol>'
+							for(var k=0;k<arr[i][2][1].length;k++){
+								str+='<li>'+arr[i][2][1][k]+'</li>'
+							}
+							str+='</ol>'+
+						'</li>'
+					}
+					str+='</ul>'
+					document.body.innerHTML=str;
+		</script>
+	</body>
+</html>

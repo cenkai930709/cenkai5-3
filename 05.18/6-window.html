@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	window
+			 		是js里最外边的对象,当写window下的属性或方法时，可以忽略不写window
+			 * 
+			 * 
+			 * 我们用var创建一个全局变量，在window下创建一个同名的属性，值就是我们赋的值，用var创建的全局变量，会被加上一个属性不可以用delete删除
+			 * */
+			
+			//window.alert()
+			var a = 1;
+			a = 2;
+			//window.a = 2
+			function fn(){}
+			console.dir(window)
+		</script>
+	</body>
+</html>

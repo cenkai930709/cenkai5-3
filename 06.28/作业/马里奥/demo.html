@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.line{
+				width: 100%;
+				height: 1px;
+				background: #000;
+				position: absolute;
+				top:400px;
+				left:0;
+			}
+			#div{
+				width: 50px;
+				height: 50px;
+				background: url(ma.png);
+				position: absolute;
+				top:350px;
+				left:0;
+				z-index: 100;
+				background-size:50px ;
+			}
+			span{
+				width: 50px;
+				height: 50px;
+				background: url(zhuan.png);
+				position: absolute;
+				top:200px;
+				background-size:50px ;
+			}
+			.star{
+				width: 20px;
+				height: 20px;
+				background: url(zhuan.png);
+				background-size:20px ;
+				position: absolute;
+				font-size:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="line"></div>
+		<div id="div"></div>
+		<script>
+			var line=document.getElementsByClassName('line')[0];
+            var box=document.getElementById('div');
+            var code={
+                left:false,
+                right:false
+            };
+            document.onkeydown=function(ev){
+                if(ev.keyCode==37){
+                    code.left=true;
+                }else if(ev.keyCode==39){
+                    code.right=true;
+                }else if(ev.keyCode==32){
+                    setTimeout(function(){
+                        box.style.top='200px';
+                    },300)
+
+                }
+            }
+            document.onkeyup=function(ev){
+                if(ev.keyCode==37){
+                    code.left=false;
+                }else if(ev.keyCode==39){
+                    code.right=false;
+                }else if(ev.keyCode==32){
+                    setTimeout(function(){
+                        box.style.top='350px';
+                    },500)
+                }
+            }
+            setInterval(function(){
+                var l=parseFloat(getComputedStyle(box).left);
+                var t=parseFloat(getComputedStyle(box).top);
+                if(code.left){
+                    box.style.left=(l-5)+'px'
+                }
+                if(code.right){
+                    box.style.left=(l+5)+'px';
+                }
+            },10)
+		</script>
+	</body>
+</html>

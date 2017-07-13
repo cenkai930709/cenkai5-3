@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+			#box div{
+				width: 100px;
+				height: 100px;
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div></div>
+		</div>
+		<script>
+			var box = document.getElementById('box');
+			/*
+			 	mouseenter
+			 		鼠标从元素外移入元素内触发
+			 		
+			 	mouseleave
+			 		鼠标从元素内移到元素外触发
+			 * */
+			box.onmouseenter = function(){
+				console.log('mouseenter')
+			}
+			box.onmouseleave = function(){
+				console.log('mouseleave')
+			}
+		</script>
+	</body>
+</html>

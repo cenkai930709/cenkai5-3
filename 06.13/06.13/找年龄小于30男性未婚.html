@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var data = [
+			{
+				name:'小白1',
+				age:18,
+				sex:'man',
+				marry:false
+			},
+			{
+				name:'小白2',
+				age:35,
+				sex:'woman',
+				marry:false
+			},
+			{
+				name:'小白3',
+				age:28,
+				sex:'man',
+				marry:true
+			},
+			{
+				name:'小白4',
+				age:38,
+				sex:'man',
+				marry:true
+			},
+			{
+				name:'小白5',
+				age:22,
+				sex:'woman',
+				marry:false
+			}
+		];
+		function fn(data){
+			return data.filter(function(a){
+				return a.age<30&&a.sex=='man'&&!a.marry;
+			})
+		}
+		console.log(fn(data))
+		</script>
+	</body>
+</html>

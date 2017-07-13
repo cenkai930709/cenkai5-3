@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				height: 550px;
+				width: 550px;
+				margin: 50px auto;
+			}
+			#box div{
+				height: 50px;
+				width: 50px;
+				line-height: 50px;
+				text-align: center;
+				margin-right: 5px;
+				margin-bottom: 5px;
+				float: left;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			var box=document.getElementById('box');
+			var str='';
+			for(var i=0;i<100;i++){
+				str+='<div>'+(i+1)+'</div>';
+			}
+			box.innerHTML=str;
+			var divs=box.getElementsByTagName('div');
+			for(var i=0;i<divs.length;i++){
+				divs[i].index=i;
+				divs[i].onclick=function(){
+					for(var i=0;i<divs.length;i++){
+						divs[i].style.background='red';
+					}
+					this.style.background='yellow';
+					fn1(this.index);
+					fn2(this.index);
+					fn3(this.index);
+					fn4(this.index);
+					fn(this.index);
+				}
+			}
+			function fn(n){
+				divs[n].style.background='yellow';
+				if(Math.floor(n/10)==Math.floor((n+1)/10)){
+					setTimeout(function(){
+						fn(n+1)
+					},100)
+				}
+				if(Math.floor(n/10)==Math.floor((n-1)/10)){
+					setTimeout(function(){
+						fn(n-1)
+					},100)
+				}
+				if(n-10=>0){
+					setTimeout(function(){
+						fn(n-10)
+					},100)
+				}
+				if(n+10=>0){
+					setTimeout(function(){
+						fn(n+10)
+					},100)
+				}
+			}
+			/*function fn1(n){
+				if(Math.floor(n/10)==Math.floor((n+1)/10)){
+					divs[n+1].style.background='yellow';
+					setTimeout(function(){
+						fn1(n+1)
+					},100)
+				}
+			}
+			function fn2(n){
+				if(Math.floor(n/10)==Math.floor((n-1)/10)){
+					divs[n-1].style.background='yellow';
+					setTimeout(function(){
+						fn2(n-1)
+					},100)
+				}
+			}
+			function fn3(n){
+				divs[n].style.background='yellow';
+				if(divs[n-10]){
+					setTimeout(function(){
+						fn3(n-10)
+					},100)
+				}
+				
+			}
+			function fn4(n){
+				divs[n].style.background='yellow';
+				if(divs[n+10]){
+					setTimeout(function(){
+						fn4(n+10)
+					},100)
+				}
+				
+			}*/
+		</script>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="list">
+			<li class="a">1</li>
+			<li class="a">2</li>
+			<li class="a">3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+		<ul id="list2">
+			<li class="a">1</li>
+			<li class="a">2</li>
+			<li class="a">3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+		<script>
+			/*
+			 	1.id
+			 		document.getElementById('id名')
+			 	2.tag
+			 		在某个范围（document或者某个元素）下通过标签名获取到一组元素（一个集合）
+			 		操作某一个元素，用数字下标取值，从0开始,lis[0]
+			 		length,获取到的元素个数
+			 	3.class
+			 		在某个范围（document或者某个元素）下通过class名获取到一组元素（一个集合）
+			 		操作某一个元素，用数字下标取值，从0开始,lis[0]
+			 		length,获取到的元素个数
+			 * */
+			var list = document.getElementById('list');
+			var lis = list.getElementsByTagName('li');
+			var lis2 = document.getElementsByClassName('a');
+			console.log(lis)
+			lis[0].style.background='red'
+			console.log(lis2)
+	
+		</script>
+	</body>
+</html>

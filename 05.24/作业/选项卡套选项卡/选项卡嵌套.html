@@ -1,0 +1,212 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	li{
+		list-style: none;
+		cursor: pointer;	
+	}
+	ul{
+		margin: 0;
+		padding: 0;
+	}
+	#box{
+		border: 5px solid #E7E7E7;
+		height:400px;
+		width: 800px;
+		overflow: hidden;
+		margin: 0 auto;
+	}
+	#box>ul{
+		width:100px;
+		height: 100%;
+		float: left;
+	}
+	#box>ul li{
+		line-height: 99px;
+		text-align: center;
+		background-color: #000;
+		border-bottom: 1px solid #E7E7E7;
+		color:white;
+	}
+	#box>ul .active{
+		background-color: red;
+		color:black;
+	}
+	#box div{
+		float: left;
+		width: 700px;
+		height: 100%;
+		position: relative;
+		display: none;
+	}
+	#box img{
+		width: 100%;
+		height: 100%;
+	}
+	#box div ul{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	#box div li{
+		float: left;
+		border-right: 1px solid white;
+		background-color: black;
+		opacity: .7;
+		line-height: 30px;
+		margin-right: -1px;
+		color:white;
+		text-align: center;
+	}
+	#box div .active{
+		background-color: #EF3163;
+	}
+</style>
+</head>
+
+<body>
+	<div id="box">
+		<!--<ul>
+			<li>暖色调</li>
+			<li>金色夕阳</li>
+			<li>灰色格调</li>
+			<li>baby</li>
+		</ul>
+		<div>
+			<img src="" alt="" />
+			<ul>
+				<li style="width:px;">
+					街边夕阳
+				</li>
+				<li style="width:px;">
+					金色稻草
+				</li>
+			</ul>
+		</div>-->
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var data=[
+		{
+			titer:'暖色调',
+			inof:[
+					['img/img1.gif','暖1'],
+					['img/img2.gif','暖2'],
+					['img/img3.gif','暖3'],
+					['img/img4.gif','暖4']
+				 ]
+		},
+		{
+			titer:'金色夕阳',
+			inof:[
+					['img/img5.gif','暖5'],
+					['img/img6.gif','暖6']
+				 ]
+		},
+		{
+			titer:'灰色格调',
+			inof:[
+					['img/img7.gif','暖7'],
+					['img/img8.gif','暖8'],
+					['img/img9.gif','暖9'],
+					['img/img10.gif','暖10']
+				 ]
+		},
+		{
+			titer:'baby',
+			inof:[
+					['img/img11.gif','暖11'],
+					['img/img12.gif','暖12']
+				 ]
+		}
+	];
+	var box=document.getElementById('box');
+	var str='';
+	//左侧结构
+	str='<ul>'
+	for(var k in data){
+		str+='<li>'+data[k].titer+'</li>'
+	}
+	str+='</ul>'
+	//右侧结构
+	for(var d in data){
+		str+='<div>'+'<img src="'+data[d].inof[0][0]+'" alt="" />'+'<ul>'
+		for(var j in data[d].inof){
+			str+='<li style="width:'+700/data[d].inof.length+'px;">'+data[d].inof[j][1]+'</li>'
+		}
+		str+='</ul></div>'
+	}
+	box.innerHTML=str;
+	var Leftlis=box.getElementsByTagName('ul')[0].getElementsByTagName('li');
+	var divs=box.getElementsByTagName('div');
+	Leftlis[0].className='active';
+	divs[0].style.display='block';
+	//控制左侧结构
+	var n1=0;
+	//控制右侧结构
+	var n2=0;
+	//设置定时器
+	var timer=null;
+	for(var i=0;i<Leftlis.length;i++){
+		Leftlis[i].index=i;
+		Leftlis[i].onclick=function(){
+			n1=this.index;
+			left()
+		}
+		fn(i);
+	}
+	function fn(n){
+		var lis=divs[n].getElementsByTagName('li');
+		var img=divs[n].getElementsByTagName('img')[0];
+		lis[0].className='active';
+		for(var i=0;i<lis.length;i++){
+			lis[i].index=i;
+			lis[i].onclick=function(){
+				n2=this.index;
+				right();
+			}
+		}
+	}
+	function left(){
+		for(var i=0;i<Leftlis.length;i++){
+			Leftlis[i].className='';
+			divs[i].style.display='';
+		}
+		Leftlis[n1].className='active';
+		divs[n1].style.display='block';
+	}
+	function right(){
+		var lis=divs[n1].getElementsByTagName('li');
+		var img=divs[n1].getElementsByTagName('img')[0];
+		for(var i=0;i<lis.length;i++){
+			lis[i].className='';
+		}
+		lis[n2].className='active';
+		img.src=data[n1].inof[n2][0];
+		
+	}
+	timer=setInterval(autoPlay,500);
+	function autoPlay(){
+		n2++;
+		var len=data[n1].inof.length;
+		if(n2==len){
+			n1++;
+			if(n1>data.length-1){
+				n1=0;
+			}
+			n2=0;
+			left();
+		}
+		right();
+	}
+	box.onmouseover=function(){
+		clearInterval(timer);
+	}
+	box.onmouseout=function(){
+		timer=setInterval(autoPlay,500);
+	}
+</script>

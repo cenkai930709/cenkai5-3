@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			span{
+				background: yellow;
+			}
+			li{
+				background: red;
+				margin-bottom: 10px;
+			}
+			ul{
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<span>文字1</span>
+			</li>
+			<li>
+				<span>文字2</span>
+			</li>
+			<li>
+				<span>文字3</span>
+			</li>
+			<li>
+				<span>文字4</span>
+			</li>
+			<li>
+				<span>文字5</span>
+			</li>
+		</ul>
+		<script type="text/javascript">
+			var ul = document.getElementsByTagName('ul')[0];
+			ul.onclick = function(ev){
+				console.log(ev.target)
+			}
+		</script>
+	</body>
+</html>

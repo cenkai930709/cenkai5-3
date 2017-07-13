@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 50px;
+				height: 500px;
+				background: #000;
+				position: relative;
+			}
+			span{
+				position: absolute;
+				top:0;
+				left:0;
+				width: 50px;
+				height: 50px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<span></span>
+		</div>
+		<script>
+			var box = document.getElementById('box');
+			var sp = box.getElementsByTagName('span')[0];
+			
+			sp.onmousedown = function(ev){
+				var disY = ev.clientY - this.getBoundingClientRect().top;
+				var maxT = box.clientHeight - this.offsetHeight;
+				document.onmousemove = function(ev){
+					var y = ev.clientY-disY-box.getBoundingClientRect().top;
+					if(y<0){
+						y = 0;
+					}
+					if(y>maxT){
+						y = maxT;
+					}
+					sp.style.top = y+'px';
+				}
+				document.onmouseup = function(){
+					document.onmousemove = document.onmouseup = null;
+				}
+			}
+		</script>
+	</body>
+</html>

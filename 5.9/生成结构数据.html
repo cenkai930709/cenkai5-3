@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul{
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr=[
+				[
+					'姓名：小丽',
+					'性别：女',
+					'年龄：18',
+					['爱好',['游泳','逛街','旅游']],
+					['朋友',['小红','小明']]
+				],
+				[
+					'姓名：小丽2',
+					'性别：女',
+					'年龄：28',
+					['爱好',['游泳2','逛街2','旅游2']],
+					['朋友',['小红','小明']]
+				],
+				[
+					'姓名：小丽3',
+					'性别：女',
+					'年龄：38',
+					['爱好',['游泳3','逛街3','旅游3']],
+					['朋友',['小黑','小黄']]
+				],
+				[
+					'姓名：小白1',
+					'性别：女',
+					'年龄：38',
+					['爱好',['游泳3','逛街3','旅游3']],
+					['朋友',['小黑','小黄']]
+				],
+				[
+					'姓名：小白2',
+					'性别：女',
+					'年龄：38',
+					['爱好',['游泳3','逛街3','旅游3']],
+					['朋友',['小黑','小黄']]
+				],
+				[
+					'姓名：小白3',
+					'性别：女',
+					'年龄：38',
+					['爱好',['游泳3','逛街3','旅游3']],
+					['朋友',['小黑','小黄']]
+				]
+			];
+			var str='';
+			//当前页数
+			var page=2;
+			//一页几条数据
+			
+			var len=2;
+			var start=(page-1)*len;
+			var end=start+len;
+			str='<ul>';
+			for(var i=(page-1)*len;i<(len*page);i++){
+				str+='<li style="border:1px solid #000;">'+'<p>'+arr[i][0]+'</p>'+'<div>'+arr[i][1]+'</div>'+'<p>'+arr[i][2]+'</p>'+'<dl>'+'<dt>'+arr[i][3][0]+'</dt>'
+					for(var k=0;k<arr[i][3][1].length;k++){
+						str+='<dd>'+arr[i][3][1][k]+'</dd>';
+					}
+					str+='</dl>'+'<span>'+arr[i][4][0]+'<span>'+'<ul>'
+					for(var a=0;a<arr[i][4][1].length;a++){
+						str+='<li>'+arr[i][4][1][a]+'</li>'
+					}
+					str+='</ul>'
+				}
+				str+='</li>'+'</ul>'
+			document.body.innerHTML=str;
+		</script>
+	</body>
+</html>

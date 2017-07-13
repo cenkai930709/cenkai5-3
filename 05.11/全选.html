@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 330px;
+				height:330px;
+			}
+			#box div{
+				width: 100px;
+				height: 100px;
+				margin-right:10px;
+				margin-bottom: 10px;
+				background: red;
+				float: left;
+			}
+			#box div.checked{
+				background: yellow;
+			}
+			#all{
+				font-size:30px;
+				color: red;
+				position: absolute;
+				left:400px;
+				top:100px;
+			}
+			#all.active{
+				color: green;
+			}
+			#reverse{
+				font-size:30px;
+				position: absolute;
+				left:400px;
+				top:200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div id="all">未选中</div>
+		<div id="reverse">反选</div>
+		<script>
+			var box = document.getElementById('box');
+			var all = document.getElementById('all');
+			var divs = box.getElementsByTagName('div');
+			var reverse = document.getElementById('reverse');
+			var n = 0;
+			for(var i=0;i<divs.length;i++){
+				//没选中：红，选中：黄
+				divs[i].check = false;
+				divs[i].onclick = function(){
+					if(this.check){
+						//选中变成没选中
+						this.check = false;
+						this.className = '';
+						n--;
+					}else{
+						//没选中变成选中
+						this.check = true;
+						this.className = 'checked';
+						n++;
+					}
+					allChecked();
+				}
+			}
+			all.check = false;
+			all.onclick = function(){
+				if(this.check){
+					for(var i=0;i<divs.length;i++){
+						divs[i].className = '';
+						divs[i].check = false;
+					}
+					this.check = false;
+					this.innerHTML = '未全选';
+					this.className = '';
+					n = 0;
+				}else{
+					for(var i=0;i<divs.length;i++){
+						divs[i].className = 'checked';
+						divs[i].check = true;
+					}
+					n = divs.length;
+					this.check = true;
+					this.innerHTML = '全选';
+					this.className = 'active';
+				}
+			}
+			reverse.onclick = function(){
+				for(var i=0;i<divs.length;i++){
+					if(divs[i].check){
+						divs[i].check = false;
+						divs[i].className = '';
+						n--;
+					}else{
+						divs[i].check = true;
+						divs[i].className = 'checked';
+						n++;
+					}
+				}
+				allChecked();
+			}
+			function allChecked(){
+				if(n==divs.length){
+					all.innerHTML = '全选';
+					all.className = 'active';
+					all.check = true;
+				}else{
+					all.innerHTML = '未全选';
+					all.className = '';
+					all.check = false;
+				}
+			}
+		</script>
+	</body>
+</html>

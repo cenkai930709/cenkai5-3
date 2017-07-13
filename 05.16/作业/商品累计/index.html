@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="price.css" />
+	</head>
+
+	<body onselectstart="return false;">
+		<div class="wrap">
+			<div class="box">
+				<ul class="list">
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<div>
+							单价：<span>12.5元 </span> 小计：<strong>0元</strong>
+						</div>
+					</li>
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<div>
+							单价：<span>10.5元 </span> 小计：<strong>0元</strong>
+						</div>
+					</li>
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<div>
+							单价：<span>8.5元 </span> 小计：<strong>0元</strong>
+						</div>
+					</li>
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<div>
+							单价：<span>8元 </span> 小计：<strong>0元</strong>
+						</div>
+					</li>
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<div>
+							单价：<span>14.5元 </span> 小计：<strong>0元</strong>
+						</div>
+					</li>
+				</ul>
+				<div class="info">
+					<span>商品公合计：<em>0</em>件</span>
+					<span>共花费了：<em>0</em>元</span>
+					<br />
+					<br />
+					<span>其中最贵的商品单价是：<em>0</em>元</span>
+				</div>
+			</div>
+		</div>
+		<script>
+			var list=document.getElementsByClassName('list')[0];
+			var ems=list.getElementsByTagName('em');
+			var spans=list.getElementsByTagName('span');
+			var strongs=list.getElementsByTagName('strong');
+			var lis=list.getElementsByTagName('li');
+			var sps=document.getElementsByClassName('info')[0].getElementsByTagName('em');
+			for(var i=0;i<lis.length;i++){
+				fn(i);
+			}
+			function fn(m){
+				var ema=lis[m].getElementsByTagName('em')[0];
+				var spana=lis[m].getElementsByTagName('span')[0];
+				var stronga=lis[m].getElementsByTagName('strong')[0];
+				var btns=lis[m].getElementsByTagName('i');
+				var n=0;
+				//单价
+				var price=parseFloat(spana.innerHTML);
+				//减
+				btns[0].onclick=function(){
+					if(n>0){
+						n--;
+						ema.innerHTML=n;
+						//小计
+						stronga.innerHTML=price*n+'元';
+					}
+					sun();
+				}
+				//加
+				btns[1].onclick=function(){
+					n++;
+					ema.innerHTML=n;
+					//小计
+					stronga.innerHTML=price*n+'元';
+					sun();
+				}
+			}
+			function sun(){
+				//总价
+				var zj=0;
+				for(var i=0;i<strongs.length;i++){
+					zj+=parseFloat(strongs[i].innerHTML);
+					
+				}
+				sps[1].innerHTML=zj;
+				//数量
+				var sl=0;
+				for(var i=0;i<ems.length;i++){
+					sl+=Number(ems[i].innerHTML)
+				}
+				sps[0].innerHTML=sl;
+				//最高单价
+				var max=-Infinity;
+				for(var i=0;i<ems.length;i++){
+					if(ems[i].innerHTML!=0){
+						if(max<parseFloat(spans[i].innerHTML)){
+							max=parseFloat(spans[i].innerHTML)
+						}
+						
+					}
+				}
+				sps[2].innerHTML=max;
+			}
+		</script>
+	</body>
+
+</html>

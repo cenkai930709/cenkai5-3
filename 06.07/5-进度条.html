@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 500px;
+				height: 50px;
+				border: 1px solid #000;
+				margin:100px auto 0;
+			}
+			#div{
+				height:50px;
+				width:0%;
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<div id="box">
+			<div id="div"></div>
+		</div>
+		<script type="text/javascript">
+			var box = document.getElementById('box');
+			var div = document.getElementById('div');
+			var btn = document.getElementById('btn');
+			var n = 0;
+			box.onclick = function(){
+				fn();
+			}
+			function fn(){
+				//长度到100停止return，不再调用自身函数
+				if(n==100){
+					//重置初始状态，为了下一次点击
+					n=0;
+					div.style.width = n+'%';
+					return;
+				}
+				//每次n+1，长度渐渐变大
+				n++;
+				div.style.width = n+'%';
+				//arguments.callee自身函数体
+				setTimeout(function(a){
+					//定时器作用域问题，arguments要传进来
+					fn();
+					//a.callee();
+				},20,arguments)	
+			}
+			btn.onclick = function(){
+				fn = 1;
+			}
+		</script>
+	</body>
+</html>

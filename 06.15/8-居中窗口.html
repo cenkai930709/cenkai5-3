@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				margin:0;
+			}
+			#box{
+				width: 400px;
+				height: 300px;
+				background: red;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			var box = document.getElementById('box');
+			//console.log(document.documentElement.clientHeight)
+			//可视区的宽高除2，减自身一半
+			var w = document.documentElement.clientWidth/2-200;
+			var h = document.documentElement.clientHeight/2-150;
+			box.style.left = w+'px';
+			box.style.top = h+'px'; 
+			</script>
+	</body>
+</html>

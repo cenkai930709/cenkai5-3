@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var inof=[
+				{
+					name:'小明1',
+					age:18
+				},
+				{
+					name:'小明2',
+					age:28
+				},
+				{
+					name:'小明3',
+					age:14
+				},
+				{
+					name:'小明4',
+					age:24
+				},
+				{
+					name:'小明5',
+					age:38
+				},
+				{
+					name:'小明6',
+					age:20
+				}
+			];
+			function fn(arr){
+				var min=-Infinity;
+				var obj=null;
+				for(var i=0;i<arr.length;i++){
+					if(min<arr[i].age){
+						min=arr[i].age;
+						obj=arr[i];
+					}
+				}
+				return obj;
+			}
+			console.log(fn(inof))
+			
+		</script>
+	</body>
+</html>

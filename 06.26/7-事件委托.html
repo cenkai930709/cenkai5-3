@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				margin:0;
+				padding:0;
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>文字1</li>
+			<li>文字2</li>
+			<li>文字3</li>
+			<li>文字4</li>
+			<li>文字5</li>
+			<li>文字6</li>
+		</ul>
+		<script type="text/javascript">
+			/*
+			 	事件委托
+			 		事件源的应用，内存性能优化
+			 * 
+			 * */
+			var ul = document.getElementsByTagName('ul')[0];
+//			var lis = ul.getElementsByTagName('li');
+//			for(var i=0;i<lis.length;i++){
+//				lis[i].onclick = function(){
+//					alert(this.innerHTML)
+//				}
+//			}
+			ul.onclick = function(ev){
+				console.log(ev.target)
+				//alert(ev.target.innerHTML)
+				ev.target.style.background = 'red';
+			}
+		</script>
+	</body>
+</html>

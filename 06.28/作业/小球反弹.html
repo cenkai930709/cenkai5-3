@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 400px;
+				height: 400px;
+				border: 1px solid #000;
+			}
+			#ball{
+				width: 50px;
+				height: 50px;
+				background: blue;
+				position: absolute;
+				left:600px;
+				top:300px;
+				border-radius:50% ;
+			}
+		
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<div id="ball"></div>
+		<script>
+			var box=document.getElementById('box');
+            var ball=document.getElementById('ball');
+            brog(ball);
+            function brog(obj){
+                //按下
+                obj.onmousedown=function(ev){
+                    ev.preventDefault();
+                    var nL=ev.clientX-this.getBoundingClientRect().left;
+                    var nT=ev.clientY-this.getBoundingClientRect().top;
+                    //拖拽
+                    document.onmousemove=function(ev){
+                        var l=ev.clientX-nL;
+                        var t=ev.clientY-nT;
+                        obj.style.left=l+'px';
+                        obj.style.top=t+'px';
+
+                    }
+                    //抬起
+                    document.onmouseup=function(){
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+                    }
+                }
+
+            }
+		</script>
+	</body>
+</html>

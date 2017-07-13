@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 200px;
+				border: 1px solid #000;
+				font-size:50px;
+				line-height: 200px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<div id="box">上</div>
+		<script>
+			var btn = document.getElementById('btn');
+			var box = document.getElementById('box');
+			//top:上，right:右，bottom:下，left:左
+			var onOff = 'top';
+			btn.onclick = function(){
+		
+				if(onOff == 'top'){
+					box.innerHTML = '右';
+					onOff = 'right';
+				}else if(onOff == 'right'){
+					box.innerHTML = '下';
+					onOff = 'bottom';
+				}else if(onOff == 'bottom'){
+					box.innerHTML = '左';
+					onOff = 'left';
+				}else{
+					box.innerHTML = '上';
+					onOff = 'top';
+				}
+			}
+		</script>
+	</body>
+</html>

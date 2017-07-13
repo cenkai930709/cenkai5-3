@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//首字母变大写
+			var str='adjfk-adsj-asdj-gjd';
+			function fn(str){
+				var arr=str.split('-');
+				for(var i=1;i<arr.length;i++){
+					arr[i]=arr[i][0].toUpperCase()+arr[i].substr(1);
+				}
+				return arr.join('');
+			}
+			console.log(fn(str));
+			
+		</script>
+	</body>
+</html>

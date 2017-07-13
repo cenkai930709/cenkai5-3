@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+		</ul>
+		<script type="text/javascript">
+			var uls=document.getElementsByTagName('ul');
+			fn(0);
+			fn(1);
+			function fn(n){
+				var lis=uls[n].getElementsByTagName('li');
+				for(var i=0;i<lis.length;i++){
+					lis[i].onclick=function(){
+						for(var i=0;i<lis.length;i++){
+							lis[i].style.background='';
+						}
+						this.style.background='pink';
+					}
+				}
+			}
+			
+		</script>
+	</body>
+</html>

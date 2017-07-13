@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<input type="button"  value="西边" />
+<input type="button"  value="东边"/>
+<p id="p"></p>
+<ol id="list">
+
+</ol>
+<script>
+    var data={
+        index:['wler','vert'],
+        wler:[
+            {
+                name:'张三'
+            },
+            {
+                name:'李三'
+            },
+            {
+                name:'王三'
+            },
+            {
+                name:'胡三'
+            },
+            {
+                name:'刘三'
+            }
+        ],
+        vert:[
+            {
+                name:'张四'
+            },
+            {
+                name:'李四'
+            },
+            {
+                name:'王四'
+            },
+            {
+                name:'胡四'
+            },
+
+        ]
+    };
+    var inps = document.getElementsByTagName('input');
+    var list = document.getElementById('list');
+    var p = document.getElementById('p');
+    var s = location.search.substr(1).split('=')[1];
+    var Data=[];
+    if(s){
+        if(s=='w'){
+            Data=data.wler;
+            p.innerHTML='西边';
+        }else{
+            Data=data.vert;
+            p.innerHTML='东边';
+        }
+    }else{
+        Data=data[data.index[0]];
+        p.innerHTML='西边';
+    }
+    var str='';
+    Data.forEach(function(a){
+        str+='<li>'+ a.name+'</li>';
+    })
+    list.innerHTML=str;
+    inps[0].onclick=function(){
+        location.search='y=w';
+
+    }
+    inps[1].onclick=function(){
+        location.search='y=v';
+    }
+</script>
+
+</body>
+</html>

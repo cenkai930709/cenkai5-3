@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			a{
+				text-decoration: none;
+				margin-right: 5px;
+				font-size: 18px;
+				color: black;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			
+			page({
+				id:'box',
+				nuw:9,
+				all:25,
+				callBack:function(nuw,all){
+					alert('当前页'+nuw+'，总共页'+all);
+				}
+			});
+			function page(opt){
+				if(!opt.id){return false}
+				var obj=document.getElementById(opt.id);
+				var nuw=opt.nuw||1;
+				var all=opt.all||5;
+				var callBack=opt.callBack||function(){};
+				if(nuw>=4&&all>=6){
+					var oA=document.createElement('a');
+					oA.href='#1';
+					oA.innerHTML='首页';
+					obj.appendChild(oA);
+				}
+				if(nuw>=2){
+					var oA=document.createElement('a');
+					oA.href='#'+(nuw-1);
+					oA.innerHTML='上一页';
+					obj.appendChild(oA);
+					
+				}
+				
+				if(all<=5){
+					for(var i=1;i<=all;i++){
+						var oA=document.createElement('a');
+						oA.href='#'+i;
+						if(nuw==i){
+							oA.innerHTML=i;
+						}else{
+							oA.innerHTML='['+i+']';
+							
+						}
+						obj.appendChild(oA);
+						
+					}
+				}else{
+					for(var i=1;i<=5;i++){
+						var oA=document.createElement('a');
+						if(nuw==1||nuw==2){
+							oA.href='#'+i;
+							if(nuw==i){
+								oA.innerHTML=i;
+							}else{
+								oA.innerHTML='['+i+']';
+								
+							}
+						}else if((all-nuw)==0||(all-nuw)==1){
+							oA.href='#'+(all-5+i);
+							if((all-nuw)==0&&i==5){
+								oA.innerHTML=(all-5+i);
+							}else if((all-nuw)==1&&i==4){
+								oA.innerHTML=(all-5+i);
+							}else{
+								oA.innerHTML='['+(all-5+i)+']';
+								
+							}
+						}else{
+							oA.href='#'+(nuw-3+i);
+							if(i==3){
+								oA.innerHTML=(nuw-3+i);
+							}else{
+								oA.innerHTML='['+(nuw-3+i)+']';
+							}
+							
+						}
+						obj.appendChild(oA);
+					}
+					
+				}
+				if((all-nuw)>=1){
+					var oA=document.createElement('a');
+					oA.href='#'+(nuw+1);
+					oA.innerHTML='下一页';
+					obj.appendChild(oA);
+				}
+				if((all-nuw)>=3&&all>=6){
+					var oA=document.createElement('a');
+					oA.href='#'+all;
+					oA.innerHTML='尾页';
+					obj.appendChild(oA);
+				}
+				callBack(nuw,all);
+				var as=obj.getElementsByTagName('a');
+				for(var i=0;i<as.length;i++){
+					as[i].onclick=function(){
+						var nuw=parseInt(this.getAttribute('href').substring(1));
+						obj.innerHTML='';
+						page(
+							{
+								id:opt.id,
+								nuw:nuw,
+								all:all,
+								callBack:callBack
+							}
+						);
+						return false;
+					}
+				}
+			}
+			
+			
+
+		</script>
+	</body>
+</html>

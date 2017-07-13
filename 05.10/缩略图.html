@@ -1,0 +1,166 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	#box{
+		width: 500px;
+		height: 500px;
+		margin: 0 auto;
+		position: relative;
+	}
+	#box img{
+		width: 100%;
+		height: 100%;
+	}
+	a{
+		text-decoration: none;
+		width: 50px;
+		height: 50px;
+		position: absolute;
+		top:50%;
+		margin-top: -25px;
+		background-color: #ccc;
+		border-radius: 50%;
+		line-height: 50px;
+		text-align: center;
+		color:white;
+		font-size: 40px;
+	}
+	#prev{
+		left:20px;
+	}
+	#next{
+		right:20px;
+	}
+	#list{
+		padding: 0;
+		margin: 0;
+		position: absolute;
+		bottom: 20px;
+		left:50%;
+		margin-left: -75px;
+		width: 150px;
+	}
+	#list li{
+		list-style: none;
+		background-color: yellow;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		float: left;
+		margin: 0 5px;
+		cursor:pointer;
+		position: relative;
+	}
+	#list li.active{
+		background-color: #ccc;
+	}
+	#list li img{
+		display: none;
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		bottom: 30px;
+		left: 50%;
+		margin-left: -50px;
+	}
+	#list li div{
+		border: 10px solid transparent;
+		border-top-color:#ccc;
+		position: absolute;
+		top:-10px; 
+		display: none;
+	}
+	#list li.active div,#list li.active img{
+		display: block;
+	}
+</style>
+</head>
+
+<body>
+
+	<div id="box">
+		<img src="" alt="" id="img">
+		<a href="javascript:;" id="prev"><</a>
+		<a href="javascript:;" id="next">></a>
+		<ul id ="list">
+			<li style="background:red;">
+				
+				<img src="img/0.jpg" alt="">
+				<div></div>
+			
+			</li>
+			<li>
+			
+				<img src="img/1.jpg" alt="">
+				<div></div>
+			</li>
+			<li>
+				<img src="img/2.jpg" alt="">
+				<div></div>
+			</li>
+			<li>
+				<img src="img/3.jpg" alt="">
+				<div></div>
+			</li>
+			<li>
+				<img src="img/4.jpg" alt="">
+				<div></div>
+			</li>
+		</ul>		
+	</div>
+
+</body>
+</html>
+<script type="text/javascript">
+	var img = document.getElementById('img');
+	var prev = document.getElementById('prev');
+	var next = document.getElementById('next');
+	var lis = document.getElementsByTagName('li');
+	var arr = ['img/0.jpg','img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'];
+	var n = 0;
+	img.src = arr[n];
+	next.onclick = function(){
+		n++;
+		tab();
+	}
+	prev.onclick = function(){
+		n--;
+		tab();
+	}
+	function tab(){
+		//图片
+		if(n<0){
+			n = arr.length-1;
+		}
+		if(n>arr.length-1){
+			n = 0;
+		}
+		img.src = arr[n];
+		//点
+		for(var i=0;i<lis.length;i++){
+			lis[i].style.background = '';
+		}
+		lis[n].style.background = 'red';
+	}
+	for(var i=0;i<lis.length;i++){
+		lis[i].img = lis[i].getElementsByTagName('img')[0];
+		lis[i].div = lis[i].getElementsByTagName('div')[0];
+		lis[i].index = i;
+		lis[i].onmouseover = function(){
+			this.img.style.display = 'block';
+			this.div.style.display = 'block';
+		}
+		lis[i].onmouseout = function(){
+			this.img.style.display = '';
+			this.div.style.display = '';
+		}
+		lis[i].onclick = function(){
+			n = this.index;
+			tab();
+		}
+	}
+	
+</script>

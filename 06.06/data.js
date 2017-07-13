@@ -1,0 +1,27 @@
+var data = [
+	{
+		id:1,
+		name:'小红',
+		age:18
+	},
+	{
+		id:2,
+		name:'小白',
+		age:28
+	},
+	{
+		id:3,
+		name:'小强',
+		age:26
+	},
+	{
+		id:4,
+		name:'小丽',
+		age:22
+	},
+	{
+		id:5,
+		name:'小黑',
+		age:20
+	}
+];

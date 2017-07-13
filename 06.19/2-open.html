@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<input type="button" value="关闭" id="btn2"/>
+		<iframe src="" width="" height="" name="iframe"></iframe>
+		<script type="text/javascript">
+			/*
+			 	open(URL,name,style,boolean)
+			 * 参数：
+			 * 	  URL：跳转地址，不加http默认本地打开
+			 *   name:打开方式，框架name,默认是新窗口打开
+				 *     _blank:新窗口打开
+				 *     _self:自身窗口打开
+				 *    _top:最外层框架打开
+				 *    _parent:父级框架打开
+				 *    name:iframe的name
+				 *
+				 不常使用 
+				 style:新窗口的样式
+				 boolean:是否保留历史记录
+			 * */
+			var btn = document.getElementById('btn');
+			var btn2 = document.getElementById('btn2');
+			var opener = null;
+			btn.onclick = function(){
+				//open('http://www.baidu.com')
+				//open('1-BOM.html')
+				//open('1-BOM.html','_blank')
+				//open('1-BOM.html','_self')
+				//open('http://www.baidu.com','iframe')
+				//open('3-test.html','iframe')
+				//open('http://www.baidu.com','_blank','width=100px,height=100px')
+				//opener = open('1-BOM.html','_blank')
+			}
+			btn2.onclick = function(){
+				opener.close()
+			}
+			console.log(top)
+		</script>
+	</body>
+</html>

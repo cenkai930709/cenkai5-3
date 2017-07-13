@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按年龄"/>
+		<input type="button" value="按id"/>
+		<ul id="list"></ul>
+		<script type="text/javascript">
+			var arr = [
+				{
+					id:1,
+					name:'小红',
+					age:18
+				},
+				{
+					id:2,
+					name:'小白',
+					age:28
+				},
+				{
+					id:3,
+					name:'小强',
+					age:26
+				},
+				{
+					id:4,
+					name:'小丽',
+					age:22
+				},
+				{
+					id:5,
+					name:'小黑',
+					age:20
+				}
+			];
+			var list = document.getElementById('list');
+			var inps = document.getElementsByTagName('input')
+			//根据传入的数组，渲染ul里的结构
+			function show(arr){
+				var str = '';
+				arr.forEach(function(a){
+					str += '<li>id:'+a.id+' 姓名：'+a.name+' 年龄：'+a.age+'</li>';
+				})
+				list.innerHTML = str;
+			}
+			show(arr);
+			//按年龄排序
+			inps[0].onclick = function(){
+			//先数据排序，再调用show()渲染
+				arr.sort(function(a,b){
+					return a.age-b.age;
+				})
+				show(arr)
+			}
+			
+		</script>
+	</body>
+</html>

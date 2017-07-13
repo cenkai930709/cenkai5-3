@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				padding: 100px;
+				border: 10px solid #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			/*
+			 	clientWidth/clientHeight
+			 		可视区尺寸,不带单位
+			 	width+padding	
+			 * 
+			 * 
+			 * */
+			var box = document.getElementById('box');
+			console.log(box.clientWidth)
+		</script>
+	</body>
+</html>

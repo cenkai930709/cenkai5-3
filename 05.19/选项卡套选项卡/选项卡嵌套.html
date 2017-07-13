@@ -1,0 +1,165 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	li{
+		list-style: none;
+		cursor: pointer;	
+	}
+	ul{
+		margin: 0;
+		padding: 0;
+	}
+	#box{
+		border: 5px solid #E7E7E7;
+		height:400px;
+		width: 800px;
+		overflow: hidden;
+		margin: 0 auto;
+	}
+	#box>ul{
+		width:100px;
+		height: 100%;
+		float: left;
+	}
+	#box>ul li{
+		line-height: 99px;
+		text-align: center;
+		background-color: #000;
+		border-bottom: 1px solid #E7E7E7;
+		color:white;
+	}
+	#box>ul .active{
+		background-color: red;
+		color:black;
+	}
+	#box div{
+		float: left;
+		width: 700px;
+		height: 100%;
+		position: relative;
+		display: none;
+	}
+	#box img{
+		width: 100%;
+		height: 100%;
+	}
+	#box div ul{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	#box div li{
+		float: left;
+		border-right: 1px solid white;
+		background-color: black;
+		opacity: .7;
+		line-height: 30px;
+		margin-right: -1px;
+		color:white;
+		text-align: center;
+	}
+	#box div .active{
+		background-color: #EF3163;
+	}
+</style>
+</head>
+
+<body>
+	<div id="box">
+		<!--<ul>
+			<li>暖色调</li>
+			<li>金色夕阳</li>
+			<li>灰色格调</li>
+			<li>baby</li>
+		</ul>
+		<div>
+			<img src="" alt="" />
+			<ul>
+				<li style="width:px;">
+					街边夕阳
+				</li>
+				<li style="width:px;">
+					金色稻草
+				</li>
+			</ul>
+		</div>-->
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var data=[
+		{
+			titer:'暖色调',
+			imgs:['images/img1.gif','images/img2.gif','images/img3.gif','images/img4.gif'],
+			tet:['休闲办公','商务办公','浪漫邂逅','陶瓷杯子']
+		},
+		{
+			titer:'金色夕阳',
+			imgs:['images/img5.gif','images/img6.gif'],
+			tet:['夕阳西下','日出阳光']
+		},
+		{
+			titer:'灰色格调',
+			imgs:['images/img7.gif','images/img8.gif','images/img9.gif','images/img10.gif'],
+			tet:['倾听音乐','早餐你好','优美键盘','许愿树']
+		},
+		{
+			titer:'baby',
+			imgs:['images/img11.gif','images/img12.gif'],
+			tet:['清晨美女','邂逅美女']
+		}
+	];
+	var box=document.getElementById('box');
+	var str='';
+	//生成左侧结构
+	var str='<ul>'
+	for(var k in data){
+		str+='<li>'+data[k].titer+'</li>'
+	}
+	str+='</ul>';
+	//生成右侧结构
+	for(var d in data){
+		str+='<div><img src="'+data[d].imgs[0]+'" alt="" /><ul>'
+		for(var j in data[d].imgs){
+			str+='<li style="width:'+(700/data[d].imgs.length)+'px;">'+data[d].tet[j]+'</li>'
+		}
+		str+='</ul></div>'
+	}
+	box.innerHTML=str;
+	var lis=box.getElementsByTagName('ul')[0].getElementsByTagName('li');
+	var divs=box.getElementsByTagName('div');
+	lis[0].className='active';
+	divs[0].style.display='block';
+	for(var i=0;i<divs.length;i++){
+		fn(i);
+	}
+	function fn(m){
+		var img=divs[m].getElementsByTagName('img')[0];
+		var lia=divs[m].getElementsByTagName('li');
+		lia[0].className='active';
+		
+		lis[m].onclick=function(){
+			for(var i=0;i<lis.length;i++){
+				lis[i].className='';
+				divs[i].style.display='';
+			}
+			this.className='active';
+			divs[m].style.display='block';
+		}
+		for(var i=0;i<lia.length;i++){
+			lia[i].index=i;
+			lia[i].onclick=function(){
+				for(var i=0;i<lia.length;i++){
+					lia[i].className='';
+				}
+				this.className='active';
+				img.src=data[m].imgs[this.index];
+				
+			}
+		}
+	}
+	
+</script>

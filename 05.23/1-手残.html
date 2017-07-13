@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				font-size:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">1</div>
+		<script type="text/javascript">
+			var box = document.getElementById('box');
+			var n = 0;
+			var timer = null;
+			//2.用开关
+			var onOff = true;
+			box.onclick = function(){
+				var _this = this;
+				//1.开启定时器前，先关闭
+				//clearInterval(timer)
+				if(onOff){
+					onOff = false;
+					timer = setInterval(function(){
+						n++;
+						if(n==10){
+							clearInterval(timer)
+							n = 0;
+							onOff = true;
+						}
+						_this.innerHTML++;
+					},500)
+				}
+				
+				
+			}
+		</script>
+	</body>
+</html>

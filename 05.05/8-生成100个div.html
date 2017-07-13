@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 600px;
+				height: 600px;
+				position: relative;
+			}
+			#box div{
+				width: 50px;
+				height: 50px;
+				background: red;
+				position: absolute;
+				line-height: 50px;
+				text-align: center;
+				color:#fff;
+				font-size:20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script>
+			var box = document.getElementById('box');
+			/*
+			 	top  0  0  0
+			 *  left 0 60 120
+			 * i:0-99
+			 * left:每10个一样
+			 * top：每行系数一样
+			 * 
+			 * Math.floor()-向下取整
+			 * Math.ceil()-向上取整
+			 * */
+			for(var i=0;i<100;i++){
+				box.innerHTML+='<div style="top:'+Math.floor(i/10)*60+'px;left:'+i%10*60+'px;">'+i+'</div>';
+			}
+
+		</script>
+	</body>
+</html>

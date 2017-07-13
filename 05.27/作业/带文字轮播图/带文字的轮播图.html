@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            margin: 100px auto 0;
+            width: 520px;
+            height: 280px;
+            border: 1px solid #000000;
+            position: relative;
+            overflow: hidden;
+        }
+        #list {
+        	
+            list-style: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1040px;
+        }
+        li {
+            float: left;
+        }
+        img {
+            display: block;
+        }
+
+        #prev, #next {
+            position: absolute;
+            width: 30px;
+            height: 60px;
+            background: #000000;
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 60px;
+            text-align: center;
+            top: 110px;
+            cursor: pointer;
+        }
+        #prev {
+            left: 0;
+        }
+        #next {
+            right: 0;
+        }
+        #text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding:10px;
+            height: 50px;
+            background: rgba(0,0,0,.8);
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="list">
+            <li><img src="images1/1.jpg" ></li>
+            <li><img src="images1/2.jpg" ></li>
+            <li><img src="images1/3.jpg" ></li>
+            <li><img src="images1/4.jpg" ></li>
+            <li><img src="images1/5.jpg" ></li>
+        </ul>
+        <span id="prev"> < </span>
+        <span id="next"> > </span>
+        <div id="text">
+            <h3>标题一</h3>
+            <p>内容一</p>
+        </div>
+    </div>
+    <script src="../../Mtween.js"></script>
+    <script>
+        var prev=document.getElementById('prev');
+        var next=document.getElementById('next');
+        var Text=document.getElementById('text');
+        var list=document.getElementById('list');
+        var imgs=list.getElementsByTagName('img');
+        var hs=Text.getElementsByTagName('h3')[0];
+        var ps=Text.getElementsByTagName('p')[0];
+        var box=document.getElementById('box');
+        var m=1;
+        var onOff=true;
+        var timer=null;
+        var arr1=['标题一','标题二','标题三','标题四','标题五'];
+        var arr2=['内容一','内容二','内容三','内容四','内容五'];
+        prev.onclick=function(){
+        	if(onOff){
+        		move({
+					obj:Text,
+					attrs:{bottom:-70},
+					duration:1000,
+					callBack:function(){
+						onOff=true;
+						autuPlay(m);
+						list.style.cssText='';
+						
+					}
+				})
+				m++;
+				if(m>imgs.length){
+					m = 1;
+				}
+				hs.innerHTML=arr1[(m-1)%arr1.length];
+				ps.innerHTML=arr2[(m-1)%arr2.length];
+			}
+        }
+        next.onclick=function(){
+        	if(onOff){
+        		onOff=false;
+        		imgs[1].src='images1/'+m+'.jpg';
+        		m--;
+        		if(m<1){
+        			m=imgs.length;
+        		}
+        		hs.innerHTML=arr1[(m-1)%arr1.length];
+				ps.innerHTML=arr2[(m-1)%arr2.length];
+        		list.style.left='-520px';
+        		imgs[0].src='images1/'+m+'.jpg';
+        		move({
+					obj:Text,
+					attrs:{bottom:-70},
+					duration:1000,
+					callBack:function(){
+						move({
+							obj:list,
+							attrs:{left:0},
+							duration:500,
+							callBack:function(){
+								move({
+									obj:Text,
+									attrs:{bottom:0},
+									duration:800,
+									callBack:function(){
+										imgs[0].src='images1/'+m+'.jpg';
+										list.style.cssText='';
+										onOff=true;
+									}
+								})
+							}
+						})
+					}
+				})
+        		
+        	}
+        }
+        function autuPlay(n){
+        	imgs[1].src='images1/'+n+'.jpg';
+        	move({
+        		obj:list,
+				attrs:{left:-520},
+				duration:600,
+				callBack:function(){
+					imgs[0].src='images1/'+n+'.jpg';
+					list.style.cssText='';
+					onOff=true;
+					move({
+						obj:Text,
+						attrs:{bottom:0},
+						duration:600,
+					})
+					
+				}
+        	})
+        }
+        timer=setInterval(prev.onclick,2200);
+        box.onmouseover=function(){
+        	clearInterval(timer);
+        }
+        box.onmouseout=function(){
+        	timer=setInterval(prev.onclick,2200);
+        	
+        }
+        
+    </script>
+</body>
+</html>

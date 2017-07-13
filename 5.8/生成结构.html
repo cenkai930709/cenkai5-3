@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr=['爱好',['旅游','打球','电影']];
+			var str='';
+			str='<dl>'+'<dt>'+arr[0]+'</dt>';
+			for(var i=0;i<arr[1].length;i++){
+				str+='<dd>'+arr[1][i]+'</dd>';
+			}
+			str+='</dl>';
+			document.body.innerHTML=str;
+			
+		</script>
+	</body>
+</html>

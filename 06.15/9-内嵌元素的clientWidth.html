@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*span{
+				display: block;
+			}*/
+		</style>
+	</head>
+	<body>
+		<span>内容</span>
+		<script type="text/javascript">
+			/*
+			 	内嵌元素的clientWidth/clientHeight是0，不转化的情况下
+			 * 
+			 * */
+			var span = document.getElementsByTagName('span')[0];
+			console.log(span.clientHeight)
+			console.log(span.clientWidth)
+		</script>
+	</body>
+</html>

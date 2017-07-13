@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+		<script>
+			var lis = document.getElementsByTagName('li');
+			//var prev = lis[0];
+			//null:空对象，明确知道变量要存对象，暂时没有可存的，可以先赋值null
+			var prev = null;
+			for(var i=0;i<lis.length;i++){
+				lis[i].onclick = function(){
+			//2.记录上一个
+			//null转布尔值是false
+			//非空对象转布尔值是true
+			//a.清除上一个样式
+			if(prev){
+				prev.style.background = '';
+			}
+			//b.给当前加样式
+			this.style.background = 'red';
+			//c.记录本次点击的li，下一次点击时，这个li就是上一次点的
+			prev = this;
+				}
+			}
+		</script>
+	</body>
+</html>

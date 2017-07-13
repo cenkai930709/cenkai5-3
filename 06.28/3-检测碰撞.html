@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				top:0;
+				left:0;
+				text-align: center;
+				line-height: 100px;
+				font-size: 30px;
+			}
+			#box2{
+				width: 100px;
+				height: 100px;
+				background: blue;
+				position: absolute;
+				top:300px;
+				left:400px;
+				text-align: center;
+				line-height: 100px;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">1</div>
+		<div id="box2">2</div>
+		<script>
+			var box = document.getElementById('box');
+			var box2 = document.getElementById('box2');
+			//元素别忘了加定位属性，不然不会跟你走的
+			function drag(obj){
+				//1.元素上按下
+				obj.onmousedown = function(ev){
+					ev.preventDefault();
+					var disX = ev.clientX-obj.getBoundingClientRect().left;
+					var disY = ev.clientY-obj.getBoundingClientRect().top;
+					//2.移动
+					document.onmousemove = function(ev){
+						var l = ev.clientX-disX;
+						var t = ev.clientY-disY;
+						obj.style.left = l+'px';
+						obj.style.top = t+'px';	
+						if(duang(box,box2)){
+							box2.style.background = 'yellow';
+						}else{
+							box2.style.background = '';
+						}
+					}
+					//3.抬起
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+				}
+			}
+			drag(box)
+			drag(box2)
+			function duang(obj1,obj2){
+				var pos1 = obj1.getBoundingClientRect();
+				var pos2 = obj2.getBoundingClientRect();
+				if(pos1.right<pos2.left || pos1.bottom<pos2.top || pos1.left>pos2.right || pos1.top>pos2.bottom){
+					return false;
+				}else{
+					return true;
+				}
+			}
+		</script>
+	</body>
+</html>

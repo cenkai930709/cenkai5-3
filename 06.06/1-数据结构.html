@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//数组套数组，来表示层级关系，叫多维数据结构，一维是数组下只有一级，二维是数组下只套一层数组
+			var arr = [
+			//第一级数据
+				{
+					name:'head',
+					child:[
+						//第二级数据
+						{
+							name:'meta',
+							child:[
+								//第三级数据
+							]
+						},
+						{
+							name:'title',
+							child:[]
+							
+						}
+					]
+				},
+				{
+					name:'body'
+				}
+			];
+			//meta
+			//arr[0].child[0]
+			//一维数据可以用id和pId表示从属关系，id是数据编号，所以是唯一的
+			var arr1 = [
+				{
+					id:1,
+					name:'head',
+					pId:0
+				},
+				{
+					id:2,
+					name:'meta',
+					pId:1
+				},
+				{
+					id:3,
+					name:'title',
+					pId:1
+				},
+				{
+					id:6,
+					name:'c',
+					pId:2
+				},
+				{
+					id:4,
+					name:'a',
+					pId:2
+				},
+				{
+					id:5,
+					name:'b',
+					pId:2
+				}	
+			];
+			//在传入的数据内，根据指定id，找到所有第一级子数据返回
+			function getChild(id,arr){
+				var arr1 = [];
+				//$1,$2,一般代表默认的参数,专业人员知道这里参数是什么，才可以这么用
+				arr1 = arr.filter(function($1){
+					return $1.pId==id;
+				})
+				return arr1;
+			}
+			//找到pId为2的所有第一级子数据
+			var arr2 = getChild(2,arr1);
+			//对象是赋址，所以修改arr2里的数据，arr1大数组里也会变
+			arr2[0].name = 'c';
+			console.log(arr1)
+		</script>
+	</body>
+</html>

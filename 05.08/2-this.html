@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			/*
+			 	this
+			 		关键字
+			 * 	函数外
+			 * 		this->window
+			 * 	函数内
+			 * 		1.直接调用
+			 * 			this->window
+			 *      2.事件调用
+			 * 			this->调用该事件函数的元素对象
+			 * */		
+			//alert(this)
+			function fn(){
+				console.log(this)
+			}
+			//fn();
+			var box = document.getElementById('box');
+			//事件调用函数
+			box.onclick = function(){
+				console.log(this)
+				fn()
+			}
+		</script>
+	</body>
+</html>

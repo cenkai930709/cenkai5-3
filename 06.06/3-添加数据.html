@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		姓名：
+		<input type="text" />
+		年龄：
+		<input type="text" />
+		<input type="button" value="添加"/>
+		<br />
+		<br />
+		<br />
+		<input type="button" value="按年龄"/>
+		<input type="button" value="按id"/>
+		<ul id="list"></ul>
+		<!--分多个js文件，独立处理自己的事-->
+		<!--引入数据-->
+		<script type="text/javascript" src="data.js"></script>
+		<!--引入工具函数-->
+		<script type="text/javascript" src="tool.js"></script>
+		<!--引入业务逻辑，也就是我们平时写的js，点击后干嘛-->
+		<script type="text/javascript" src="index.js"></script>
+
+	</body>
+</html>

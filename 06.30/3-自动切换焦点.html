@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			input{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" size="1" maxlength="1"/>
+		<input type="text" size="1" maxlength="1"/>
+		<input type="text" size="1" maxlength="1"/>
+		<input type="text" size="1" maxlength="1"/>
+		<input type="text" size="1" maxlength="1"/>
+		<input type="text" size="1" maxlength="1"/>
+		<script type="text/javascript">
+			var inps = document.getElementsByTagName('input');
+			for(var i=0;i<inps.length;i++){
+				//限制只能输入数字
+				inps[i].onkeydown = function(ev){
+					if(ev.keyCode<48 || ev.keyCode>57){
+						ev.preventDefault();
+					}
+				}
+				//自动切换焦点
+				inps[i].onkeyup = function(ev){
+					if(this.value.length==this.maxLength){
+						if(this.nextElementSibling){
+							this.nextElementSibling.focus();
+						}
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

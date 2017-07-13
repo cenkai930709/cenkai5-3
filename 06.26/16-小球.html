@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				border-radius:50% ;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<script type="text/javascript">
+			var btn = document.getElementById('btn');
+			var arr = [];
+			var body = document.body;
+			//随机颜色
+			function color(){
+				var arr = ['red','yellow','blue','green','pink','orange'];
+				return arr[Math.round(Math.random()*(arr.length-1))]
+			}
+			//console.log(color())
+			//随机尺寸50-100
+			function size(){
+				return Math.round(Math.random()*50+50)
+			}
+			document.onclick = function(ev){
+				if(ev.target==btn){
+					//点按钮
+					if(arr.length){
+						big(arr.pop())
+					}
+				}else{
+					//按钮以外
+					arr.push({
+						x:ev.clientX,
+						y:ev.clientY
+					})
+					//console.log(arr)
+				}
+			}
+			function big(pos){
+				console.log(pos);
+				var div = document.createElement('div');
+				//随机目标值
+				var target = size();
+				console.log(target)
+				var w = 0;
+				//随机颜色
+				div.style.background = color();
+				body.appendChild(div);
+				//开个定时器，w从0开始，每次+1，一直到目标值停止
+				div.timer = setInterval(function(){
+					div.style.width = ++w+'px';
+					div.style.height = w+'px';
+					div.style.left = pos.x-w/2+'px';
+					div.style.top = pos.y-w/2+'px';
+					if(w>=target){
+						clearInterval(div.timer)
+						//如果数组里还有值，递归
+						if(arr.length){
+							big(arr.pop());
+						}
+					}
+				},20)
+			}
+		</script>
+	</body>
+</html>

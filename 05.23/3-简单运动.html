@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left:100px;
+				top:50px;
+				opacity: .5;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn"/>
+		<div id="box"></div>
+		<script type="text/javascript">
+			/*
+			 	千万要写position: absolute;
+			 * 
+			 * */
+			var  box = document.getElementById('box');
+			var  btn = document.getElementById('btn');
+			btn.onclick = function(){
+				move(box,'left',10,400,function(){
+					box.style.background = 'blue';
+					move(box,'top',10,400);
+				})
+			}
+			/*
+			 	obj:要运动的元素,obj
+			 	attr:样式，str
+			 	speed:每次运动多少，num
+			 	target：目标点，num
+			 	callBack：回调函数，运动完要执行的代码，function
+			 * 
+			 * */
+			function move(obj,attr,speed,target,callBack){
+				//把定时器存在obj下，防止开多个定时器
+				//var timer = null;
+				clearInterval(obj.timer)
+				obj.timer = setInterval(function(){
+					var b = css(obj,attr);
+					b += speed;
+					if(b>=target){
+						b = target;
+					}
+					css(obj,attr,b);
+					if(b==target){
+						clearInterval(obj.timer);
+						//如果传进来的是函数，前边为真，返回后边，相当于函数执行，防止没传入时undefined()报错，或者传入的不是函数也会报错
+						typeof callBack == 'function'&&callBack();
+					}
+				},20)
+			}
+			function css(obj,attr,val){
+				//2个参数是获取样式，3个参数是设置样式
+				//typeof val=='undefined',也可以用来判断是获取还是设置
+				if(arguments.length==2){
+					//获取
+					var v = parseFloat(getComputedStyle(obj)[attr]);
+					if(attr == 'opacity'){
+						//Math.round，四舍五入
+						v = Math.round(v*100);
+					}
+					return v;
+				}
+				//设置
+				if(attr == 'opacity'){
+					val = val/100;
+					obj.style[attr] = val;	
+				}else{
+					obj.style[attr] = val+'px';	
+				}	
+			}
+		</script>
+	</body>
+</html>

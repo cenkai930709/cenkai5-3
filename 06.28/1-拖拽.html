@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				top:0;
+				left:0;
+			}
+		</style>
+	</head>
+	<body>
+		11111111111111111111111111111
+		<div id="box"></div>
+		<script>
+			var box = document.getElementById('box');
+			//1.元素上按下
+			box.onmousedown = function(ev){
+				ev.preventDefault();
+				var disX = ev.clientX-box.getBoundingClientRect().left;
+				var disY = ev.clientY-box.getBoundingClientRect().top;
+				console.log(disX,disY)
+				//2.移动
+				document.onmousemove = function(ev){
+					var l = ev.clientX-disX;
+					var t = ev.clientY-disY;
+					box.style.left = l+'px';
+					box.style.top = t+'px';	
+				}
+				//3.抬起
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+			}
+		</script>
+	</body>
+</html>

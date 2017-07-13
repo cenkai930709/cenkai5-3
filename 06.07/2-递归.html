@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	递归
+			 		函数自己调用自己
+			 *  注意别写成死循环
+			 * 	有规律，重复的事情，用递归
+			 * 
+			 *  1.有条件的调用自己
+			 *  2.有终止条件
+			 * */
+			var n = 0;
+			function fn(){
+				if(n>5){
+					return 1;
+				}
+				n++;
+				console.log(n);
+				return fn();
+			}
+			console.log(fn());
+			/*
+			 * 递:没有结果
+			 	fn1():return fn2()
+			 *        fn2():return fn3()
+			 *    		 fn3():return fn4()
+			 *             fn4():return fn5()
+			 *   			  fn5():return  undefined
+			 * 
+			 * 归：有终止条件停止递归，返回结果
+			 * fn1():return undefined
+			 *        fn2():return undefined
+			 *    		 fn3():return undefined
+			 *             fn4():return undefined
+			 *   			  fn5():return  undefined	
+			 * 
+			 * */
+		</script>
+	</body>
+</html>

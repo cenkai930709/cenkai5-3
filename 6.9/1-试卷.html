@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	1.C,操作符优先级，比较时的类型转换
+			 		'hellow'+1<2
+			 		'hellow1'<2
+			 		 NaN<2
+			 		 
+			 	2.C,sort
+			 	
+			 	3.A,null和undefined在比较时不会进行类型转换
+			 	
+			 	4.C
+			 		['123'].concat(4,[5,6])
+			 		['123',4,5,6]
+			 		'123,4,5,6'
+			 		
+			 	5.C,n++,++n
+			 	
+			 	6.C,new Array
+			 	
+			 	7.D,+连接符
+			 	
+			 	8.A，indexOf
+			 	
+			 	9.CD，变量
+			 	
+			 	10.B,逻辑操作符
+			 	
+			 	11.AD，变量
+			 	
+			 	12.D，for,逗号操作符
+			 	
+			 	13.D,return
+			 	
+			 	14.A,slice,!
+			 	
+			 	15.CA,预解析，this
+			 	
+			 	16.C，substring
+			 	
+			 	17.A,逻辑操作符，优先级
+			 	
+			 	18.C，日期对象，定时器，函数
+			 	
+			 	19.D，类型转换，逻辑操作符，typeof
+			 	
+			 	20.ABC
+			 	
+			 	21.AAB，闭包
+			 	
+			 	22.A，array
+			 	
+			 	23.D,预解析
+			 	
+			 	24.D
+			 	
+			 	25.A
+			 * 
+			 * */
+//			var a = 10;
+//			setTimeout(function(){
+//				a=20;
+//			},0)
+//			alert(a)
+			//问答题
+			//1
+			function color(n){
+				var arr = ['red','yellow','blue','green'];
+				arr.sort(function(){
+					return Math.random()-0.5;
+				})
+				return arr[0];
+				//return n?arr[0]:arr[Math.round(Math.random()*(arr.length-1))]
+			}
+			console.log(color())
+			
+			//2
+			var str = 'shfisigfhlahlhlghlihailshgasbhighiohaiohig';
+			function sum(str){
+				var j = {};
+				for(var i=0;i<str.length;i++){
+					if(j[str[i]]){
+						j[str[i]]++;
+					}else{
+						j[str[i]]=1;
+					}
+				}
+				var max = {
+					name:'',
+					num:0
+				}
+				for(var k in j){
+					if(j[k]>max.num){
+						max.num = j[k];
+						max.name = k;
+					}
+				}
+				return max;
+			}
+			//console.log(sum(str))
+			
+			//5
+			var data = [
+				{
+					name:'小妙',
+					friends:['小白','小红','小黑']
+				},
+				{
+					name:'小味',
+					friends:['小白','小兰','小黑','小红']
+				},
+				{
+					name:'小乐',
+					friends:['小白','小红','小美']
+				},
+				{
+					name:'小仙',
+					friends:['小白','小玉','小黑','小红']
+				}
+			];
+			function sameFriends(data){
+				var f = [];
+				var t = data[0].friends;
+				//console.log(t)
+				//a-第一个数组里的3个好友
+				t.forEach(function(a){
+					//b-每个{}
+					if(data.every(function(b){
+						return b.friends.includes(a);
+					})){
+						f.push(a);
+					}
+				})
+				return f;
+			}
+			//console.log(sameFriends(data))
+		</script>
+	</body>
+</html>

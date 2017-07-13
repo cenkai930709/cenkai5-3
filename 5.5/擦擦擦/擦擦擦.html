@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				position: relative;
+				
+			}
+			#box div{
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+			}
+			.active{
+				background-image: url(images/pic.jpg);
+				
+			}
+			#list{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				position: absolute;
+				top: 8px;
+				left: 650px;
+			}
+			#list li{
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<ul id="list"></ul>
+		<script type="text/javascript">
+			/*
+			 * 分析：
+			 * 	1.左边生成100个div
+			 *  	js：定位top，left，背景图定位x，y
+			 * 	2.鼠标移入
+			 *  	背景颜色变成背景图片
+			 * 	3.鼠标点击
+			 * 		右边生成一样的块
+			 * 		背景图一致，生成的块的坐标，只能点一次
+			 */
+			//1.左边生成100个div
+			var box=document.getElementById('box');
+			var list=document.getElementById('list');
+			var arr=['pink','red','yellow','blue'];
+			var str='';
+			for(var i=0;i<100;i++){
+				
+				str+='<div style="left:'+i%10*60+'px;top:'+Math.floor(i/10)*60+'px;"></div>';
+				
+			}
+			box.innerHTML=str;
+			//2.鼠标移入
+			var divs=box.getElementsByTagName('div');
+			str='';
+			var n=0;
+			for(var i=0;i<divs.length;i++){
+				divs[i].onOff=true;
+				divs[i].style.backgroundPosition = -i%10*60+'px '+-Math.floor(i/10)*60+'px';
+				divs[i].style.backgroundColor=arr[i%arr.length];
+				divs[i].onmouseover=function(){
+					this.className='active';
+				}
+				//鼠标点击
+				divs[i].index=i;
+				divs[i].onclick=function(){
+					if(this.onOff){
+						this.onOff=false;
+						str+='<li style="left:'+n%10*60+'px;top:'+Math.floor(n/10)*60+'px;background:url(images/pic.jpg) '+-this.index%10*60+'px  '+-Math.floor(this.index/10)*60+'px;"></li>';
+						list.innerHTML=str;
+						n++;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

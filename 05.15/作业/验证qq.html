@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/*
+		 * 1、有没有输入
+		 * 2、输入的是不是数字
+		 * 3、第一位不能是0
+		 * 4、不能是小数
+		 * 5、输入的数字必须在5位以上、10位以内
+		 */
+		
+		</script>
+		请输入QQ号码:
+		<input type="text" id="text" value="" />
+		<input type="button" id="btn" value="验证" />
+		<script>
+			var tet=document.getElementById('text');
+			var btn=document.getElementById('btn');
+			btn.onclick=function(){
+				var val=tet.value;
+				if(val==''){
+					alert('没有输入内容')
+				}else if(isNaN(val)){
+					alert('输入的不是数字')
+				}else if(val.charAt(0)==0){
+					alert('第一位不能是0')
+				}else if(val.length<5||val.length>10){
+					alert('输入的数字必须在5位以上、10位以内')
+				}else if(val!==parseInt(val)+''){
+					alert('不能是小数')
+				}else{
+					alert('恭喜你输入成功')
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

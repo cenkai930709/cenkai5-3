@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 	预解析
+			 		在js代码执行之前，先有预解析过程，把声明的变量和函数，提到当前作用域的最前边创建出来，然后逐行执行
+			 * 
+			 * */
+			/*
+			 	var a = undefined
+			 	console.log(a)//undefined
+			 *  a = 1
+			 *  console.log(a)//1
+			
+			 * var a
+			 * a = 1
+			 * 
+			 * 创建 fn
+			 * 
+			 * */
+			console.log(a)
+			var a = 1;
+			console.log(a)
+			console.log(fn)
+			function fn(){
+				
+			}
+			
+			//在函数执行时，创建内部声明的变量
+			function fn1(b){
+				/*
+				 	b,c,fn2 都是undefined
+				 	(b=20)
+				 	{
+				 		fn2 = function(){}
+				 		c = 10
+				 	}
+				 * 
+				 * */
+				var c = 10;
+				function fn2(){
+					
+				}
+			}
+			fn1(20)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 200px;
+				height: 100px;
+				border: 1px solid #000;
+				line-height: 100px;
+				text-align: center;
+				font-size:50px;
+				float: left;
+				margin-right:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>1</div>
+		<div>1</div>
+		<div>1</div>
+		<script type="text/javascript">
+			var divs = document.getElementsByTagName('div');
+			for(var i=0;i<divs.length;i++){
+				divs[i].n = 1;
+				divs[i].onclick = function(){
+					//处理定时器内this指向
+					var _this = this;
+					//console.log(_this)
+					this.timer = setInterval(function(){
+						//console.log(this)//window
+						_this.n++;
+						if(_this.n==10){
+							//关闭定时器，本次后续代码还执行，下一次不再设置函数执行了
+							clearInterval(_this.timer)
+							//如果想关闭定时器后，后续代码也不执行，加return
+							return
+						}
+						_this.innerHTML = _this.n;	
+					},500)
+				}
+			}
+		
+			
+		</script>
+	</body>
+</html>

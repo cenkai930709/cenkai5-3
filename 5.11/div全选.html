@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 330px;
+				height: 330px;
+			}
+			#box div{
+				width: 100px;
+				height: 100px;
+				float: left;
+				margin-bottom: 10px;
+				margin-right: 10px;
+				background: #ccc;
+			}
+			#box div.checked{
+				background: blue;
+			}
+			#aac{
+				font-size: 30px;
+				line-height: 100px;
+				font-weight: 900;
+				color: red;
+				position: absolute;
+				left: 400px;
+				top: 80px;
+			}
+			#aab{
+				font-size: 30px;
+				line-height: 100px;
+				font-weight: 900;
+				color: red;
+				position: absolute;
+				left: 400px;
+				top: 160px;
+			}
+			#aac.active{
+				color: #0000FF;
+			}
+			#aab.active{
+				color: #0000FF;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div id="aac">未全选</div>
+		<div id="aab">反选</div>
+		<script type="text/javascript">
+			var box=document.getElementById('box');
+			var divs=box.getElementsByTagName('div');
+			var aac=document.getElementById('aac');
+			var aab=document.getElementById('aab');
+			var n=0;
+			for(var i=0;i<divs.length;i++){
+				divs[i].check=false;
+				//div点击事件
+				divs[i].onclick=function(){
+					if(this.check){
+						//选中变成没选中
+						this.check=false;
+						this.className='';
+						n--;
+					}else{
+						//没选中变成选中
+						this.check=true;
+						this.className='checked';
+						n++;
+					}
+					tad();
+				}
+				aac.checked=false;
+				//全选
+				aac.onclick=function(){
+					if(this.checked){
+						for(var i=0;i<divs.length;i++){
+							divs[i].className='';
+							divs[i].check=false;
+						}
+						this.checked=false;
+						this.innerHTML='未全选';
+						this.className='';
+						n=0;
+						
+					}else{
+						for(var i=0;i<divs.length;i++){
+							divs[i].className='checked';
+							divs[i].check=true;
+						}
+						this.checked=true;
+						this.innerHTML='全选';
+						this.className='active';
+						n=divs.length;
+					}
+					
+				}
+				//反选
+				aab.onclick=function(){
+					for(var i=0;i<divs.length;i++){
+						if(divs[i].check){
+							divs[i].check=false;
+							divs[i].className='';
+							aab.className='';
+						}else{
+							divs[i].check=true;
+							divs[i].className='checked';
+							aab.className='active';
+						}
+					}
+					tad();
+				}
+			}
+			function tad(){
+				if(n==divs.length){
+					aac.innerHTML='全选';
+					aac.checked=true;
+					aac.className='active';
+				}else{
+					aac.innerHTML='未全选';
+					aac.checked=false;
+					aac.className='';
+				}
+			}
+		</script>
+	</body>
+</html>

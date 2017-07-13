@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				margin:0;
+				padding:0;
+				list-style: none;
+			}
+			li{
+				padding:10px 20px;
+				border: 1px solid #000;
+				float: left;
+				margin-right:10px;
+			}
+			li.active{
+				background: red;
+			}
+			#box{
+				position: absolute;
+				top:200px;
+				left:0
+			}
+			#box div{
+				width: 100px;
+				height: 50px;
+				border: 1px solid #000;
+				line-height: 50px;
+				text-align: center;
+				float: left;
+				margin-right:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>开关1</li>
+			<li>开关2</li>
+			<li>开关3</li>
+			<li>开关4</li>
+			<li>开关5</li>
+			<li>开关6</li>
+		</ul>
+		<div id="box">
+			<div>0</div>
+			<div>0</div>
+			<div>0</div>
+			<div>0</div>
+			<div>0</div>
+			<div>0</div>
+		</div>
+		<script type="text/javascript">
+			var lis = document.getElementsByTagName('li');
+			var divs = document.getElementById('box').getElementsByTagName('div');
+			for(var i=0;i<lis.length;i++){
+				fn(i);
+			}
+			function fn(n){
+				var onOff = false;
+				var num = 0;
+				lis[n].onclick = function(){
+					if(onOff){
+						this.className = '';
+					}else{
+						this.className = 'active';
+					}
+					//onOff?this.className = '':this.className = 'active';
+					onOff = !onOff;
+				}
+				divs[n].onclick = function(){
+					if(onOff){
+						num++;
+						this.innerHTML = num;
+					}
+				}
+			}
+			fn()
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	img{
+		vertical-align: middle;
+		border:none;
+	}
+	#left{
+		width:300px;
+		height: 300px;
+		position: absolute;
+		left:0;
+		top:10px;
+	}
+	#left span{
+		width:100px;
+		height: 100px;
+		opacity: 0.5;
+		position: absolute;
+		left:0;
+		top:0;
+		display: none;
+		overflow: hidden;
+	}
+	#left span img{
+		position: absolute;
+		left:0;
+		top:0;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="left">
+		<img src="small.jpg"/>
+		<span id="span">
+			<img src="big.jpg">
+		</span>
+	</div>
+
+	<script>
+		var left = document.getElementById('left');
+		var span = document.getElementById('span');
+		var small = left.getElementsByTagName('img')[0];
+		var big = left.getElementsByTagName('img')[1];
+		
+	</script>
+</body>
+</html>
