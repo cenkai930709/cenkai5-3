@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt" value="" />
+		<input type="button" id="btn" value="提交" />
+		<script type="text/javascript">
+			var Txt=document.getElementById('txt');
+			var btn=document.getElementById('btn');
+			btn.onclick=function(){
+				var val = Txt.value;
+				if(/^(1[1-8])$|^([2-9][0-9])$|^(10[0-8])$/.test(val)){
+					alert('成功')
+				}else{
+					alert('失败')
+				}
+				
+			}
+		</script>
+	</body>
+</html>

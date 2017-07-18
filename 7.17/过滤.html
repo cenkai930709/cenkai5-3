@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<textarea name="" rows="20" cols="40" id="t1"></textarea>
+		<input type="button" value="过滤" id="btn"/>
+		<textarea name="" rows="20" cols="40" id="t2"></textarea>
+		<script type="text/javascript">
+			var t1 = document.getElementById('t1');
+			var t2 = document.getElementById('t2');
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+				var t1Val = t1.value;
+				
+		//		var str = '</p>';
+				
+				//console.log(str.match(/<[^>]+>/g));//<div class="" id=""
+				
+				t2.value = t1Val.replace(/<[^>]+>|\s+/g,'');
+			}
+			
+			
+		</script>
+	</body>
+</html>

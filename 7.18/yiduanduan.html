@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			(function(){
+				var w=window.screen.width;
+				var targetw=320;
+				var scale=w/targetw;
+				var meta=document.createElement('meta');
+				meta.name='viewport';
+				meta.content="user-scalable=no,initial-scale="+scale+",minimum-scale="+scale+",maximum-scale="+scale+"";
+				document.head.appendChild(meta);
+				console.log(scale);
+			})();
+		</script>
+		<style type="text/css">
+			body{
+				margin: 0;
+			}
+			div{
+				width: 80px;
+				height: 100px;
+				float: left;
+			}
+			.box1{
+				background: red;
+			}
+			.box2{
+				background: pink;
+			}
+			.box3{
+				background: green;
+			}
+			.box4{
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+	</body>
+</html>

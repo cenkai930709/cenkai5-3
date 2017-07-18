@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str='sdjkhfjkshfkj324h32jh53wbkjl35h3rjk5h2k3h25kj3k532k5hk2j3';
+			var min=-Infinity;
+			var s='';
+			str=str.split('').sort().join('');
+			str.replace(/(\w)\1+/g,function($0,$1){
+				if(min<$0.length){
+					min=$0.length;
+					s=$1;
+				}
+				console.log($0);
+			})
+			console.log('出现最多的是：'+s+'并且出现了'+min+'次');
+		</script>
+	</body>
+</html>

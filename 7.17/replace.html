@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str='最近好么过得是否幸福，以后常联系';
+			console.log(str.replace(/最近|以后/g,function($0){
+				var str='';
+				for(var i=0;i<$0.length;i++){
+					str+='*';
+				}
+				return str;
+			}))
+		</script>
+	</body>
+</html>

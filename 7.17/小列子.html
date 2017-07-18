@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str='我的名字叫：{name}！我的年龄：{age}';
+			var json={
+				name:'小关关',
+				age:15
+			};
+			var v=str.replace(/{(\w+)}/g,function($0,$1){
+				return json[$1];
+			})
+			console.log(v);
+		</script>
+	</body>
+</html>
