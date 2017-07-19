@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			Object.prototype.say=function(){
+				alert('我是Fn的say');
+			}
+			function Fn(name){
+				this.name=name;
+			}
+//			Function.prototype.say=function(){
+//				alert('Function');
+//			}
+//			Fn.prototype.say=function(){
+//				alert('我的名字叫：'+this.name);
+//			}
+			var f1=new Fn('岑凯');
+			//f1.say();
+			Fn.say();
+			console.dir(f1);
+			
+		</script>
+	</body>
+</html>
