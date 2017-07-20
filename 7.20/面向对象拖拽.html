@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				height: 100px;
+				width: 100px;
+				background: green;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		dsfsfskjhfskdhjk
+		<div id="box"></div>
+		<script type="text/javascript">
+			function Dorg(id){
+				this.box=document.getElementById(id);
+				
+				var divX=0;
+				var divY=0;
+				this.l=0;
+				this.t=0;
+				this.init();
+				
+			}
+			Dorg.prototype.init=function(){
+				var This=this;
+				this.box.onmousedown=function(ev){
+					
+					This.down(ev);
+					return false;
+				}
+			}
+			Dorg.prototype.down=function(ev){
+				//ev.preventDefault();
+				divX=ev.clientX-this.box.offsetLeft;
+				divY=ev.clientY-this.box.offsetTop;
+				var This=this;
+				document.onmousemove=function(ev){
+					
+					This.move(ev);
+					
+				}
+				document.onmouseup=function(ev){
+					This.up(ev);
+				}
+			}
+			Dorg.prototype.move=function(ev){
+				this.l=ev.clientX-divX;
+				this.t=ev.clientY-divY;
+				this.lim();
+				this.box.style.left=this.l+'px';
+				this.box.style.top=this.t+'px';
+			}
+			Dorg.prototype.up=function(ev){
+				document.onmousemove=null;
+				document.onmouseup=null;
+			}
+			Dorg.prototype.lim=function(){
+				
+				if(this.l<0){
+					this.l=0;
+				}else if(this.l>window.innerWidth-this.box.innerWidth){
+					this.l=window.innerWidth-this.box.innerWidth;
+				}
+				if(this.t<0){
+					this.t=0;
+				}else if(this.t>window.innerHeight-this.box.innerHeight){
+					this.t=window.innerHeight-this.box.innerHeight;
+				}
+			}
+			
+			var t=new Dorg('box');
+			
+		</script>
+	</body>
+</html>
