@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Fn(){}
+			Fn.prototype={
+				constructor:Fn,
+				say:function(){
+					alert('1');
+				},
+				running:function(){
+					alert('2');
+				},
+				hehe:function(){
+					alert('3');
+				}
+			}
+			
+		var f=new Fn;
+		//f.hehe();
+		console.log(f.constructor);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				height: 100px;
+				width:100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#box2{
+				height: 100px;
+				width:100px;
+				background: cornflowerblue;
+				position: absolute;
+				left: 150px;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<div id="box2"></div>
+		<script type="text/javascript">
+		
+		
+				
+			function Drag(id){
+				this.box=document.getElementById(id);
+				this.l=0;
+				this.t=0;
+				this.divX=0;
+				this.divY=0;
+				this.init();
+				
+				
+			}
+			Drag.prototype.init=function(){
+				var This=this;
+				this.box.addEventListener('mousedown',function(ev){
+					This.down(ev);
+					ev.preventDefault();
+				})
+			}
+			Drag.prototype.down=function(ev){
+				this.divX=ev.clientX-this.box.offsetLeft;
+				this.divY=ev.clientY-this.box.offsetTop;
+				var This=this;
+				var Move=function(ev){
+					This.move(ev);
+				}
+				var Up=function(ev){
+					This.up(ev,Move,Up);
+				}
+				document.addEventListener('mousemove',Move);
+				document.addEventListener('mouseup',Up);
+			}
+			Drag.prototype.move=function(ev){
+				this.l=ev.clientX-this.divX;
+				this.t=ev.clientY-this.divY;
+				this.box.style.left=this.l+'px';
+				this.box.style.top=this.t+'px';
+			}
+			Drag.prototype.up=function(ev,move,up){
+				document.removeEventListener('mousemove',move);
+				document.removeEventListener('mouseup',up);
+			}
+			function Drag2(id){
+				Drag.call(this,id);
+			}
+//			for(var attr in Drag.prototype){
+//				Drag2.prototype[attr]=Drag.prototype[attr];
+//			}
+
+
+			function paohui(){}
+	
+			paohui.prototype = Drag.prototype;
+			
+			var ph = new paohui;
+			
+			Drag2.prototype = ph;
+			
+			Drag2.prototype.constructor=Drag2;
+
+
+
+			Drag2.prototype.move=function(ev){
+				
+				this.l=ev.clientX-this.divX;
+				this.t=ev.clientY-this.divY;
+				if(this.l<0){
+					this.l=0;
+				}else if(this.l>window.innerWidth-this.box.innerWidth){
+					this.l=window.innerWidth-this.box.innerWidth;
+				}
+				if(this.t<0){
+					this.t=0;
+				}else if(this.t>window.innerHeight-this.box.innerHeight){
+					this.t=window.innerHeight-this.box.innerHeight;
+				}
+				this.box.style.left=this.l+'px';
+				this.box.style.top=this.t+'px';
+			}
+			var d=new Drag('box');
+			var d2=new Drag2('box2');
+			d.init();
+			d2.init();
+			console.dir(d2);
+			
+			
+		</script>
+	</body>
+</html>
