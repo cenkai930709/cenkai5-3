@@ -5,5 +5,56 @@
 		<title></title>
 	</head>
 	<body>
+		
+		<script type="text/javascript">
+			
+			
+			addEvent(document,'点击',function(){
+				document.documentElement.style.background='pink';
+				
+			})
+			addEvent(document,'长按',function(){
+				document.documentElement.style.background='yellow';
+				
+			})
+			
+			document.onmousedown=function(ev){
+				var divX=ev.clientX;
+				var divY=ev.clientY;
+				var d=new Date;
+				document.onmousemove=function(ev){
+					var d2=new Date;
+					if(d2-d>2000&&divY-ev.clientY<5&&divX-ev.clientX<5){
+						trigger(document,'长按');
+					}else{
+						trigger(document,'点击');
+					}
+					
+				}
+			}
+			
+			//储存器
+			function addEvent(obj,Events,fn){
+				
+				obj.zdy=obj.zdy||{};
+				obj.zdy[Events]=obj.zdy[Events]||[];
+				obj.zdy[Events].push(fn);
+				
+				
+				
+			}
+			
+			
+			function trigger(obj,Events){
+				if(!obj.zdy[Events])return;
+				obj.zdy[Events].forEach((e,i)=>{
+					e.call(obj);
+				})
+			}
+			
+			
+			
+			
+		</script>
 	</body>
 </html>
