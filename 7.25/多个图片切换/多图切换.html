@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				height: 553px;
+				width: 875px;
+				background: url(img/bg.png) no-repeat;
+				margin: 50px auto;
+				position: relative;
+			}
+			#prev{
+				width: 66px;
+				height: 16px;
+				text-align: center;
+				font-size: 12px;
+				color: #000000;
+				text-decoration: none;
+				position: absolute;
+				top: 55px;
+				left: 22px;
+			}
+			#next{
+				width: 66px;
+				height: 16px;
+				text-align: center;
+				font-size: 12px;
+				color: #000000;
+				position: absolute;
+				text-decoration: none;
+				top: 55px;
+				left: 98px;
+			}
+			#left{
+				height: 245px;
+				width: 448px;
+				background: red;
+				position: absolute;
+				top: 113px;
+				left: 49px;
+			}
+			#right{
+				height: 245px;
+				width: 248px;
+				background: red;
+				position: absolute;
+				top: 113px;
+				right: 66px;
+			}
+			#tel{
+				color: #000000;
+				font:900 12px '';
+				position: absolute;
+				left: 238px;
+				bottom: 171px;
+			}
+			#trl{
+				color: #000000;
+				font:900 12px '';
+				position: absolute;
+				right: 154px;
+				bottom: 171px;
+			}
+			#tetl{
+				color: #000000;
+				font:900 12px '';
+				position: absolute;
+				left: 51px;
+				bottom: 146px;
+			}
+			#trtl{
+				color: #000000;
+				font:900 12px '';
+				position: absolute;
+				right: 296px;
+				bottom: 146px;
+			}
+			.lef{
+				width: 448px;
+				height: 245px;
+				background-size:448px 245px ;
+			}
+			.lrf{
+				width: 248px;
+				height: 245px;
+				background-size:248px 245px ;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<a href="javascript:;" id="prev"></a>
+			<a href="javascript:;" id="next"></a>
+			<div id="left">
+				<img class="lef" src=""/>
+			</div>
+			<span id="tel"></span>
+			<span id="tetl"></span>
+			<div id="right">
+				<img class="lrf" src=""/>
+			</div>
+			<span id="trl"></span>
+			<span id="trtl"></span>
+		</div>
+		<script src="../js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var imgs1=['img/0.jpg','img/1.jpg','img/2.jpg','img/3.jpg'];
+			var imgs2=['img/3.jpg','img/4.jpg','img/2.jpg'];
+			var tet1=['第一组第1张','第一组第2张','第一组第3张','第一组第4张'];
+			var tet2=['第二组第1张','第二组第2张','第二组第3张'];
+			var n=0;
+			var m=0;
+			tab();
+			tad();
+			$('#prev').click(function(){
+				n--;
+				if(n<0){
+					n=imgs1.length-1;
+				}
+				tab();
+				m--;
+				if(m<0){
+					m=imgs2.length-1;
+				}
+				tad();
+			})
+			$('#next').click(function(){
+				n++;
+				if(n>imgs1.length-1){
+					n=0;
+				}
+				tab();
+				m++;
+				if(m>imgs2.length-1){
+					m=0;
+				}
+				tad();
+			})
+			$('#left').click(function(){
+				n++;
+				if(n>imgs1.length-1){
+					n=0;
+				}
+				tab();
+			})
+			$('#right').click(function(){
+				m++;
+				if(m>imgs2.length-1){
+					m=0;
+					
+				}
+				tad();
+			})
+			function tab(){
+				$('.lef').attr('src',imgs1[n]); 
+				$('#tel').html(tet1[n]);
+				$('#tetl').html(n+1+'/'+imgs1.length);
+			}
+			function tad(){
+				$('.lrf').attr('src',imgs2[m]);
+				$('#trl').html(tet2[m]);
+				$('#trtl').html(m+1+'/'+imgs2.length);
+			}
+			
+		</script>
+	</body>
+</html>
