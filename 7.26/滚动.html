@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width:150px;
+				height: 170px;
+				background: salmon;
+				border: 10px solid #000;
+				padding: 20px;
+				position: relative;
+				top:0;
+				left:0;
+				margin-top:30px ;
+			}
+			#div2{
+				width:50px;
+				height: 50px;
+				background:lightgoldenrodyellow;
+				/*border: 10px solid #000;*/
+				position: absolute;
+				top:0;
+				left:0;
+			}
+		</style>
+	</head>
+	<body style="height: 3000px;">
+		<div id="div1">
+			<div id="div2"></div>
+		</div>
+		<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			console.log($('#div2').offset().top);
+
+			$(document).click(function(){
+				//console.log($(window).scrollTop());
+			});
+		</script>
+	</body>
+</html>
