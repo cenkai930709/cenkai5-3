@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt" value="" placeholder="搜索朋友"/>
+		<input type="button" id="btn" value="点击搜索" />
+		<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			
+			//var txt=document.getElementById('txt');
+			//var btn=document.getElementById('btn');
+			
+			$('#btn').click(function(){
+				
+				$.ajax({
+					//type:"#txt",
+					url:"php/ajax.php",
+					async:true,
+					dataType:'json',
+					data:{
+						user:$('#txt').val()
+
+					},
+					success:function(json){
+						console.log(json.code)
+						if(!json.code){
+							$('<div>').appendTo($('body')).text(`我的名字:${json.data.name},今年:${json.data.age},爱好去${json.data.hobby},我想说:${json.data.info}`);
+						}else{
+							$('<div>').appendTo($('body')).text(`${json.data}`);
+						}
+					},
+					error:function(){
+						alert('报错了');
+					}
+				});
+				
+				
+				
+			})
+			
+			
+			
+		</script>
+	</body>
+</html>

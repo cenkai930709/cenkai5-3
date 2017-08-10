@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt" value="" /><span id="span"></span>
+		<script type="text/javascript">
+			
+			let txt=document.getElementById('txt');
+			txt.onblur=function(){
+				const ajax=new XMLHttpRequest;
+				
+				ajax.open('get','php/get.php?user='+encodeURI(txt.value));
+				
+				ajax.onload=function(){
+					var status=ajax.status;
+					if(status>=200&&status<300||status===304){
+						span.innerText=ajax.responseText;
+						
+						
+					}else{
+						alert('挂了');
+					}
+					console.log(ajax.status)
+				}
+				
+				
+				
+			}
+			
+			
+		</script>
+		
+		
+		
+	</body>
+</html>

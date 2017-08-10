@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text"  id="btn" value="" /><span id="span"></span>
+		<script src="ajax.01_.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var btn=document.getElementById('btn');
+			btn.onblur=function(){
+				ajax({
+					url:'php/data.xml',
+					dataType:'xml',
+					success:function(){
+						console.log(data);
+					},
+					error:function(){
+						console.log(data);
+					}
+					
+				});
+			}
+			
+		</script>
+	</body>
+</html>

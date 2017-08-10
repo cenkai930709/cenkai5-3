@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="btn" value="点击生成" />
+		<ul id="ul">
+			
+		</ul>
+		<script type="text/javascript">
+		
+		
+			const btn=document.getElementById('btn');
+			const ul=document.getElementById('ul');
+			btn.addEventListener('click',click);
+			function click(){
+				const ajax=new XMLHttpRequest;
+				
+				ajax.open('get','php/data.xml');
+				
+				ajax.send();
+				
+				ajax.onload=function(){
+					const data=ajax.responseXML;
+					
+					let persons=data.getElementsByTagName('person');
+					
+					persons=Array.from(persons);
+					console.log(persons);
+					let html='';
+					
+					persons.forEach(function(e){
+						
+						let name=e.getElementsByTagName('name')[0];
+						let age=e.getElementsByTagName('age')[0];
+						let sex=e.getElementsByTagName('sex')[0];
+						let info=e.getElementsByTagName('info')[0];
+						
+						html+=`<li>我的名字叫:${name.innerHTML},今年有:${age.innerHTML},性别是:${sex.innerHTML},我是是一个:${info.innerHTML}</li>`
+						
+						
+						
+					})
+					ul.innerHTML=html;
+				}
+			}
+			
+				
+				
+			
+		</script>
+	</body>
+</html>
