@@ -1,0 +1,9 @@
+body{
+	background: pink;
+}
+div{
+	height: 100px;
+	width: 100px;
+	background: yellow;
+	border: 30px solid #000;
+}
