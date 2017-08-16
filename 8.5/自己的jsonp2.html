@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="" value="按钮一" />
+		<input type="button" id="" value="按钮二 " />
+		<script type="text/javascript">
+			function fn1(data){
+				console.log(data);
+			}
+			
+			
+			function fn2(data){
+				alert(data);
+			}
+			const btns=document.getElementsByTagName('input');
+			btns[0].onclick=function(){
+				let oS = document.createElement('script');
+		
+				oS.src = 'data2.php?callback=fn1';
+				
+				document.getElementsByTagName('head')[0].appendChild(oS);
+			}
+			btns[1].onclick=function(){
+				let oS = document.createElement('script');
+		
+				oS.src = 'data2.php?callback=fn2';
+				
+				document.getElementsByTagName('head')[0].appendChild(oS);
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

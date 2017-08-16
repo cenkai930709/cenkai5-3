@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			body{
+    		background:skyblue;
+	    	}
+	      *{
+	        margin: 0;
+	        padding: 0;
+	      }
+	      .pic{
+	        width: 236px;
+	        box-shadow:0 1px 3px rgba(0,0,0,.3);
+	        overflow:hidden;
+	        margin-top:10px;
+	      }
+	      img{
+	        width:236px;
+	        border: none;
+	        display: block;
+	      }
+	      ul{
+	        list-style: none;
+	        margin: 0 auto;
+	        
+	        width:1050px;
+	        overflow: hidden;
+	      }
+	      li{
+	       
+	        border: 1px solid #ccc;
+	        float: left;
+	        margin: 8px;
+	        width:236px;
+	      }
+			
+		</style>
+	</head>
+	<body>
+		<ul id="ul">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			
+		</ul>
+		<script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			$.ajax({
+				dataType:'jsonp',
+				url:'http://www.wookmark.com/api/json/popular?callback=?',
+				success:function(data){
+					
+					
+					$.each(data, function(i,e) {
+						
+						const div = $('<div class="pic"></div>');
+						const img = $(`<img src="${e.preview}"/>`);
+						
+						//当图片加载完成之后插入，过滤坏图
+						img[0].onload = function(){
+							var index = minIndex();
+							div.append(img);
+							$('li').eq(index).append(div);
+							//console.log(index);
+						};
+						
+					});
+				}
+			})
+			//$('li').appendTo($('#ul'));
+			//找到li中谁最短
+//			function minIndex(){
+//				let lis=$('li');
+//				let arr=[];
+//				let num=0;
+//				lis.each(function(i,e){
+//					arr.push(e.scrollHeight);
+//				});
+//				//最小的
+//				num=Math.min.apply(null,arr);
+//				return arr.findIndex(e=>e==num);
+//			}
+			function minIndex(){	
+				let lis = $('li');
+				let arr = [];
+				let num = 0;
+				lis.each(function(i,e){
+					arr.push(e.scrollHeight);
+				});
+				//最小的。
+				num = Math.min.apply(null,arr);
+				
+				return arr.findIndex(e=>e==num);
+				
+			}
+		</script>
+	</body>
+</html>
