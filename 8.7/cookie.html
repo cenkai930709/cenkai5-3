@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">点击++</button>
+		<a href="8_获取cookie.html">到第一个页面中去</a>
+		<script type="text/javascript">
+			document.cookie = 'xm';
+			document.cookie = 'name=xh';
+			
+			var num = 0;
+			btn.onclick = function(){
+				num++;
+		//		var iDate = new Date();
+		//		
+		//		iDate.setDate(iDate.getDate());
+		//		
+		//		document.cookie = 'num='+num+';expires='+iDate;
+				setCookie('num',num,10);	
+				alert(num);
+			}
+			function setCookie(key,value,time){
+				if(time){
+					var iDate = new Date();
+					iDate.setDate(iDate.getDate()+time);
+					document.cookie = key+'='+value+';expires='+iDate
+				}else{
+					document.cookie = key+'='+value;
+				}
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			body{
+    		background:skyblue;
+	    	}
+	      *{
+	        margin: 0;
+	        padding: 0;
+	      }
+	      .pic{
+	        width: 236px;
+	        box-shadow:0 1px 3px rgba(0,0,0,.3);
+	        overflow:hidden;
+	        margin-top:10px;
+	      }
+	      img{
+	        width:236px;
+	        border: none;
+	        display: block;
+	      }
+	      #ul{
+	        list-style: none;
+	        margin: 0 auto;
+	        width:1050px;
+	       /* overflow: hidden;*/
+	      position: relative;
+	      }
+	      #ul li{
+	       	position: absolute;
+	       	transition: .5s;
+	        border: 1px solid #ccc;
+	        width:236px;
+	      }
+		 #ol{
+		  	width:100px;
+		  	position: fixed;
+			bottom: 0;
+			right:0;
+			z-index:2;
+      	}
+	      #ol li{
+	      	list-style: none;
+	      	border: 1px solid #000;
+	      	background:#fff;
+	      	text-align: center;
+	      	line-height: 30px;
+	      	cursor: pointer;
+	      }
+	      #ol li:hover{
+	      	background: seagreen;
+	      	color: #fff;
+	      }
+		</style>
+	</head>
+	<body>
+		<ul id="ul">
+			<!--<li></li>
+			<li></li>
+			<li></li>
+			<li></li>-->
+			
+		</ul>
+		 <ol id="ol">
+	    	<li>上一个</li>
+	    	<li>下一个</li>
+	    	<li>历史记录的</li>
+	    </ol>
+		<script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			let onew=236;
+			let marginL=10;
+			let iw=$(window).innerWidth()+marginL;
+			let Actw=onew+marginL;
+			let len=Math.floor(iw/Actw);
+			let num=0;
+			let arrT=[];
+			let arrL=[];
+			
+			$('ul').width(Actw*len -marginL);
+			
+			
+			//获取hash 第一次
+			if(!window.location.hash){
+				window.location.hash = 'page=0';
+			}else{
+				num = window.location.hash.split('=')[1];
+				if(num*1 < 0){
+					num = 0;
+					window.location.hash = 'page=0';
+				};
+			}
+			//当hash变化的时候进去的。
+			window.onhashchange=function(){
+				AddPic(window.location.hash.split('=')[1]);
+			};
+			//设置hash
+			$('ol').find('li').click(function(){
+				if($(this).index() == 1){
+					//下一个
+					num++;
+				}else if($(this).index() == 0){
+					//上一个
+					num--;
+					if(num < 0)num = 0;
+					
+				}else{
+					history.go(-1);
+				}
+				
+				window.location.hash = 'page='+num;
+				
+			});
+			
+
+			AddPic(num);
+			
+			function AddPic(num){
+				$('#ul').html('');
+				arrL.length=arrT.length=0;
+				
+				for(var i=0;i<len;i++){
+					arrT.push(0);
+					arrL.push(Actw*i);
+				};
+				$.ajax({
+					url:"http://www.wookmark.com/api/json/popular?callback=?",
+					data:{
+						page:num
+					},
+					dataType:'jsonp',
+					success:function(data){
+						$.each(data, function(i,e) {
+							let li=$('<li>');
+							let iH=(e.height*onew)/e.width;
+							let img =$(`<img src="${e.preview}" style="height:${iH}px" >`)[0];
+							
+							img.onload=function(){
+								li.append(img);
+								li.css({
+									left:arrL[minIndex()],
+									top:arrT[minIndex()]
+								});
+								$('ul').append(li);
+								arrT[minIndex()]+=(iH+10);
+							}
+							
+						});
+					}
+				});
+					
+			};
+			
+			
+			$(window).resize(function(){
+				let iw=$(window).innerWidth()+marginL;
+				
+				let len = Math.floor(iw/Actw);
+				
+				$('ul').width(Actw*len-marginL);
+				
+				arrT.length=arrL.length=0;
+				for(var i=0;i<len;i++){
+					arrT.push(0);
+					arrL.push(Actw*i);
+				}
+				$('li').each(function(i,e){
+					
+					$(e).css({
+						left:arrL[minIndex()],
+						top:arrT[minIndex()]
+					});
+					arrT[minIndex()]+=($(e).height()+10);
+					
+				})
+				
+				
+			})
+			
+			
+			function minIndex(){	
+				
+				let num = 0;
+				num = Math.min.apply(null,arrT);
+				
+				return arrT.findIndex(e=>e==num);
+				
+			}
+		</script>
+	</body>
+</html>
